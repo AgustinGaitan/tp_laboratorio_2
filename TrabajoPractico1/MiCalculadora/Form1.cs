@@ -10,13 +10,19 @@ using System.Windows.Forms;
 
 namespace MiCalculadora
 {
-    public partial class Form1 : Form
+    public partial class FormCalculadora : Form
     {
-        public Form1()
+        public FormCalculadora()
         {
             InitializeComponent();
 
             this.Text = "Calculadora de Agustin Gaitan del curso 2°A";
+
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
         }
     }

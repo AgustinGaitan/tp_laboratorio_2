@@ -21,26 +21,27 @@ namespace Entidades
 
         public static double Operar(Numero num1, Numero num2, string operador)
         {
+            double resultado = 0;
 
             if(operador == "+")
             {
-                return num1 + num2;
+                resultado = num1 + num2;
             }
             else if( operador == "-")
             {
-                return num1 - num2;
+                resultado = num1 - num2;
             }
             else if(operador == "/")
             {
-                return num1 / num2;
+                resultado = num1 / num2;
 
             }
             else if(operador == "*")
             {
-                return num1 * num2;
+                resultado = num1 * num2;
             }
 
-        
+            return resultado;
         }
 
     }

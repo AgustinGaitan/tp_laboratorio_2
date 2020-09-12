@@ -50,7 +50,7 @@ namespace Entidades
 
             numeroString = numero.ToString();  // lo paso a string para verificar si es un num.
 
-                if(int.TryParse(numeroString,out numeroVerificacion) //Verificacion, al igual que el otro metodo
+                if(int.TryParse(numeroString,out numeroVerificacion)) //Verificacion, al igual que el otro metodo
                 {
                     numeroTransformado = Convert.ToInt32(numeroString, 2);
 

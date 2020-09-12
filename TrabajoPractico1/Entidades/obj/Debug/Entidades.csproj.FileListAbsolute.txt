@@ -1,0 +1,6 @@
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\Entidades\bin\Debug\Entidades.dll
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\Entidades\bin\Debug\Entidades.pdb
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\Entidades\obj\Debug\Entidades.dll
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\Entidades\obj\Debug\Entidades.pdb

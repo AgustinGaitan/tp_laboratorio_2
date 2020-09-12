@@ -1,0 +1,13 @@
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\MiCalculadora\bin\Debug\MiCalculadora.exe.config
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\MiCalculadora\bin\Debug\MiCalculadora.exe
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\MiCalculadora\bin\Debug\MiCalculadora.pdb
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\MiCalculadora\bin\Debug\Entidades.dll
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\MiCalculadora\bin\Debug\Entidades.pdb
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\MiCalculadora\obj\Debug\MiCalculadora.csprojAssemblyReference.cache
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\MiCalculadora\obj\Debug\MiCalculadora.Properties.Resources.resources
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\MiCalculadora\obj\Debug\MiCalculadora.csproj.GenerateResource.cache
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\MiCalculadora\obj\Debug\MiCalculadora.csproj.CoreCompileInputs.cache
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\MiCalculadora\obj\Debug\MiCalculadora.csproj.CopyComplete
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\MiCalculadora\obj\Debug\MiCalculadora.exe
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\MiCalculadora\obj\Debug\MiCalculadora.pdb
+D:\Proyectos\tp_laboratorio_2\TrabajoPractico1\MiCalculadora\obj\Debug\MiCalculadora.FormCalculadora.resources
