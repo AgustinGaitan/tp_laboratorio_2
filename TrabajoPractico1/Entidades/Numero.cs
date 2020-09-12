@@ -163,7 +163,7 @@ namespace Entidades
             }
             else
             {
-                resultado = 0;
+                resultado = double.MinValue;
             }
 
             
@@ -176,7 +176,7 @@ namespace Entidades
 
             resultado = n1.numero + n2.numero;
 
-            return resultado;
+            return resultado; 
         }
 
 
