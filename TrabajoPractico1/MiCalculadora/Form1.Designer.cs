@@ -120,6 +120,7 @@
             "*",
             "/"});
             this.cmbOperador.Location = new System.Drawing.Point(335, 83);
+            this.cmbOperador.MaxLength = 1;
             this.cmbOperador.Name = "cmbOperador";
             this.cmbOperador.Size = new System.Drawing.Size(119, 84);
             this.cmbOperador.TabIndex = 2;
