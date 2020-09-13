@@ -26,48 +26,50 @@ namespace Entidades
 
         public string BinarioDecimal(string binario)
         {
-            string numeroConvertido = "";
+            int binANumero;
 
             if(EsBinario(binario))
             {
 
-                numeroConvertido = Convert.ToInt32(binario, 2).ToString();
+                    binANumero =  Convert.ToInt32(binario, 2);
+                
+
+                return binANumero.ToString();
 
             }
             else
             {
-                Console.WriteLine("Valor invalido.");
+                return "Valor inválido.";
             }
-            return numeroConvertido;
+           
         }
 
         public string DecimalBinario(double numero)
         {
-            string retorno = "";
+           
             string numeroString;
             int numeroVerificacion;
-            int numeroTransformado;
+           
 
-            numeroString = numero.ToString();  // lo paso a string para verificar si es un num.
+            numeroString = numero.ToString(); // lo paso a string para verificar si es un num.
 
                 if(int.TryParse(numeroString,out numeroVerificacion)) //Verificacion, al igual que el otro metodo
                 {
-                    numeroTransformado = Convert.ToInt32(numeroString, 2);
-
-                    retorno = numeroTransformado.ToString();
+                  
+                    return Convert.ToString(numeroVerificacion,2);
                 }
                 else
                 {
-                    Console.WriteLine("Valor inválido.");
+                    return  "Valor inválido.";
                 }
                 
 
-            return retorno;
+            //return retorno;
         }
 
         public string DecimalBinario(string numero)
         {
-            string retorno = "";
+           
             int numeroBinarioVerificacion;
             int numeroTransformado;
             
@@ -75,14 +77,14 @@ namespace Entidades
             {
                 numeroTransformado = Convert.ToInt32(numero, 2);
 
-                retorno = numeroTransformado.ToString();
+                return numeroTransformado.ToString();
             }
             else
             {
-                Console.WriteLine("Valor inválido.");
+                return "Valor inválido.";
             }
 
-            return retorno;
+            
         } 
 
         private bool EsBinario(string binario)
@@ -93,8 +95,9 @@ namespace Entidades
 
             for(int i = 0; i < binario.Length; i++)
             {
-                if(binario[i] != '1' || binario[i] != '0')
+                if(binario[i] == '1' || binario[i] == '0')
                 {
+                    caracteresValidos++;
                     acumCaracteres += caracteresValidos; 
                 }
 
@@ -123,14 +126,9 @@ namespace Entidades
 
         public Numero(string strNumero)
         {
-            int numeroValidado;
 
-            if(int.TryParse(strNumero, out numeroValidado))
-            {
-                this.numero = numeroValidado;
 
-            }
-
+            this.SetNumero = strNumero;
         }
 
         #endregion 
@@ -182,38 +180,16 @@ namespace Entidades
 
         private double ValidarNumero(string strNumero)
         {
-            double valor = 0;
+            double resultante = 0;
 
-            int acumCaracteres = 0;
-            int caracteresValidos = 0;
-
-            for (int i = 0; i < strNumero.Length; i++)
+            if(double.TryParse(strNumero, out resultante))
             {
-               if (strNumero[i] == '0' ||
-                    strNumero[i] == '1' ||
-                    strNumero[i] == '2' ||
-                    strNumero[i] == '3' ||
-                    strNumero[i] == '4' ||
-                    strNumero[i] == '5' ||
-                    strNumero[i] == '6' ||
-                    strNumero[i] == '7' ||
-                    strNumero[i] == '8' ||
-                    strNumero[i] == '9' ||
-                    strNumero[i] == '.')  
-               
-                {
-                    acumCaracteres += caracteresValidos;
-                } 
-
-
+                return resultante;
             }
-
-            if (caracteresValidos == strNumero.Length)
+            else
             {
-                valor = double.Parse(strNumero);
+                return resultante;
             }
-          
-            return valor;
 
         }
     }
