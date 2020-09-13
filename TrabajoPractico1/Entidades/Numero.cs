@@ -62,18 +62,24 @@ namespace Entidades
             string numeroString;
             int numeroVerificacion;
            
-
-            numeroString = numero.ToString(); // lo paso a string para verificar si es un num.
-
-                if(int.TryParse(numeroString,out numeroVerificacion)) //Verificacion, al igual que el otro metodo
+                 numeroString = numero.ToString(); // lo paso a string para verificar si es un num.
+                if(int.TryParse(numeroString, out numeroVerificacion))
                 {
-                  
-                    return Convert.ToString(numeroVerificacion,2);
+                    if (numeroVerificacion >= 0) //Verificacion, al igual que el otro metodo
+                    {
+
+                        return Convert.ToString(numeroVerificacion, 2);
+                    }
+                    else
+                    {
+                        return "Valor inválido.";
+                    }
                 }
                 else
                 {
-                    return  "Valor inválido.";
+                    return "Valor inválido.";
                 }
+               
                 
 
             //return retorno;
@@ -92,9 +98,16 @@ namespace Entidades
             
             if(int.TryParse(numero, out numeroBinarioVerificacion))
             {
-                numeroTransformado = Convert.ToInt32(numero, 2);
+                if(numeroBinarioVerificacion >= 0)
+                {
+                    numeroTransformado = Convert.ToInt32(numero, 2);
 
-                return numeroTransformado.ToString();
+                    return numeroTransformado.ToString();
+                }
+                else
+                {
+                    return "Valor inválido.";
+                }
             }
             else
             {
