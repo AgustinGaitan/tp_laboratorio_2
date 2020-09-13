@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Entidades;
 
 namespace MiCalculadora
 {
@@ -21,12 +22,27 @@ namespace MiCalculadora
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btnCerrar_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void Numero1_TextChanged(object sender, EventArgs e)
+        private void btnConvertirABinario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnConvertirADecimal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOperar_Click(object sender, EventArgs e)
         {
 
         }
