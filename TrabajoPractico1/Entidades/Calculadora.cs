@@ -21,7 +21,7 @@ namespace Entidades
                 return operador.ToString();
             }
 
-            return "+";
+            return '+'.ToString();
        }
 
         /// <summary>

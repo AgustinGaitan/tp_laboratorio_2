@@ -36,6 +36,10 @@ namespace MiCalculadora
             {
                 this.lblResultado.Text = obj.DecimalBinario(double.Parse(this.lblResultado.Text));
             }
+            else if (this.lblResultado.Text == "")
+            {
+                this.lblResultado.Text = "No hay valor.";
+            }
             else
             {
                 this.lblResultado.Text = "Valor inválido.";
@@ -52,7 +56,11 @@ namespace MiCalculadora
             if (this.lblResultado.Text != "Valor inválido.")
             {
                 this.lblResultado.Text = obj.BinarioDecimal(this.lblResultado.Text);
-            } 
+            }
+            else if (this.lblResultado.Text == "")
+            {
+                this.lblResultado.Text = "No hay valor.";
+            }
             else
             {
                 this.lblResultado.Text = "Valor inválido.";
@@ -70,9 +78,10 @@ namespace MiCalculadora
             string numero1 = txtNumero1.Text;
             string numero2 = txtNumero2.Text;
             string operador = cmbOperador.Text;
+            FormCalculadora calculadora = new FormCalculadora();
             double resultado = 0;
 
-             resultado =  this.Operar(numero1, numero2,operador);
+             resultado =  Operar(numero1, numero2,operador);
 
             lblResultado.Text = resultado.ToString();
         }
@@ -97,7 +106,7 @@ namespace MiCalculadora
         /// <param name="numero2">Segundo numero</param>
         /// <param name="operador">Operador</param>
         /// <returns>Resultado de la operación</returns>
-        private double Operar(string numero1, string numero2, string operador)
+        private static double Operar(string numero1, string numero2, string operador)
         {
             double resultado = 0;
 
