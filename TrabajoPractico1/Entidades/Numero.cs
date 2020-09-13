@@ -10,7 +10,9 @@ namespace Entidades
         private double numero; //atributo
 
 
-
+        /// <summary>
+        /// Setea un numero en el atributo de la clase.
+        /// </summary>
         public string SetNumero  //propiedad
         {
             
@@ -23,6 +25,11 @@ namespace Entidades
 
         }
 
+        /// <summary>
+        /// Pasa un numero binario a decimal.
+        /// </summary>
+        /// <param name="binario"> Numero binario </param>
+        /// <returns></returns>
 
         public string BinarioDecimal(string binario)
         {
@@ -44,6 +51,11 @@ namespace Entidades
            
         }
 
+        /// <summary>
+        /// Pasa un numero decimal a binario.
+        /// </summary>
+        /// <param name="numero">numero decimal a transformar</param>
+        /// <returns>El numero transformado </returns>
         public string DecimalBinario(double numero)
         {
            
@@ -67,6 +79,11 @@ namespace Entidades
             //return retorno;
         }
 
+        /// <summary>
+        /// Pasa un numero de decimal a binario
+        /// </summary>
+        /// <param name="numero"> numero a transformar</param>
+        /// <returns>Numero transformado</returns>
         public string DecimalBinario(string numero)
         {
            
@@ -87,6 +104,11 @@ namespace Entidades
             
         } 
 
+        /// <summary>
+        /// Valida si es binario
+        /// </summary>
+        /// <param name="binario">Numero a validar </param>
+        /// <returns>true si es binario, false si no</returns>
         private bool EsBinario(string binario)
         {
             bool retorno = false;
@@ -114,16 +136,26 @@ namespace Entidades
 
         #region Constructores
 
+        /// <summary>
+        /// Constructor 
+        /// </summary>
         public Numero()
         {
             this.numero = 0;
         }
 
+        /// <summary>
+        /// Constructor con parametro
+        /// </summary>
+        /// <param name="numero">parametro tipo double a asignar</param>
         public Numero(double numero)
         {
             this.numero = numero;
         }
-
+        /// <summary>
+        /// Constructor con parametro
+        /// </summary>
+        /// <param name="numero">parametro tipo string a asignar</param>
         public Numero(string strNumero)
         {
 
@@ -132,7 +164,12 @@ namespace Entidades
         }
 
         #endregion 
-
+        /// <summary>
+        /// sobrecarga del operador -
+        /// </summary>
+        /// <param name="n1">numero1</param>
+        /// <param name="n2">numero 2</param>
+        /// <returns>resultado entre dos variables Tipo Numero </returns>
         public static double operator - (Numero n1, Numero n2)
         {
             double resultado;
@@ -142,6 +179,12 @@ namespace Entidades
             return resultado;
         }
 
+        /// <summary>
+        /// sobrecarga del operador *
+        /// </summary>
+        /// <param name="n1">numero1</param>
+        /// <param name="n2">numero 2</param>
+        /// <returns>resultado entre dos variables Tipo Numero </returns>
         public static double operator * (Numero n1, Numero n2)
         {
             double resultado;
@@ -150,6 +193,13 @@ namespace Entidades
 
             return resultado;
         }
+
+        /// <summary>
+        /// sobrecarga del operador /
+        /// </summary>
+        /// <param name="n1">numero1</param>
+        /// <param name="n2">numero 2</param>
+        /// <returns>resultado entre dos variables Tipo Numero </returns>
         public static double operator /(Numero n1, Numero n2)
         {
             double resultado;
@@ -167,7 +217,12 @@ namespace Entidades
             
             return resultado;
         }
-
+        /// <summary>
+        /// sobrecarga del operador +
+        /// </summary>
+        /// <param name="n1">numero1</param>
+        /// <param name="n2">numero 2</param>
+        /// <returns>resultado entre dos variables Tipo Numero </returns>
         public static double operator +(Numero n1, Numero n2)
         {
             double resultado;
@@ -177,7 +232,11 @@ namespace Entidades
             return resultado; 
         }
 
-
+        /// <summary>
+        /// Valida si es un numero o no
+        /// </summary>
+        /// <param name="strNumero">string a validar</param>
+        /// <returns>numero validado</returns>
         private double ValidarNumero(string strNumero)
         {
             double resultante = 0;

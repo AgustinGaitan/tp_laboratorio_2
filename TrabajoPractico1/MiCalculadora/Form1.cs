@@ -77,6 +77,9 @@ namespace MiCalculadora
             lblResultado.Text = resultado.ToString();
         }
 
+        /// <summary>
+        /// Limpia los text box y el label
+        /// </summary>
         private void Limpiar()
         {
 
@@ -86,7 +89,14 @@ namespace MiCalculadora
             this.lblResultado.Text = "";
 
         }
-        
+
+        /// <summary>
+        /// Llama al metodo de la clase Numero "Operar"
+        /// </summary>
+        /// <param name="numero1">Primer numero</param>
+        /// <param name="numero2">Segundo numero</param>
+        /// <param name="operador">Operador</param>
+        /// <returns>Resultado de la operación</returns>
         private double Operar(string numero1, string numero2, string operador)
         {
             double resultado = 0;
