@@ -32,11 +32,11 @@ namespace MiCalculadora
         {
             Numero obj = new Numero();
 
-            if (this.lblResultado.Text != "Valor inválido.")
+            if (this.lblResultado.Text != "Valor inválido." || this.lblResultado.Text != "No hay valor.")
             {
                 this.lblResultado.Text = obj.DecimalBinario(double.Parse(this.lblResultado.Text));
             }
-            else if (this.lblResultado.Text == "")
+            else if (this.lblResultado.Text == "" || this.lblResultado.Text == null)
             {
                 this.lblResultado.Text = "No hay valor.";
             }
@@ -57,7 +57,7 @@ namespace MiCalculadora
             {
                 this.lblResultado.Text = obj.BinarioDecimal(this.lblResultado.Text);
             }
-            else if (this.lblResultado.Text == "")
+            else if (this.lblResultado.Text == "" || this.lblResultado.Text == null)
             {
                 this.lblResultado.Text = "No hay valor.";
             }

@@ -35,23 +35,26 @@ namespace Entidades
         {
             double resultado = 0;
 
-            if(operador == "+")
-            {
-                resultado = num1 + num2;
-            }
-            else if( operador == "-")
-            {
-                resultado = num1 - num2;
-            }
-            else if(operador == "/")
-            {
-                resultado = num1 / num2;
 
-            }
-            else if(operador == "*")
+            switch(operador)
             {
-                resultado = num1 * num2;
-            }
+                case "+":
+                    resultado =  num1 + num2;
+                    break;
+                case "-":
+                    resultado = num1 - num2;
+                    break;
+                case "*":
+                    resultado = num1 * num2;
+                    break;
+                case "/":
+                    resultado = num1 / num2;
+                    break;
+                default:
+                    resultado = num1 + num2;
+                    break;
+
+            }         
 
             return resultado;
         }
