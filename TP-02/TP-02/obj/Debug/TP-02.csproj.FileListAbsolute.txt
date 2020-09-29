@@ -24,3 +24,10 @@ D:\Federico\VB .Net\Visual C#\utn\TPs\2018\TP-N2\TP-02\TP-02\obj\Debug\TP-02.exe
 D:\Proyectos\tp_laboratorio_2\TP-02\TP-02\obj\Debug\TP-02.csprojAssemblyReference.cache
 D:\Proyectos\tp_laboratorio_2\TP-02\TP-02\obj\Debug\TP-02.csproj.CoreCompileInputs.cache
 D:\Proyectos\tp_laboratorio_2\TP-02\TP-02\obj\Debug\TP-02.exe
+D:\Proyectos\tp_laboratorio_2\TP-02\TP-02\bin\Debug\TP-02.exe.config
+D:\Proyectos\tp_laboratorio_2\TP-02\TP-02\bin\Debug\TP-02.exe
+D:\Proyectos\tp_laboratorio_2\TP-02\TP-02\bin\Debug\TP-02.pdb
+D:\Proyectos\tp_laboratorio_2\TP-02\TP-02\bin\Debug\Entidades.dll
+D:\Proyectos\tp_laboratorio_2\TP-02\TP-02\bin\Debug\Entidades.pdb
+D:\Proyectos\tp_laboratorio_2\TP-02\TP-02\obj\Debug\TP-02.csproj.CopyComplete
+D:\Proyectos\tp_laboratorio_2\TP-02\TP-02\obj\Debug\TP-02.pdb

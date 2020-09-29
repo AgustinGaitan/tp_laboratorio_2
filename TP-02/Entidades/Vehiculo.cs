@@ -20,9 +20,9 @@ namespace Entidades
             Chico, Mediano, Grande
         }
 
-        EMarca marca;
-        string chasis;
-        ConsoleColor color;
+        private string chasis;
+        private ConsoleColor color;
+        private EMarca marca;
 
         /// <summary>
         /// Constructor
@@ -41,9 +41,10 @@ namespace Entidades
         /// <summary>
         /// ReadOnly: Retornará el tamaño
         /// </summary>
-        public virtual ETamanio Tamanio 
-        { 
+        public abstract ETamanio Tamanio   //ARREGLADO: Abstract
+        {
             get; 
+           
             
         }
 
@@ -51,9 +52,12 @@ namespace Entidades
         /// Publica todos los datos del Vehiculo.
         /// </summary>
         /// <returns></returns>
-        public string Mostrar()
+        public virtual string Mostrar() //ARREGLADO: AGREGADO VIRTUAL.
         {
-            return this;
+        
+
+            return (string)this;
+
         }
 
         public static explicit operator string(Vehiculo p)   //ARREGLADO: PUBLICO Y APPEND FORMAT.
@@ -74,7 +78,7 @@ namespace Entidades
         /// <param name="v1"></param>
         /// <param name="v2"></param>
         /// <returns></returns>
-        public static bool operator ==(Vehiculo v1, Vehiculo v2)
+        public static bool operator ==(Vehiculo v1, Vehiculo v2) 
         {
             return (v1.chasis == v2.chasis);
         }
@@ -87,6 +91,23 @@ namespace Entidades
         public static bool operator !=(Vehiculo v1, Vehiculo v2)  //ARREGLADO : return !(v1.chasis == v2.chasis);
         {
             return !(v1.chasis == v2.chasis);
+        }
+
+        public override bool Equals(object obj)
+        {
+            bool rta = false;
+
+            if(obj is Vehiculo)
+            {
+                rta = this == (Vehiculo)obj;
+            }
+
+            return rta;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

@@ -8,32 +8,42 @@ namespace Entidades
 {
     public class Suv : Vehiculo  //ARREGLADO : HEREDA DE VEHICULO
     {
-        public Suv(EMarca marca, string chasis, ConsoleColor color)
-            : base(chasis, marca, color)
+        /// <summary>
+        /// Constructor de 3 parametros.
+        /// </summary>
+        /// <param name="marca"></param>
+        /// <param name="chasis"></param>
+        /// <param name="color"></param>
+        public Suv(EMarca marca, string chasis, ConsoleColor color)  //no hace falta tener nada dentro 
+            : base(chasis,marca,color)
         {
         }
         /// <summary>
-        /// Las camionetas son grandes
+        /// Las camionetas son medianas
         /// </summary>
-        protected override ETamanio Tamanio
+        public override ETamanio Tamanio  //ARREGLADO: CAMBIADO A PUBLICO PARA SER SOBREESCRITO
         {
             get
             {
-                return 0;
+                return ETamanio.Mediano;
             }
         }
 
-        public override sealed string Mostrar()
+        /// <summary>
+        /// Método sellado
+        /// </summary>
+        /// <returns></returns>
+        public override sealed string Mostrar() 
         {
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("SUV");
-            sb.AppendLine(base);
-            sb.AppendLine("TAMAÑO : {0}", this.Tamanio);
+            sb.AppendLine(base.Mostrar());
+            sb.AppendFormat("TAMAÑO : {0}", this.Tamanio); //ARREGLADO: AppendLine -> AppendFormat
             sb.AppendLine("");
             sb.AppendLine("---------------------");
 
-            return sb;
-        }
+            return sb.ToString(); //ARREGLADO: return sb -> return sb.ToString();
+        } 
     }
 }
