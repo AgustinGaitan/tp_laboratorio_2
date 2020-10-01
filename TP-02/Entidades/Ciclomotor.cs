@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    /// <summary>
+    /// Clase publica que hereda de vehículo.
+    /// </summary>
     public class Ciclomotor : Vehiculo
     {
         /// <summary>
@@ -22,7 +25,7 @@ namespace Entidades
         /// <summary>
         /// Las motos son chicas
         /// </summary>
-        public override ETamanio Tamanio  //ARREGLADO : Protected -> Public // override // short -> ETamanio
+        protected override ETamanio Tamanio  //ARREGLADO : Protected -> Public // override // short -> ETamanio
         {
             get
             {
@@ -33,7 +36,7 @@ namespace Entidades
         /// <summary>
         /// Método sellado.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Cadena con los datos.</returns>
         public override sealed string Mostrar() //ARREGLADO : private -> public
         {
             StringBuilder sb = new StringBuilder();

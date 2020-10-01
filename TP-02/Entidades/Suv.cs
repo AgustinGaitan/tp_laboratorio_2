@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    /// <summary>
+    /// Clase pública que hereda de vehículo.
+    /// </summary>
     public class Suv : Vehiculo  //ARREGLADO : HEREDA DE VEHICULO
     {
         /// <summary>
@@ -21,7 +24,7 @@ namespace Entidades
         /// <summary>
         /// Las camionetas son medianas
         /// </summary>
-        public override ETamanio Tamanio  //ARREGLADO: CAMBIADO A PUBLICO PARA SER SOBREESCRITO
+        protected override ETamanio Tamanio  //ARREGLADO: CAMBIADO A PUBLICO PARA SER SOBREESCRITO
         {
             get
             {
@@ -30,7 +33,7 @@ namespace Entidades
         }
 
         /// <summary>
-        /// Método sellado
+        /// Método sellado que muestra los datos.
         /// </summary>
         /// <returns></returns>
         public override sealed string Mostrar() 

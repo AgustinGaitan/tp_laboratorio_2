@@ -14,16 +14,29 @@ namespace Entidades
     {
         private List<Vehiculo> vehiculos;
         private int espacioDisponible;
+
+        /// <summary>
+        /// Enumerado publico ETipo
+        /// </summary>
         public enum ETipo
         {
             Ciclomotor, Sedan, SUV, Todos
         }
 
         #region "Constructores"
+
+        /// <summary>
+        /// Constructor por default. Inicializa con una nueva lista.
+        /// </summary>
         private Taller()
         {
             this.vehiculos = new List<Vehiculo>();
         }
+
+        /// <summary>
+        /// Constructor con parametro.
+        /// </summary>
+        /// <param name="espacioDisponible">Espacio disponible</param>
         public Taller(int espacioDisponible):this()
         {
             this.espacioDisponible = espacioDisponible;
@@ -34,7 +47,7 @@ namespace Entidades
         /// <summary>
         /// Muestro el estacionamiento y TODOS los vehículos
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Listado</returns>
         public override string ToString() //ARREGLADO: override.
         {
             return Taller.Listar(this, ETipo.Todos);
@@ -49,7 +62,7 @@ namespace Entidades
         /// </summary>
         /// <param name="taller">Elemento a exponer</param>
         /// <param name="ETipo">Tipos de ítems de la lista a mostrar</param>
-        /// <returns></returns>
+        /// <returns>Datos</returns>
         public static string Listar(Taller taller, ETipo tipo)
         {
             StringBuilder sb = new StringBuilder();
@@ -98,7 +111,7 @@ namespace Entidades
         /// </summary>
         /// <param name="taller">Objeto donde se agregará el elemento</param>
         /// <param name="vehiculo">Objeto a agregar</param>
-        /// <returns></returns>
+        /// <returns>El parametro modificado o no.</returns>
         public static Taller operator +(Taller taller, Vehiculo vehiculo)
         {
             bool encontrado = false;
@@ -127,7 +140,7 @@ namespace Entidades
         /// </summary>
         /// <param name="taller">Objeto donde se quitará el elemento</param>
         /// <param name="vehiculo">Objeto a quitar</param>
-        /// <returns></returns>
+        /// <returns>El parametro modificado o no.</returns>
         public static Taller operator -(Taller taller, Vehiculo vehiculo)
         {
 

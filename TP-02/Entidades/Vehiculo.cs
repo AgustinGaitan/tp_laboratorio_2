@@ -41,7 +41,7 @@ namespace Entidades
         /// <summary>
         /// ReadOnly: Retornará el tamaño
         /// </summary>
-        public abstract ETamanio Tamanio   //ARREGLADO: Abstract
+        protected abstract ETamanio Tamanio   //ARREGLADO: Abstract
         {
             get; 
            
