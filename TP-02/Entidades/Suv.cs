@@ -22,13 +22,13 @@ namespace Entidades
         {
         }
         /// <summary>
-        /// Las camionetas son medianas
+        /// SUV son grandes.
         /// </summary>
         protected override ETamanio Tamanio  //ARREGLADO: CAMBIADO A PUBLICO PARA SER SOBREESCRITO
         {
             get
             {
-                return ETamanio.Mediano;
+                return ETamanio.Grande;
             }
         }
 
