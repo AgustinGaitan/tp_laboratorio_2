@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Excepciones;
 
-namespace Entidades
+namespace ClasesAbstractas
 {
     public abstract class Persona
     {
@@ -16,25 +17,43 @@ namespace Entidades
         public string Nombre
         {
             get { return this.nombre; }
-            set { this.nombre = value; }
+            set
+            {
+
+                if (!(value.Any(char.IsDigit)) && !(value.Any(char.IsSymbol)))
+                {
+                    this.nombre = value;
+                }
+                else
+                {
+
+                }
+
+            }
         }
 
         public string Apellido
         {
             get { return this.apellido; }
-            set { this.apellido = value; }
+            set
+            {
+                if (!(value.Any(char.IsDigit)) && !(value.Any(char.IsSymbol)))
+                {
+                    this.apellido = value;
+                }
+            }
 
         }
 
         public string Nacionalidad
         {
-            get 
+            get
             {
                 return this.nacionalidad;
             }
-            set 
-            { 
-                
+            set
+            {
+
 
             }
 
@@ -48,19 +67,19 @@ namespace Entidades
             }
             set
             {
-                
 
-                if((value > 0 && value < 90000000) && (this.Nacionalidad == "argentino"))
+
+                if ((value > 0 && value < 90000000) && (this.Nacionalidad == "argentino"))
                 {
                     this.dni = value;
                 }
-                else if((value >= 90000000 && value < 100000000) && (this.Nacionalidad == "extranjero"))
+                else if ((value >= 90000000 && value < 100000000) && (this.Nacionalidad == "extranjero"))
                 {
                     this.dni = value;
                 }
                 else
                 {
-                    throw 
+                    throw new DniInvalidoException("Error. DNI inválido.");
                 }
 
             }
