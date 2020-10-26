@@ -11,8 +11,8 @@ namespace ClasesAbstractas
     {
         private string nombre;
         private string apellido;
-        private string nacionalidad;
-        private long dni;
+        private ENacionalidad nacionalidad;
+        private int dni;
 
 
         public enum ENacionalidad
@@ -26,14 +26,8 @@ namespace ClasesAbstractas
             set
             {
 
-                if (!(value.Any(char.IsDigit)) && !(value.Any(char.IsSymbol)))
-                {
-                    this.nombre = value;
-                }
-                else
-                {
-
-                }
+                value = this.ValidarNombreApellido(value);
+                value = this.nombre;
 
             }
         }
@@ -43,15 +37,13 @@ namespace ClasesAbstractas
             get { return this.apellido; }
             set
             {
-                if (!(value.Any(char.IsDigit)) && !(value.Any(char.IsSymbol)))
-                {
-                    this.apellido = value;
-                }
+                value = this.ValidarNombreApellido(value);
+                value = this.apellido;
             }
 
         }
 
-        public string Nacionalidad
+        public ENacionalidad Nacionalidad
         {
             get
             {
@@ -60,12 +52,14 @@ namespace ClasesAbstractas
             set
             {
 
+        
+                value = this.nacionalidad;
 
             }
 
         }
 
-        public long DNI
+        public int DNI
         {
             get
             {
@@ -73,21 +67,7 @@ namespace ClasesAbstractas
             }
             set
             {
-
-
-                if ((value > 0 && value < 90000000) && (this.Nacionalidad == "argentino"))
-                {
-                    this.dni = value;
-                }
-                else if ((value >= 90000000 && value < 100000000) && (this.Nacionalidad == "extranjero"))
-                {
-                    this.dni = value;
-                }
-                else
-                {
-                    throw new DniInvalidoException("Error. DNI inválido.");
-                }
-
+                value = this.ValidarDni(Nacionalidad, value);              
             }
 
         }
@@ -95,8 +75,8 @@ namespace ClasesAbstractas
         public string StringToDNI
         {
             set
-            { 
-
+            {
+                value = value.ToString();
             }
         }
 
@@ -125,7 +105,7 @@ namespace ClasesAbstractas
         private int ValidarDni(ENacionalidad nacionalidad, int dato)
         {
 
-            return this.ValidarDni(nacionalidad, Convert.ToInt32(dato));
+            return this.ValidarDni(nacionalidad, dato.ToString());
 
         }
 
@@ -145,7 +125,7 @@ namespace ClasesAbstractas
                 }
                 else
                 {
-                    throw new NacionalidadInvalidaException("Error.Nacionalidad inválida.");
+                    throw new NacionalidadInvalidaException("Error. La nacionalidad no coincide con el DNI.");
                 }
            
            }
@@ -157,6 +137,24 @@ namespace ClasesAbstractas
            }
 
             return retorno;
+        }
+
+        private string ValidarNombreApellido(string dato)
+        {
+            if (dato.Any(char.IsLetter) && dato.Any(char.IsSymbol) && dato.Any(char.IsWhiteSpace))
+            {
+                return dato;
+            }
+            else
+            {
+                return "Error. Caracter inválido.\n";
+            }
+        }
+
+        public override string ToString()
+        {
+            return "NOMBRE COMPLETO: " + this.Nombre + this.Apellido +
+                "\nNACIONALIDAD: " + this.Nacionalidad + "\nDNI" + this.DNI;
         }
     }
 
