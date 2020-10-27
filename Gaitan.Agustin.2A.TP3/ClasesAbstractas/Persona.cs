@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Excepciones;
@@ -20,6 +21,7 @@ namespace ClasesAbstractas
             Argentino,Extranjero
         }
 
+        #region Propiedades
         public string Nombre
         {
             get { return this.nombre; }
@@ -67,7 +69,8 @@ namespace ClasesAbstractas
             }
             set
             {
-                value = this.ValidarDni(Nacionalidad, value);              
+                this.StringToDNI = value.ToString();
+                 
             }
 
         }
@@ -76,58 +79,62 @@ namespace ClasesAbstractas
         {
             set
             {
-                value = value.ToString();
+                int retornoDeMetodo = this.ValidarDni(this.Nacionalidad, value.ToString());
+
+                this.dni = retornoDeMetodo;
+                     
             }
         }
 
 
+        #endregion
 
         public Persona()
         {
 
         }
 
-        public Persona(string nombre, string apellido,ENacionalidad nacionalidad)
+        public Persona(string nombre, string apellido,ENacionalidad nacionalidad):this()
         {
-
+            this.Nombre = nombre;
+            this.Apellido = apellido;
+            this.Nacionalidad = nacionalidad;
         }
 
-        public Persona(string nombre, string apellido, int dni, ENacionalidad nacionalidad)
+        public Persona(string nombre, string apellido, int dni, ENacionalidad nacionalidad):this(nombre,apellido,nacionalidad)
         {
-
+            this.DNI = dni;
         }
 
-        public Persona(string nombre, string apellido, string dni, ENacionalidad nacionalidad)
+        public Persona(string nombre, string apellido, string dni, ENacionalidad nacionalidad):this(nombre,apellido,nacionalidad)
         {
-
+            this.StringToDNI = dni;
         }
 
         private int ValidarDni(ENacionalidad nacionalidad, int dato)
-        {
+        {       
 
-            return this.ValidarDni(nacionalidad, dato.ToString());
+            if ((nacionalidad == ENacionalidad.Argentino && dato >= 1 && dato <= 89999999) ||
+                nacionalidad == ENacionalidad.Extranjero && dato >= 90000000 && dato <= 99999999)
+            {
+
+                return dato;
+
+            }
+            else
+            {
+                throw new NacionalidadInvalidaException("Error. La nacionalidad no coincide con el DNI.");
+            }
 
         }
 
         private int ValidarDni(ENacionalidad nacionalidad, string dato)
         {
-            int dniAInt = Convert.ToInt32(dato);
-            int retorno = -1;
  
            if((dato.Length >= 0 && dato.Length <= 8)  && (!(dato.Any(char.IsLetter) && dato.Any(char.IsSymbol)))) 
-           {    
-                if((nacionalidad == ENacionalidad.Argentino && dniAInt >= 1 && dniAInt <= 89999999) ||
-                    nacionalidad == ENacionalidad.Extranjero && dniAInt >= 90000000 && dniAInt <= 99999999)
-                {
+           {
 
-                    retorno = dniAInt;
-                        
-                }
-                else
-                {
-                    throw new NacionalidadInvalidaException("Error. La nacionalidad no coincide con el DNI.");
-                }
-           
+                return this.ValidarDni(nacionalidad, dato);
            }
            else
            {    
@@ -136,7 +143,6 @@ namespace ClasesAbstractas
                 
            }
 
-            return retorno;
         }
 
         private string ValidarNombreApellido(string dato)

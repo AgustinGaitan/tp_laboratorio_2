@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,15 +29,11 @@ namespace ClasesAbstractas
 
         public static bool operator ==(Universitario pg1, Universitario pg2)
         {
-
-            if(pg1.Equals(pg2))
-            {
                 if ((pg1.legajo == pg2.legajo) || (pg1.DNI == pg2.DNI))
                 {
                     return true;
                 }
-            }
-
+           
             return false;
 
         }
@@ -57,12 +54,16 @@ namespace ClasesAbstractas
         {
             bool rta = false;
 
-            if (obj is Universitario)
+            if(obj is Universitario)
             {
-                rta = this == (Universitario)obj;
+                if(((Universitario)this) == ((Universitario)obj))
+                {
+                    rta = true;
+                }
             }
 
             return rta;
+
         }
 
 
