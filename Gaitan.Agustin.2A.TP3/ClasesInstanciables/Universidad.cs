@@ -8,6 +8,8 @@ namespace ClasesInstanciables
 {
     public class Universidad
     {
+        private List<Alumno> alumnos;
+        private List<Jornada> jornada;
 
         public enum EClases
         {

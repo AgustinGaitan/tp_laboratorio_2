@@ -10,7 +10,7 @@ namespace Excepciones
     {
 
         public DniInvalidoException()
-            : base()
+            : base("Error. DNI invalido")
         {
 
         }

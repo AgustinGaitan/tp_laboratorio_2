@@ -10,7 +10,7 @@ namespace Excepciones
     {
 
         public NacionalidadInvalidaException()
-            : base()
+            : base("Error. Nacionalidad invalida.")
         {
 
         }
