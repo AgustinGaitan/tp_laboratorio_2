@@ -29,17 +29,46 @@ namespace ClasesInstanciables
         public Profesor(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad)
             :base(id,nombre,apellido,dni,nacionalidad)
         {
-            this._randomClases();
+            this.clasesDelDia = new Queue<EClases>();
+            _randomClases();
         }
 
        
 
         private void _randomClases()
         {
-            
+            for(int i = 0; i < 2; i++)
+            {
+                this.clasesDelDia.Enqueue((EClases)Profesor.random.Next(0,3));
+            }
            
             
         }
+
+        protected override string MostrarDatos()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(base.MostrarDatos());
+            sb.Append(this.ParticiparEnClase());
+
+            return sb.ToString();
+        }
+
+        protected override string ParticiparEnClase()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("CLASES DEL DIA :");
+            foreach(EClases item in this.clasesDelDia)
+            {
+                sb.AppendLine(item.ToString())
+            }
+
+            return sb.ToString();
+           
+        }
+
 
         public static bool operator ==(Profesor i, EClases clase)
         {
@@ -59,7 +88,10 @@ namespace ClasesInstanciables
             return !(i == clase);
         }
 
-
+        public override string ToString()
+        {
+            return this.MostrarDatos();
+        }
 
     }
 }
