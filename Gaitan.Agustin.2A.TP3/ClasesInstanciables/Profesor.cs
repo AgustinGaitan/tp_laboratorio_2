@@ -17,13 +17,13 @@ namespace ClasesInstanciables
 
         static Profesor()
         {
-
+            Profesor.random = new Random();
         }
 
         public Profesor()
             :this(0,null,null,null,default)
         {
-            Profesor.random = new Random();
+            this.clasesDelDia = new Queue<EClases>();
         }
 
         public Profesor(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad)
