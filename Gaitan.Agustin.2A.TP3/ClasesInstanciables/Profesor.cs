@@ -1,21 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using ClasesAbstractas;
+using static ClasesInstanciables.Universidad;
 
 namespace ClasesInstanciables
 {
     public sealed class Profesor : Universitario
     {
-        private Queue<Universidad.EClases> clasesDelDia;
+        private Queue<EClases> clasesDelDia;
         static Random random;
 
-        public Profesor()
-            :base()
+
+        static Profesor()
         {
-            
+
+        }
+
+        public Profesor()
+            :this(0,null,null,null,default)
+        {
+            Profesor.random = new Random();
         }
 
         public Profesor(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad)
@@ -24,19 +32,34 @@ namespace ClasesInstanciables
             this._randomClases();
         }
 
-        static Profesor()
-        {
-
-        }
+       
 
         private void _randomClases()
         {
-            Profesor.random = new Random();
-            Profesor.random.Next();
-
+            
+           
             
         }
 
-        
+        public static bool operator ==(Profesor i, EClases clase)
+        {
+            foreach(EClases item in i.clasesDelDia)
+            {
+                if(item == clase)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static bool operator !=(Profesor i, EClases clase)
+        {
+            return !(i == clase);
+        }
+
+
+
     }
 }

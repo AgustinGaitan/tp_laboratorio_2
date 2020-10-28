@@ -56,10 +56,7 @@ namespace ClasesAbstractas
 
             if(obj is Universitario)
             {
-                if(((Universitario)this) == ((Universitario)obj))
-                {
-                    rta = true;
-                }
+                rta = this == (Universitario)obj;
             }
 
             return rta;
