@@ -10,18 +10,38 @@ namespace TestUnitario
     public class UnitTest1
     {
         [TestMethod]
-        
-            public void Lista_Alumnos_Correcta()
+            
+          
+            public void ListaAlumnosCorrecta()
             {
                 Universidad u = new Universidad();
                 Assert.IsNotNull(u.Alumnos);
             }
 
+        [TestMethod]
+       
+        public void VerificarNacionalidad()
+        {
+            try
+            {
+                Alumno alumno1 = new Alumno(1, "Jorge", "Parrilla", "90005000", Persona.ENacionalidad.Argentino, Universidad.EClases.Laboratorio);
+                Alumno alumno2 = new Alumno(2, "Lucas", "Fernandez", "500", Persona.ENacionalidad.Extranjero, Universidad.EClases.Laboratorio);
+            }
+            catch(Exception e)
+            {
+                Assert.IsInstanceOfType(e, typeof(NacionalidadInvalidaException));
+            }
+            
+
+
+        }
+
         /// <summary>
         /// Comprueba los rangos de DNI para Argentinos
         /// </summary>
         [TestMethod]
-        public void DNI_Validos_Argentino()
+        
+        public void DNIValidosArgentinos()
         {
             string dniUno = "1";
             string dniDos = new Random().Next(1, 89999999).ToString();
@@ -44,7 +64,8 @@ namespace TestUnitario
         /// Valida que el DNI en formato texto NO pueda tener letras ni comas
         /// </summary>
         [TestMethod]
-        public void DNI_Invalido()
+       
+        public void DNIInvalido()
         {
             string dniConComa = "30.999,999";
             string dniConTexto = "30a00123";
@@ -74,7 +95,8 @@ namespace TestUnitario
         /// Valida que el alumno no se repita
         /// </summary>
         [TestMethod]
-            public void Alumno_Repetido()
+    
+        public void AlumnoRepetido()
             {
                 try
                 {
