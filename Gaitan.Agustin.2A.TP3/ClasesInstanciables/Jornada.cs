@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static ClasesInstanciables.Universidad;
+using Archivos;
+using System.CodeDom;
+using System.ComponentModel;
 
 namespace ClasesInstanciables
 {
@@ -60,7 +63,34 @@ namespace ClasesInstanciables
 
         public bool Guardar(Jornada jornada)
         {
-           
+            Texto nuevoTexto = new Texto();
+            return nuevoTexto.Guardar("jornada.txt", jornada.ToString());
+        }
+
+        public string Leer()
+        {
+            Texto nuevoTexto = new Texto();
+            nuevoTexto.Leer("jornada.txt", out string datos);
+
+            return datos;
+        }
+
+        public static bool operator ==(Jornada j, Alumno a)
+        {
+            foreach(Alumno item in j.alumnos)
+            {
+                if(item == a)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static bool operator !=(Jornada j, Alumno a)
+        {
+            return !(j == a);
         }
 
 
