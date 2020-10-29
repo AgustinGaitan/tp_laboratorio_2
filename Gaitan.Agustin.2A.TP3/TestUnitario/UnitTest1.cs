@@ -36,29 +36,6 @@ namespace TestUnitario
 
         }
 
-        /// <summary>
-        /// Comprueba los rangos de DNI para Argentinos
-        /// </summary>
-        [TestMethod]
-        
-        public void DNIValidosArgentinos()
-        {
-            string dniUno = "1";
-            string dniDos = new Random().Next(1, 89999999).ToString();
-            string dniTres = "89999999";
-
-
-            Alumno alumnoUno = new Alumno(1, "Agustin", "Gaitan", dniUno, Persona.ENacionalidad.Argentino, Universidad.EClases.SPD);
-            Assert.AreEqual(Convert.ToInt32(alumnoUno.DNI), Convert.ToInt32(dniUno));
-
-            Alumno alumnoDos = new Alumno(2, "Juan", "Blanco", dniDos, Persona.ENacionalidad.Argentino, Universidad.EClases.Legislacion);
-            Assert.AreEqual(Convert.ToInt32(alumnoDos.DNI), Convert.ToInt32(dniDos));
-
-            Alumno alumnoTres = new Alumno(3, "Silvio", "Rivero", dniTres, Persona.ENacionalidad.Argentino, Universidad.EClases.Laboratorio);
-            Assert.AreEqual(Convert.ToInt32(alumnoTres.DNI), Convert.ToInt32(dniTres));
-
-        }
-
 
         /// <summary>
         /// Valida que el DNI en formato texto NO pueda tener letras ni comas
