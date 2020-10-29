@@ -10,9 +10,18 @@ using System.Xml;
 
 namespace Archivos
 {
+    /// <summary>
+    /// Clase publica genérica
+    /// </summary>
+    /// <typeparam name="T">Tipo genérico</typeparam>
     public class Xml<T>
     {
-
+        /// <summary>
+        /// Método que guarda datos en un archivo .txt
+        /// </summary>
+        /// <param name="archivo">Ruta del archivo</param>
+        /// <param name="datos">Datos a guardar</param>
+        /// <returns>True si se pudo guardar/False si no</returns>
         public bool Guardar(string archivo, T datos)
         {
             bool rta = false;
@@ -35,7 +44,12 @@ namespace Archivos
         }
 
 
-
+        /// <summary>
+        /// Método que lee datos de un archivo
+        /// </summary>
+        /// <param name="archivo">Ruta del archivo</param>
+        /// <param name="datos">Datos leidos</param>
+        /// <returns>True si se pudo leer, False si no</returns>
         public bool Leer(string archivo, out T datos)
         {
             bool rta = false;
