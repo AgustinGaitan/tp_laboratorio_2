@@ -15,7 +15,7 @@ namespace ClasesAbstractas
         public Universitario()
             :base()
         {
-
+            this.legajo = 0;
         }
 
         public Universitario(int legajo, string nombre, string apellido, string dni, ENacionalidad nacionalidad)

@@ -1,0 +1,9 @@
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesAbstractas\bin\Debug\ClasesAbstractas.dll
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesAbstractas\bin\Debug\ClasesAbstractas.pdb
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesAbstractas\bin\Debug\Excepciones.dll
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesAbstractas\bin\Debug\Excepciones.pdb
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesAbstractas\obj\Debug\ClasesAbstractas.csprojAssemblyReference.cache
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesAbstractas\obj\Debug\ClasesAbstractas.csproj.CoreCompileInputs.cache
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesAbstractas\obj\Debug\ClasesAbstractas.csproj.CopyComplete
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesAbstractas\obj\Debug\ClasesAbstractas.dll
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesAbstractas\obj\Debug\ClasesAbstractas.pdb

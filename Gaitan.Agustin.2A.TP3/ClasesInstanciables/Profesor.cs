@@ -62,7 +62,7 @@ namespace ClasesInstanciables
             sb.AppendLine("CLASES DEL DIA :");
             foreach(EClases item in this.clasesDelDia)
             {
-                sb.AppendLine(item.ToString())
+                sb.AppendLine(item.ToString());
             }
 
             return sb.ToString();

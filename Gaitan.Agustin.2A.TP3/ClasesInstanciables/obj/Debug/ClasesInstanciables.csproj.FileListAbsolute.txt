@@ -1,0 +1,13 @@
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesInstanciables\obj\Debug\ClasesInstanciables.csprojAssemblyReference.cache
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesInstanciables\obj\Debug\ClasesInstanciables.csproj.CoreCompileInputs.cache
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesInstanciables\bin\Debug\ClasesInstanciables.dll
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesInstanciables\bin\Debug\ClasesInstanciables.pdb
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesInstanciables\bin\Debug\Archivos.dll
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesInstanciables\bin\Debug\ClasesAbstractas.dll
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesInstanciables\bin\Debug\Excepciones.dll
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesInstanciables\bin\Debug\Archivos.pdb
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesInstanciables\bin\Debug\ClasesAbstractas.pdb
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesInstanciables\bin\Debug\Excepciones.pdb
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesInstanciables\obj\Debug\ClasesInstanciables.csproj.CopyComplete
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesInstanciables\obj\Debug\ClasesInstanciables.dll
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\ClasesInstanciables\obj\Debug\ClasesInstanciables.pdb

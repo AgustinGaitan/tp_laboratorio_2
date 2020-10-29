@@ -1,0 +1,16 @@
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\TestConsole\obj\Debug\TestConsole.csprojAssemblyReference.cache
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\TestConsole\obj\Debug\TestConsole.csproj.CoreCompileInputs.cache
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\TestConsole\bin\Debug\TestConsole.exe.config
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\TestConsole\bin\Debug\TestConsole.exe
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\TestConsole\bin\Debug\TestConsole.pdb
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\TestConsole\bin\Debug\Archivos.dll
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\TestConsole\bin\Debug\ClasesAbstractas.dll
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\TestConsole\bin\Debug\ClasesInstanciables.dll
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\TestConsole\bin\Debug\Excepciones.dll
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\TestConsole\bin\Debug\Archivos.pdb
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\TestConsole\bin\Debug\ClasesAbstractas.pdb
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\TestConsole\bin\Debug\ClasesInstanciables.pdb
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\TestConsole\bin\Debug\Excepciones.pdb
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\TestConsole\obj\Debug\TestConsole.csproj.CopyComplete
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\TestConsole\obj\Debug\TestConsole.exe
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\TestConsole\obj\Debug\TestConsole.pdb

@@ -1,0 +1,9 @@
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\Archivos\bin\Debug\Archivos.dll
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\Archivos\bin\Debug\Archivos.pdb
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\Archivos\bin\Debug\Excepciones.dll
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\Archivos\bin\Debug\Excepciones.pdb
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\Archivos\obj\Debug\Archivos.csprojAssemblyReference.cache
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\Archivos\obj\Debug\Archivos.csproj.CoreCompileInputs.cache
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\Archivos\obj\Debug\Archivos.csproj.CopyComplete
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\Archivos\obj\Debug\Archivos.dll
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP3\Archivos\obj\Debug\Archivos.pdb

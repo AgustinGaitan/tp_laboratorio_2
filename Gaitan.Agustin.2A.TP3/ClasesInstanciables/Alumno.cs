@@ -21,7 +21,7 @@ namespace ClasesInstanciables
         }
 
         public Alumno()
-            :base()
+            :this(0,null,null,null,0,0)
         {
 
         }

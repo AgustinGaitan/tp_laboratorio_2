@@ -22,15 +22,16 @@ namespace ClasesInstanciables
         public List <Alumno> Alumnos
         {
             get { return this.alumnos; }
-            set { this.alumnos = new List<Alumno>(value); }
+            set 
+            { 
+                this.alumnos = new List<Alumno>(value); 
+            }
         }
         
         public EClases Clase
         {
             get
-            {
-                return this.clase;
-            }
+            {  return this.clase; }
             set
             {
                 this.clase = value;
@@ -39,10 +40,7 @@ namespace ClasesInstanciables
 
         public Profesor Instructor
         {
-            get
-            {
-                return this.instructor;
-            }
+            get { return this.instructor; }
             set
             {
                 this.instructor = value;
@@ -61,7 +59,7 @@ namespace ClasesInstanciables
             this.Instructor = instructor;
         }
 
-        public bool Guardar(Jornada jornada)
+        public static bool Guardar(Jornada jornada)
         {
             Texto nuevoTexto = new Texto();
             return nuevoTexto.Guardar("jornada.txt", jornada.ToString());
@@ -106,7 +104,7 @@ namespace ClasesInstanciables
             sb.AppendLine(this.Instructor.ToString());
             sb.AppendLine("LISTADO DE ALUMNOS:");
 
-            foreach (Alumno item in this.alumnos)
+            foreach (Alumno item in this.Alumnos)
             {
                 sb.AppendLine(item.ToString());
             }

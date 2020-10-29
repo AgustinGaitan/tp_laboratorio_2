@@ -28,8 +28,8 @@ namespace ClasesAbstractas
             set
             {
 
-                value = this.ValidarNombreApellido(value);
-                value = this.nombre;
+                this.nombre = this.ValidarNombreApellido(value);
+                
 
             }
         }
@@ -39,8 +39,8 @@ namespace ClasesAbstractas
             get { return this.apellido; }
             set
             {
-                value = this.ValidarNombreApellido(value);
-                value = this.apellido;
+                this.apellido = this.ValidarNombreApellido(value);
+                
             }
 
         }
@@ -54,8 +54,8 @@ namespace ClasesAbstractas
             set
             {
 
-        
-                value = this.nacionalidad;
+
+                this.nacionalidad = value;
 
             }
 
@@ -69,7 +69,7 @@ namespace ClasesAbstractas
             }
             set
             {
-                this.StringToDNI = value.ToString();
+                this.dni = ValidarDni(this.Nacionalidad, value);
                  
             }
 
@@ -79,9 +79,7 @@ namespace ClasesAbstractas
         {
             set
             {
-                int retornoDeMetodo = this.ValidarDni(this.Nacionalidad, value.ToString());
-
-                this.dni = retornoDeMetodo;
+                this.dni = ValidarDni(this.Nacionalidad, value);
                      
             }
         }
@@ -130,18 +128,14 @@ namespace ClasesAbstractas
 
         private int ValidarDni(ENacionalidad nacionalidad, string dato)
         {
- 
-           if((dato.Length >= 0 && dato.Length <= 8)  && (!(dato.Any(char.IsLetter) && dato.Any(char.IsSymbol)))) 
-           {
 
-                return this.ValidarDni(nacionalidad, dato);
-           }
-           else
-           {    
+            int numeroDni = -1;
 
-                throw new DniInvalidoException("Error. Dni inválido.");
-                
-           }
+            if (dato.Length < 1 || dato.Length > 8 || !int.TryParse(dato, out numeroDni))
+            {
+                throw new DniInvalidoException("El DNI no coincide con el formato");
+            }
+            return ValidarDni(nacionalidad, numeroDni);
 
         }
 

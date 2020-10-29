@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Xml.cs" />
     <Compile Include="IArchivo.cs" />
     <Compile Include="Texto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
