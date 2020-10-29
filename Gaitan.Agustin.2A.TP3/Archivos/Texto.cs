@@ -38,7 +38,7 @@ namespace Archivos
         {
             bool rta = false;
 
-            datos = null;
+            datos = null; //se le asigna en caso de que haya excepcion
 
             try
             {

@@ -77,15 +77,8 @@ namespace ClasesInstanciables
 
         public static bool operator ==(Jornada j, Alumno a)
         {
-            foreach(Alumno item in j.alumnos)
-            {
-                if(item == a)
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            
+            return a == j.Clase;
         }
 
         public static bool operator !=(Jornada j, Alumno a)
@@ -93,6 +86,33 @@ namespace ClasesInstanciables
             return !(j == a);
         }
 
+        public static Jornada operator +(Jornada j, Alumno a)
+        {
+            if(a != j.Clase)
+            {
+                j.alumnos.Add(a);
+            }
+
+            return j;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("CLASE : ");
+            sb.AppendLine(this.Clase.ToString());
+            sb.Append("INSTRUCTOR: ");
+            sb.AppendLine(this.Instructor.ToString());
+            sb.AppendLine("LISTADO DE ALUMNOS:");
+
+            foreach (Alumno item in this.alumnos)
+            {
+                sb.AppendLine(item.ToString());
+            }
+
+            return sb.ToString();
+        }
 
     }
 }

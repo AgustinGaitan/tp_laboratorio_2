@@ -39,7 +39,7 @@ namespace Archivos
         public bool Leer(string archivo, out T datos)
         {
             bool rta = false;
-            datos = default(T);
+            datos = default(T); //se le asigna en caso de que haya excepcion
             try
             {
                 
