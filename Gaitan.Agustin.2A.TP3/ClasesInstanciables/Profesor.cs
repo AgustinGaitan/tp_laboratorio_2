@@ -48,7 +48,7 @@ namespace ClasesInstanciables
             :base(id,nombre,apellido,dni,nacionalidad)
         {
             this.clasesDelDia = new Queue<EClases>();   //Inicializacion de la cola de clases
-            _randomClases();
+            this._randomClases();   //al tener for solo se llama una vez.
         }
 
        /// <summary>
@@ -57,7 +57,7 @@ namespace ClasesInstanciables
 
         private void _randomClases()
         {
-            for(int i = 0; i < 2; i++)
+            for(int i = 0; i < 2; i++) //Para no llamar devuelta al método en el constructor, hice un for.
             {
                 this.clasesDelDia.Enqueue((EClases)Profesor.random.Next(0,3));  //Asigna un numero para los enumerados random
             }
