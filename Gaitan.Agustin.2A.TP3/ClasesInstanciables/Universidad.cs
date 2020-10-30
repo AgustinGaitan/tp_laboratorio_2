@@ -159,7 +159,7 @@ namespace ClasesInstanciables
             {
                 foreach (Alumno item in g.Alumnos)
                 {
-                    if (a == item)
+                    if (item.Equals(a))
                     {
                         retorno = true;
                     }
@@ -231,7 +231,7 @@ namespace ClasesInstanciables
                     break;
                 }
             }
-            if (Object.Equals(instructorRetorno, null))
+            if (Object.Equals(instructorRetorno, null))        //si es null
             {
                 throw new SinProfesorException();
             }

@@ -192,7 +192,7 @@ namespace ClasesAbstractas
 
             int numeroDni = -1;
 
-            if (dato.Length < 1 || dato.Length > 8 || !(int.TryParse(dato, out numeroDni)))
+            if (!(int.TryParse(dato, out numeroDni)) || dato.Length < 1 || dato.Length > 8 )
             {
                 throw new DniInvalidoException("El DNI no coincide con el formato");
             }
