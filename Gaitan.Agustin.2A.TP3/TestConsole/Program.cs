@@ -14,6 +14,7 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
+            Console.Title = "Agustin Gaitan 2A TP3";
 
             Universidad uni = new Universidad();
 
