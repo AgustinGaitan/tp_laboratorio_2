@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using Excepciones;
 
-namespace ClasesAbstractas
+namespace EntidadesAbstractas
 {
     /// <summary>
     /// Clase pública y abstracta

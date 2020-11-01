@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ClasesInstanciables;
 using Excepciones;
-using ClasesAbstractas;
+using EntidadesAbstractas;
 
 namespace TestUnitario
 {
