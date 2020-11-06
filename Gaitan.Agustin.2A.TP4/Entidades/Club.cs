@@ -49,7 +49,7 @@ namespace Entidades
 
             for(int i = 0;i < this.listaClubes.Count; i++)
             {
-                 acum =+ this.Cuota;
+                 acum += this.Cuota;
             }
 
             return acum;
