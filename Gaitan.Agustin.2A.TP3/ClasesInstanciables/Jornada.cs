@@ -90,7 +90,7 @@ namespace ClasesInstanciables
         /// Método estático que lee archivos
         /// </summary>
         /// <returns>los datos leídos</returns>
-        public string Leer()
+        public static string Leer()
         {
             Texto nuevoTexto = new Texto();
             nuevoTexto.Leer("jornada.txt", out string datos);
