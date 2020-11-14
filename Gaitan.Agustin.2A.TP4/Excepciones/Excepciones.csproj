@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CantPoweradeInvalidaException.cs" />
+    <Compile Include="ClubLlenoException.cs" />
     <Compile Include="NombreInvalidoException.cs" />
-    <Compile Include="CuotaInvalidaException.cs" />
+    <Compile Include="CantAguaInvalidaException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

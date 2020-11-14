@@ -3,92 +3,98 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.RegularExpressions;
-using Excepciones;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Entidades
 {
-    public class Gimnasio : Club
+    //interfaces//
+    //generics;//
+    //serializar;//
+    //archivos;
+    //base de datos;
+    //metodo de extension;
+    //hilos;
+    //excepciones;//
+    //test unitarios;
+    //delegados y eventos
+
+
+    public class Gimnasio : Club ,ISerializar, IDeserializar<Gimnasio>
     {
+        
 
-        public override int Cuota
+        public Gimnasio()
         {
-            get
+        }
+
+        public Gimnasio(int cantAgua, int cantPowerade, int cantBarrasEnergeticas, string nombre)
+            :base(cantAgua,cantPowerade,cantBarrasEnergeticas,nombre)
+        {
+
+        }
+
+        bool ISerializar.Xml()
+        {
+            bool rta = true;
+
+            
+
+            try
             {
-                return this.cuota;
-            }
-            set
-            {
-                if(this.ValidarCuota(value))
+                using (XmlTextWriter escritor = new XmlTextWriter("gimnasioXml.xml", System.Text.Encoding.UTF8))
                 {
-                    this.cuota = value;
+                    XmlSerializer ser = new XmlSerializer(typeof(Gimnasio));
+
+                    ser.Serialize(escritor, this);
                 }
-                else
+
+            }
+            catch (Exception)
+            {
+                rta = false;
+
+            }
+
+            return rta;
+        }
+
+        bool IDeserializar<Gimnasio>.Xml(out Gimnasio gym)
+        {
+            bool rta = true;
+            string path = typeof(Gimnasio).Name;
+
+            try
+            {
+                using (XmlTextReader lector = new XmlTextReader(path + ".xml"))
                 {
-                    throw new CuotaInvalidaException();
+                    XmlSerializer ser = new XmlSerializer(typeof(Gimnasio));
+
+                    gym = (Gimnasio)ser.Deserialize(lector);
+
                 }
-            }
-        }
-
-        public override string Nombre
-        {
-            get
-            {
-                return this.nombre;
-            }
-            set
-            {
-                this.nombre = this.ValidarNombre(value);
 
             }
-        }
-
-        public Gimnasio(int cuota, string nombre)
-            : base(cuota, nombre)
-        {
-
-        }
-
-        public override bool ValidarCuota(int cuota)
-        {
-            int validado;
-            bool retorno = false;
-
-            if (int.TryParse(cuota.ToString(), out validado) && (cuota > 500 && cuota < 1500)) //si puede convertirlo lo retorna como numero
+            catch (Exception)
             {
-                retorno = true;
+                rta = false;
+                gym = new Gimnasio();
 
-            }        
+            }
 
-            return retorno;
+            return rta;
+
         }
 
         protected override string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
-
+              
             
             sb.AppendFormat("PARTE DEL CLUB: {0}\n", this.Nombre);
-            sb.AppendFormat("CUOTA: {0}\n", this.Cuota);
+            sb.Append(base.MostrarDatos());
 
             return sb.ToString();
-
-        }
-
-        public override string ValidarNombre(string nombre)
-        {
-            Regex regex = new Regex(@"[a-zA-Z]*");
-
-            Match match = regex.Match(nombre);
-
-            if(match.Success)
-            {
-                return match.Value;
-            }
-            else
-            {
-                return "";
-            }
 
         }
 

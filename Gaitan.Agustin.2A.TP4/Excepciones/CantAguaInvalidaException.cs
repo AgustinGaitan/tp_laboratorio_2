@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Excepciones
 {
-    public class CuotaInvalidaException : Exception
+    public class CantAguaInvalidaException : Exception
     {
 
-        public CuotaInvalidaException()
-            : base("Error. Cuota inválida.\n")
+        public CantAguaInvalidaException()
+            : base("Error. Cantidad de agua inválida.\n")
         {
 
         }

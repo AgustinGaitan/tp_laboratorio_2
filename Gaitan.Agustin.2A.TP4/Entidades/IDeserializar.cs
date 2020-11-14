@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    interface IAdministracion
+    public interface IDeserializar<T>
     {
-        int TotalFacturado();
-
+        bool Xml(out T e);
     }
 }

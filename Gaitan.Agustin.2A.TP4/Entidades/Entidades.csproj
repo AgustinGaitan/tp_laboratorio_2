@@ -41,9 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Futbol.cs" />
+    <Compile Include="Tennis.cs" />
     <Compile Include="Gimnasio.cs" />
     <Compile Include="Club.cs" />
-    <Compile Include="IAdministracion.cs" />
+    <Compile Include="IDeserializar.cs" />
+    <Compile Include="ISerializar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

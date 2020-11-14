@@ -25,3 +25,78 @@ TOMA CLASES DE  Programacion
 
 <------------------------------------------------------->
 
+CLASE DE Programacion POR NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+ 
+LEGAJO NÚMERO: 1
+CLASES DEL DIA :
+Laboratorio
+Programacion
+
+ALUMNOS:
+NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+ 
+LEGAJO NÚMERO: 1
+ESTADO DE CUENTA: Becado
+TOMA CLASES DE  Programacion
+
+NOMBRE COMPLETO: Gonzalez, Carlos
+NACIONALIDAD: Argentino
+ 
+LEGAJO NÚMERO: 5
+ESTADO DE CUENTA: Cuota al día.
+TOMA CLASES DE  Programacion
+
+<------------------------------------------------------->
+
+CLASE DE Legislacion POR NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+ 
+LEGAJO NÚMERO: 1
+CLASES DEL DIA :
+Legislacion
+Legislacion
+
+ALUMNOS:
+NOMBRE COMPLETO: Hernandez, Miguel
+NACIONALIDAD: Extranjero
+ 
+LEGAJO NÚMERO: 4
+ESTADO DE CUENTA: Cuota al día.
+TOMA CLASES DE  Legislacion
+
+NOMBRE COMPLETO: Smith, Rodrigo
+NACIONALIDAD: Argentino
+ 
+LEGAJO NÚMERO: 8
+ESTADO DE CUENTA: Cuota al día.
+TOMA CLASES DE  Legislacion
+
+<------------------------------------------------------->
+
+CLASE DE Programacion POR NOMBRE COMPLETO: Juarez, Roberto
+NACIONALIDAD: Argentino
+ 
+LEGAJO NÚMERO: 2
+CLASES DEL DIA :
+Programacion
+Laboratorio
+
+ALUMNOS:
+NOMBRE COMPLETO: Lopez, Juan
+NACIONALIDAD: Argentino
+ 
+LEGAJO NÚMERO: 1
+ESTADO DE CUENTA: Becado
+TOMA CLASES DE  Programacion
+
+NOMBRE COMPLETO: Gonzalez, Carlos
+NACIONALIDAD: Argentino
+ 
+LEGAJO NÚMERO: 5
+ESTADO DE CUENTA: Cuota al día.
+TOMA CLASES DE  Programacion
+
+<------------------------------------------------------->
+
