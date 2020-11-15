@@ -58,7 +58,7 @@ namespace Entidades
             return rta;
         }
 
-        bool IDeserializar<Barras>.Xml(out Barras gym)
+        bool IDeserializar.Xml(out Barras gym)
         {
             bool rta = true;
             string path = typeof(Barras).Name;
