@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Excepciones
 {
-    public class CantAguaInvalidaException : Exception
+    public class GimnasioLlenoException : Exception
     {
 
-        public CantAguaInvalidaException()
-            : base("Error. Cantidad de agua inválida.\n")
+        public GimnasioLlenoException()
+            : base("Error. Gimnasio lleno.\n")
         {
 
         }

@@ -20,16 +20,17 @@ namespace Entidades
     //delegados y eventos
 
 
-    public class Gimnasio : Club ,ISerializar, IDeserializar<Gimnasio>
+    public class Barras : ElementosGimnasio ,ISerializar, IDeserializar<Barras>
     {
         
 
-        public Gimnasio()
+        public Barras()
         {
+
         }
 
-        public Gimnasio(int cantAgua, int cantPowerade, int cantBarrasEnergeticas, string nombre)
-            :base(cantAgua,cantPowerade,cantBarrasEnergeticas,nombre)
+        public Barras(string nombre, int cantMaxima)
+            : base(nombre, cantMaxima)
         {
 
         }
@@ -37,14 +38,12 @@ namespace Entidades
         bool ISerializar.Xml()
         {
             bool rta = true;
-
-            
-
+          
             try
             {
-                using (XmlTextWriter escritor = new XmlTextWriter("gimnasioXml.xml", System.Text.Encoding.UTF8))
+                using (XmlTextWriter escritor = new XmlTextWriter("\\BarrasXml.xml", System.Text.Encoding.UTF8))
                 {
-                    XmlSerializer ser = new XmlSerializer(typeof(Gimnasio));
+                    XmlSerializer ser = new XmlSerializer(typeof(Barras));
 
                     ser.Serialize(escritor, this);
                 }
@@ -59,18 +58,18 @@ namespace Entidades
             return rta;
         }
 
-        bool IDeserializar<Gimnasio>.Xml(out Gimnasio gym)
+        bool IDeserializar<Barras>.Xml(out Barras gym)
         {
             bool rta = true;
-            string path = typeof(Gimnasio).Name;
+            string path = typeof(Barras).Name;
 
             try
             {
                 using (XmlTextReader lector = new XmlTextReader(path + ".xml"))
                 {
-                    XmlSerializer ser = new XmlSerializer(typeof(Gimnasio));
+                    XmlSerializer ser = new XmlSerializer(typeof(Barras));
 
-                    gym = (Gimnasio)ser.Deserialize(lector);
+                    gym = (Barras)ser.Deserialize(lector);
 
                 }
 
@@ -78,7 +77,7 @@ namespace Entidades
             catch (Exception)
             {
                 rta = false;
-                gym = new Gimnasio();
+                gym = new Barras();
 
             }
 
@@ -91,7 +90,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
               
             
-            sb.AppendFormat("PARTE DEL CLUB: {0}\n", this.Nombre);
+            sb.AppendFormat($"Cantidad de {GetType(Barras).Name} : {this.c);
             sb.Append(base.MostrarDatos());
 
             return sb.ToString();

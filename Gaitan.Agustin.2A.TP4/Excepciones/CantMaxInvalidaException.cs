@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Excepciones
 {
-    public class ClubLlenoException : Exception
+    public class CantMaxInvalidaException : Exception
     {
 
-        public ClubLlenoException()
-            : base("Error. Club lleno de gimnasios.\n")
+        public CantMaxInvalidaException()
+            : base("Error. Cantidad maxima inválida.\n")
         {
 
         }

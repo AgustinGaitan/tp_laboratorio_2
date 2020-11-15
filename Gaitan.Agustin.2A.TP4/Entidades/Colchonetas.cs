@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Tennis : Club
+    public class Colchonetas : ElementosGimnasio
     {
 
 
 
-        public Tennis()
+        public Colchonetas()
             :base()
         { 
         }
 
-        public Tennis(int cantAgua, int cantPowerade, int cantBarrasEenergeticas, string nombre)
+        public Colchonetas(int cantAgua, int cantPowerade, int cantBarrasEenergeticas, string nombre)
             :base(cantAgua,cantPowerade,cantBarrasEenergeticas,nombre)
         {
 

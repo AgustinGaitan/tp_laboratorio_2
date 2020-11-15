@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Excepciones
 {
-    public class CantPoweradeInvalidaException : Exception
+    public class CantBarrasInvalidaException : Exception
     {
 
-        public CantPoweradeInvalidaException()
-            : base("Error. Cantidad de Powerade inválida.\n")
+        public CantBarrasInvalidaException()
+            : base("Error. Cantidad de barras inválida.\n")
         {
 
         }

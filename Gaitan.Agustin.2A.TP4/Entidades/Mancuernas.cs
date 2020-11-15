@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Futbol : Club
+    public class Mancuernas : ElementosGimnasio
     {
       
-        public Futbol()            
+        public Mancuernas()            
         {
         }
 
-        public Futbol(int cantAgua, int cantPowerade, int cantBarrasEnergeticas, string nombre)
+        public Mancuernas(int cantAgua, int cantPowerade, int cantBarrasEnergeticas, string nombre)
             : base(cantAgua, cantPowerade, cantBarrasEnergeticas, nombre)
         {
             

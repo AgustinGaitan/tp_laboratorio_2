@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Futbol.cs" />
-    <Compile Include="Tennis.cs" />
-    <Compile Include="Gimnasio.cs" />
-    <Compile Include="Club.cs" />
+    <Compile Include="Mancuernas.cs" />
+    <Compile Include="Colchonetas.cs" />
+    <Compile Include="Barras.cs" />
+    <Compile Include="ElementosGimnasio.cs" />
     <Compile Include="IDeserializar.cs" />
     <Compile Include="ISerializar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
