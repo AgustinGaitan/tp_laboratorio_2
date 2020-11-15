@@ -45,8 +45,6 @@
     <Compile Include="Colchonetas.cs" />
     <Compile Include="Barras.cs" />
     <Compile Include="ElementosGimnasio.cs" />
-    <Compile Include="IDeserializar.cs" />
-    <Compile Include="ISerializar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

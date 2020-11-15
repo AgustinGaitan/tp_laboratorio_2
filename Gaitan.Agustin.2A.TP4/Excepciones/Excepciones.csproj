@@ -41,7 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CantInvalidaException.cs" />
+    <Compile Include="CantMaxInvalidaException.cs" />
+    <Compile Include="ArchivosException.cs" />
     <Compile Include="GimnasioLlenoException.cs" />
     <Compile Include="NombreInvalidoException.cs" />
     <Compile Include="CantBarrasInvalidaException.cs" />
