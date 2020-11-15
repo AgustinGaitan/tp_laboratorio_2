@@ -1,0 +1,6 @@
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\Excepciones\bin\Debug\Excepciones.dll
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\Excepciones\bin\Debug\Excepciones.pdb
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\Excepciones\obj\Debug\Excepciones.csprojAssemblyReference.cache
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\Excepciones\obj\Debug\Excepciones.csproj.CoreCompileInputs.cache
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\Excepciones\obj\Debug\Excepciones.dll
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\Excepciones\obj\Debug\Excepciones.pdb

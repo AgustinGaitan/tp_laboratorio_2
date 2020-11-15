@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Xml.Serialization;
-using Excepciones;
+﻿using Excepciones;
+using System;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace Archivos
 {
@@ -32,7 +27,7 @@ namespace Archivos
                     rta = true;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new ArchivosException();
             }
@@ -61,7 +56,7 @@ namespace Archivos
                     rta = true;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new ArchivosException();
             }

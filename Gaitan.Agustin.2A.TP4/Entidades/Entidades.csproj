@@ -41,13 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mancuernas.cs" />
-    <Compile Include="Colchonetas.cs" />
-    <Compile Include="Barras.cs" />
+    <Compile Include="MetodoExtension.cs" />
+    <Compile Include="EColor.cs" />
+    <Compile Include="Mancuerna.cs" />
+    <Compile Include="Colchoneta.cs" />
+    <Compile Include="Barra.cs" />
     <Compile Include="ElementosGimnasio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Archivos\Archivos.csproj">
+      <Project>{d3eec332-0ba4-455a-a3df-ed3ff8a2ec91}</Project>
+      <Name>Archivos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Excepciones\Excepciones.csproj">
       <Project>{e4faf895-3cdb-4e09-94c9-13d8cf50da70}</Project>
       <Name>Excepciones</Name>

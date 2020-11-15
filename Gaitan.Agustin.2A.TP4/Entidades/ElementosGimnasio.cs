@@ -1,120 +1,201 @@
-﻿using System;
+﻿using Excepciones;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Schema;
-using Excepciones;
 using System.Text.RegularExpressions;
-
+using Archivos;
 namespace Entidades
 {
     /// <summary>
     /// Clase Abstracta
     /// </summary>
-    public abstract class ElementosGimnasio
-    { 
- 
-        protected string nombre;
-        protected int cantMax;
-        private List<Barras> listaBarras;
+    /// 
 
-        public string Nombre
+    //interfaces//
+    //generics;//
+    //serializar;//
+    //archivos;
+    //base de datos;
+    //metodo de extension;
+    //hilos;
+    //excepciones;//
+    //test unitarios;
+    //delegados y eventos
+
+
+    public class ElementosGimnasio
+    {
+        protected int idVenta;
+        protected int precio;
+        private int cantMaxBarras;
+        private int cantMaxMancuernas;
+        private int cantMaxColchonetas;
+        private List<Barra> listaBarras;
+        private List<Mancuerna> listaMancuernas;
+        private List<Colchoneta> listaColchonetas;
+
+        public int CantidadMaximaMancuernas
         {
             get
             {
-                return this.nombre;
+                return this.cantMaxMancuernas;
             }
             set
             {
-                this.nombre = this.ValidarNombre(value);
+                this.cantMaxMancuernas = this.ValidarCantMax(value);
             }
         }
-        public int CantidadMaxima
+
+        public int CantidadMaximaBarras
         {
             get
             {
-                return this.cantMax;
+                return this.cantMaxBarras;
             }
             set
             {
-                value = this.ValidarCantMax(value);            
+                this.cantMaxBarras = this.ValidarCantMax(value);
+            }
+        }
+
+
+        public int CantidadMaximaColchonetas
+        {
+            get
+            {
+                return this.cantMaxColchonetas;
+            }
+            set
+            {
+                this.cantMaxColchonetas = this.ValidarCantMax(value);
             }
         }
 
         public ElementosGimnasio()
         {
-        
+            
         }
 
-        public ElementosGimnasio(string nombre, int cantMax)
+
+        public ElementosGimnasio(int cantMaxMancuernas, int cantMaxBarras, int cantMaxColchonetas,int id)
         {
-            this.Nombre = nombre;
-            this.CantidadMaxima = cantMax;
+            this.idVenta = id;
+            this.CantidadMaximaBarras = cantMaxBarras;
+            this.CantidadMaximaColchonetas = cantMaxColchonetas;
+            this.CantidadMaximaMancuernas = cantMaxColchonetas;
+            this.listaBarras = new List<Barra>();
+            this.listaMancuernas = new List<Mancuerna>();
+            this.listaColchonetas = new List<Colchoneta>();
+
         }
 
-      
-        protected virtual string MostrarDatos()
+        public virtual int ValidarCantMax(int cant)
         {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendFormat($"Nombre del gimnasio:{this.Nombre}\n");
-
-            return sb.ToString();
-        }     
-
-        public int ValidarCantMax(int cant)
-        {
-            int validado=0;
+            int validado = 0;
 
             //si puede convertirlo lo retorna como numero
-            if(int.TryParse(cant.ToString(), out validado) && (cant > 0 && cant <= 20))
+            if (int.TryParse(cant.ToString(), out validado) && (cant > 0 && cant <= 20))
             {
                 return validado;
             }
             else
             {
-                throw new CantMaxInvalidaException();
+                throw new CantMaxElementosInvalidaException();
             }
 
-        
+
         }
 
-        public string ValidarNombre(string nombre)
+        protected virtual string MostrarDatos()
         {
-            Regex regex = new Regex(@"[a-zA-Z]*");
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat($"ID DE LA VENTA: {this.idVenta}\n");
+            sb.AppendFormat($"Cantidad de barras a vender: {this.listaBarras.Count}\n");
+            sb.AppendFormat($"Cantidad de mancuernas a vender: {this.listaBarras.Count}\n");
+            sb.AppendFormat($"Cantidad de colchonetas a vender: {this.listaBarras.Count}\n");
 
-            Match match = regex.Match(nombre);
-
-            if (match.Success)
-            {
-                return match.Value;
-            }
-            else
-            {
-                return "";
-            }
-
+            return sb.ToString();
         }
 
-        public static ElementosGimnasio operator +(ElementosGimnasio gym , Barras elemento)
+        public override string ToString()
         {
-            club.listaGimnasios = new List<Barras>();
-
-            if (club.listaGimnasios.Count < club.cantMaxGyms)
-            {
-                club.listaGimnasios.Add(gym);
-            }
-            else
-            {
-                throw new GimnasioLlenoException();
-            }
-
-            return club;
+            return this.MostrarDatos();
         }
-        
+
+        public static bool Guardar(ElementosGimnasio elementos)
+        {
+            Texto t = new Texto();
+            return t.Guardar("Venta.txt", elementos.ToString());
+        }
+
+        public static ElementosGimnasio operator +(ElementosGimnasio elementos, Barra barra)
+        {
+
+            if (elementos.listaBarras.Count < elementos.cantMaxBarras)
+            {
+                elementos.listaBarras.Add(barra);           
+            }
+
+            return elementos;
+
+        }
+
+        public static ElementosGimnasio operator +(ElementosGimnasio elementos, Mancuerna mancuerna)
+        {
+
+            if (elementos.listaMancuernas.Count < elementos.cantMaxMancuernas)
+            {
+                elementos.listaMancuernas.Add(mancuerna);
+             
+            }
+
+            return elementos;
+        }
+
+
+        public static ElementosGimnasio operator +(ElementosGimnasio elementos, Colchoneta col)
+        {
+
+            if (elementos.listaColchonetas.Count < elementos.cantMaxColchonetas)
+            {
+                elementos.listaColchonetas.Add(col);
+              
+            }
+
+            return elementos;
+        }
+
+        public static ElementosGimnasio operator -(ElementosGimnasio elementos, Colchoneta col)
+        {
+
+            if(!elementos.listaColchonetas.Contains(col))
+            {
+                elementos.listaColchonetas.Remove(col);
+            }
+
+            return elementos;
+        }
+        public static ElementosGimnasio operator -(ElementosGimnasio elementos, Barra barra)
+        {
+
+            if (!elementos.listaBarras.Contains(barra))
+            {
+                elementos.listaBarras.Remove(barra);
+            }
+
+            return elementos;
+        }
+        public static ElementosGimnasio operator -(ElementosGimnasio elementos, Mancuerna mancuerna)
+        {
+
+            if (!elementos.listaMancuernas.Contains(mancuerna))
+            {
+                elementos.listaMancuernas.Remove(mancuerna);
+            }
+
+            return elementos;
+        }
+
+
     }
 
 

@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CantMaxInvalidaException.cs" />
+    <Compile Include="CantMaxElementosInvalidaException.cs" />
+    <Compile Include="LongitudInvalidaException.cs" />
     <Compile Include="ArchivosException.cs" />
-    <Compile Include="GimnasioLlenoException.cs" />
-    <Compile Include="NombreInvalidoException.cs" />
+    <Compile Include="PesoInvalidoException.cs" />
     <Compile Include="CantBarrasInvalidaException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
