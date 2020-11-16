@@ -13,24 +13,42 @@ namespace ConsoleTest
     {
         static void Main(string[] args)
         {
-            ElementosGimnasio ventaUno = new ElementosGimnasio(2, 2, 2, 1);
-            Barra barraUno = new Barra(100, 2, 1);
-            Barra barraDos = new Barra(100, 2, 1);
-            Barra barraTres = new Barra(100, 2, 1);
-            Barra barraCuatro = new Barra(100, 2, 2);
-            Mancuerna mancuernaUno = new Mancuerna(150, 5, 1);
-            Mancuerna mancuernaDos = new Mancuerna(150, 5, 1);
-            Mancuerna mancuernaTres = new Mancuerna(150, 5, 2);
-            Colchoneta colchonetaUno = new Colchoneta(50, EColor.Azul, 1);
-            Colchoneta colchonetaDos = new Colchoneta(50, EColor.Rojo, 1);
-            Colchoneta colchonetaTres = new Colchoneta(50, EColor.Verde, 2);
+            try
+            {
+                ElementosGimnasio ventaUno = new ElementosGimnasio(2, 2, 2, 1);
+                Barra barraUno = new Barra(100, 2, 1);
+                Barra barraDos = new Barra(100, 4.2, 1);
+                Barra barraTres = new Barra(100, 2, 1);
+                Barra barraCuatro = new Barra(100, 2, 2);
+                Mancuerna mancuernaUno = new Mancuerna(150, 5, 1);
+                Mancuerna mancuernaDos = new Mancuerna(150, 15, 1);
+                Mancuerna mancuernaTres = new Mancuerna(150, 5, 2);
+                Colchoneta colchonetaUno = new Colchoneta(50, EColor.Azul, 1);
+                Colchoneta colchonetaDos = new Colchoneta(50, EColor.Rojo, 1);
+                Colchoneta colchonetaTres = new Colchoneta(50, EColor.Verde, 2);
 
-            ventaUno += barraUno;
-            ventaUno += barraDos;
-            ventaUno += barraTres;
-            ventaUno += barraCuatro;
+                ventaUno += barraUno;
+                ventaUno += barraDos;
+                ventaUno += barraTres;
+                ventaUno += barraCuatro;
+                ventaUno -= barraUno;
+                ventaUno += mancuernaUno;
+                ventaUno += mancuernaDos;
+                ventaUno += mancuernaTres;
+                ventaUno += colchonetaUno;
+                ventaUno += colchonetaDos;
+                ventaUno += colchonetaTres;
+                //ventaUno -= colchonetaUno;
 
-            Console.WriteLine(ventaUno.ToString());
+                Console.WriteLine(ventaUno.ToString());
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            
 
 
             Console.ReadLine();

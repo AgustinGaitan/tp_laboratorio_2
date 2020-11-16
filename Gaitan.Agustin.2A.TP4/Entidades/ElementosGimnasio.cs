@@ -5,10 +5,7 @@ using System.Text.RegularExpressions;
 using Archivos;
 namespace Entidades
 {
-    /// <summary>
-    /// Clase Abstracta
-    /// </summary>
-    /// 
+
 
     //interfaces//
     //generics;//
@@ -32,6 +29,36 @@ namespace Entidades
         private List<Barra> listaBarras;
         private List<Mancuerna> listaMancuernas;
         private List<Colchoneta> listaColchonetas;
+        private List<ElementosGimnasio> listaTotal;
+
+        public List<ElementosGimnasio> ListaTotal
+        {
+            get
+            {
+                return this.listaTotal;
+            }
+        }
+        public List<Barra> ListaBarras
+        {
+            get
+            {
+                return this.listaBarras;
+            }
+        }
+        public List<Mancuerna> ListaMancuernas
+        {
+            get
+            {
+                return this.listaMancuernas;
+            }
+        }
+        public List<Colchoneta> ListaColchonetas
+        {
+            get
+            {
+                return this.listaColchonetas;
+            }
+        }
 
         public int CantidadMaximaMancuernas
         {
@@ -85,6 +112,7 @@ namespace Entidades
             this.listaBarras = new List<Barra>();
             this.listaMancuernas = new List<Mancuerna>();
             this.listaColchonetas = new List<Colchoneta>();
+            this.listaTotal = new List<ElementosGimnasio>();
 
         }
 
@@ -108,10 +136,18 @@ namespace Entidades
         protected virtual string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat($"ID DE LA VENTA: {this.idVenta}\n");
+            sb.AppendFormat($"ID DE LA VENTA: {this.idVenta}\n\n");
             sb.AppendFormat($"Cantidad de barras a vender: {this.listaBarras.Count}\n");
-            sb.AppendFormat($"Cantidad de mancuernas a vender: {this.listaBarras.Count}\n");
-            sb.AppendFormat($"Cantidad de colchonetas a vender: {this.listaBarras.Count}\n");
+            sb.AppendFormat($"Cantidad de mancuernas a vender: {this.listaMancuernas.Count}\n");
+            sb.AppendFormat($"Cantidad de colchonetas a vender: {this.listaColchonetas.Count}\n\n");
+
+            sb.AppendLine("LISTADO DE PRODUCTOS :");
+            foreach (ElementosGimnasio item in this.listaTotal)
+            {
+                sb.AppendFormat(item.ToString());
+            }
+
+            sb.AppendLine("------------------------------------------------");
 
             return sb.ToString();
         }
@@ -132,6 +168,7 @@ namespace Entidades
 
             if (elementos.listaBarras.Count < elementos.cantMaxBarras)
             {
+                elementos.listaTotal.Add(barra);
                 elementos.listaBarras.Add(barra);           
             }
 
@@ -144,6 +181,7 @@ namespace Entidades
 
             if (elementos.listaMancuernas.Count < elementos.cantMaxMancuernas)
             {
+                elementos.listaTotal.Add(mancuerna);
                 elementos.listaMancuernas.Add(mancuerna);
              
             }
@@ -157,6 +195,7 @@ namespace Entidades
 
             if (elementos.listaColchonetas.Count < elementos.cantMaxColchonetas)
             {
+                elementos.listaTotal.Add(col);
                 elementos.listaColchonetas.Add(col);
               
             }
@@ -167,8 +206,9 @@ namespace Entidades
         public static ElementosGimnasio operator -(ElementosGimnasio elementos, Colchoneta col)
         {
 
-            if(!elementos.listaColchonetas.Contains(col))
+            if(elementos.listaColchonetas.Contains(col))
             {
+                elementos.listaTotal.Remove(col);
                 elementos.listaColchonetas.Remove(col);
             }
 
@@ -177,8 +217,9 @@ namespace Entidades
         public static ElementosGimnasio operator -(ElementosGimnasio elementos, Barra barra)
         {
 
-            if (!elementos.listaBarras.Contains(barra))
+            if (elementos.listaBarras.Contains(barra))
             {
+                elementos.listaTotal.Remove(barra);
                 elementos.listaBarras.Remove(barra);
             }
 
@@ -187,8 +228,9 @@ namespace Entidades
         public static ElementosGimnasio operator -(ElementosGimnasio elementos, Mancuerna mancuerna)
         {
 
-            if (!elementos.listaMancuernas.Contains(mancuerna))
+            if (elementos.listaMancuernas.Contains(mancuerna))
             {
+                elementos.listaTotal.Add(mancuerna);
                 elementos.listaMancuernas.Remove(mancuerna);
             }
 

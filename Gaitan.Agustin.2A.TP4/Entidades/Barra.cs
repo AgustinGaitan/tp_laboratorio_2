@@ -8,9 +8,9 @@ namespace Entidades
 
     public class Barra : ElementosGimnasio
     {
-        protected float longitud;
+        protected double longitud;
 
-        public float Longitud
+        public double Longitud
         {
             get
             {
@@ -18,7 +18,7 @@ namespace Entidades
             }
             set
             {
-                value = ValidarLongitud(value);
+                this.longitud = ValidarLongitud(value);
             }
         }
 
@@ -27,7 +27,7 @@ namespace Entidades
 
         }
 
-        public Barra(int precio, float longitud,int idVenta) : base()
+        public Barra(int precio, double longitud,int idVenta) : base()
         {
             this.Longitud = longitud;
         }
@@ -38,18 +38,18 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
 
 
-            sb.AppendFormat($"Barra de: {this.Longitud} metros");
+            sb.AppendFormat($"Barra de: {this.Longitud} metros.\n");
 
             return sb.ToString();
 
         }
 
-        private float ValidarLongitud(float longitud)
+        private double ValidarLongitud(double longitud)
         {
-            float validado = 0;
+            double validado = 0;
 
             //si puede convertirlo lo retorna como numero
-            if (float.TryParse(longitud.ToString(), out validado) && (longitud > 0 && longitud <= 5))
+            if (double.TryParse(longitud.ToString(), out validado) && (longitud > 0 && longitud <= 5))
             {
                 return validado;
             }

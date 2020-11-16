@@ -52,7 +52,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
 
 
-            sb.AppendFormat($"Peso: {this.Peso}\n");
+            sb.AppendFormat($"Mancuerna de: {this.Peso} kilogramos.\n");
 
 
 

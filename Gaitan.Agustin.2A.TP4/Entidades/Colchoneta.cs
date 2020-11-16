@@ -34,7 +34,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
 
 
-            sb.AppendFormat($"Color de la colchoneta: {this.color}");
+            sb.AppendFormat($"Colchoneta de color: {this.color}\n");
 
             return sb.ToString();
 
