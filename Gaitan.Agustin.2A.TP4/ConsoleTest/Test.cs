@@ -16,10 +16,12 @@ namespace ConsoleTest
             try
             {
                 ElementosGimnasio ventaUno = new ElementosGimnasio(2, 2, 2, 1);
+                ElementosGimnasio ventaDos = new ElementosGimnasio(4, 4, 2, 2);
                 Barra barraUno = new Barra(100, 2, 1);
                 Barra barraDos = new Barra(100, 4.2, 1);
                 Barra barraTres = new Barra(100, 2, 1);
                 Barra barraCuatro = new Barra(100, 2, 2);
+                Barra barraCinco = new Barra(105, 3.1, 2);
                 Mancuerna mancuernaUno = new Mancuerna(150, 5, 1);
                 Mancuerna mancuernaDos = new Mancuerna(150, 15, 1);
                 Mancuerna mancuernaTres = new Mancuerna(150, 5, 2);
@@ -38,15 +40,30 @@ namespace ConsoleTest
                 ventaUno += colchonetaUno;
                 ventaUno += colchonetaDos;
                 ventaUno += colchonetaTres;
+                ventaDos += barraCinco;
                 //ventaUno -= colchonetaUno;
 
                 Console.WriteLine(ventaUno.ToString());
+                Console.WriteLine(ventaDos.ToString());
+
+                if (ElementosGimnasio.Guardar(ventaUno) && ElementosGimnasio.Guardar(ventaDos))
+                {
+                    
+                    Console.WriteLine("Ventas guardadas.\n\n");
+                }
+
+                Console.WriteLine("************************************************");
+                Console.WriteLine("Lectura de archivo:");
+                Console.WriteLine(ElementosGimnasio.Leer());
+
                 
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
+
+
 
             
 

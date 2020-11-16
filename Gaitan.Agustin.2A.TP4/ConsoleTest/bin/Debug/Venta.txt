@@ -1,0 +1,26 @@
+
+
+ID DE LA VENTA: 1
+
+Cantidad de barras a vender: 1
+Cantidad de mancuernas a vender: 2
+Cantidad de colchonetas a vender: 2
+
+LISTADO DE PRODUCTOS :
+Barra de: 4,2 metros.
+Mancuerna de: 5 kilogramos.
+Mancuerna de: 15 kilogramos.
+Colchoneta de color: Azul
+Colchoneta de color: Rojo
+------------------------------------------------
+
+ID DE LA VENTA: 2
+
+Cantidad de barras a vender: 1
+Cantidad de mancuernas a vender: 0
+Cantidad de colchonetas a vender: 0
+
+LISTADO DE PRODUCTOS :
+Barra de: 3,1 metros.
+------------------------------------------------
+

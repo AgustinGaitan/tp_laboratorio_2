@@ -152,6 +152,7 @@ namespace Entidades
             return sb.ToString();
         }
 
+
         public override string ToString()
         {
             return this.MostrarDatos();
@@ -162,7 +163,13 @@ namespace Entidades
             Texto t = new Texto();
             return t.Guardar("Venta.txt", elementos.ToString());
         }
+        public static string Leer()   
+        {
+            Texto nuevoTexto = new Texto();
+            nuevoTexto.Leer("Venta.txt", out string datos);
 
+            return datos;
+        }
         public static ElementosGimnasio operator +(ElementosGimnasio elementos, Barra barra)
         {
 
