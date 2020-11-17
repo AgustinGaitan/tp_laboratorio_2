@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Entidades
 {
-    public class Mancuerna : Barra
+    public class Mancuerna : ElementosGimnasio
     {
 
         private int peso;
@@ -67,7 +67,7 @@ namespace Entidades
 
         }
 
-        protected override string MostrarDatos()
+        private string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
 

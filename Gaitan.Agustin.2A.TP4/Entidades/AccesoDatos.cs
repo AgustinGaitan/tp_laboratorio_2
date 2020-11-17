@@ -10,173 +10,173 @@ namespace Entidades
 {
     public class AccesoDatos
     {
-        private SqlConnection conexion;
-        private SqlCommand comando;
+        //private SqlConnection conexion;
+        //private SqlCommand comando;
 
-        public AccesoDatos()
-        {
-            this.conexion = new SqlConnection(Properties.Settings.Default.conexionBD);
-        }
+        //public AccesoDatos()
+        //{
+        //    this.conexion = new SqlConnection(Properties.Settings.Default.conexionBD);
+        //}
 
-        public List<Venta> ObtenerBarra()
-        {
-
-
-            List<Venta> listaVentas = new List<Venta>();
-
-            try
-            {
-                this.comando = new SqlCommand();
-
-                this.comando.CommandType = CommandType.Text;
-
-                this.comando.Connection = this.conexion;
-
-                comando.CommandText = "SELECT * FROM tproduc WHERE producto = barra";
-
-                this.conexion.Open();
-
-                SqlDataReader oDr = comando.ExecuteReader();
+        //public List<Venta> ObtenerBarra()
+        //{
 
 
-                listaVentas.Add(new Barra(oDr.GetInt32(2)));
+        //    List<Venta> listaVentas = new List<Venta>();
 
-                oDr.Close();
-            }
+        //    try
+        //    {
+        //        this.comando = new SqlCommand();
 
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-            finally
-            {
-                if (this.conexion.State == ConnectionState.Open)
-                {
-                    this.conexion.Close();
-                }
-            }
+        //        this.comando.CommandType = CommandType.Text;
 
-            return listaVentas;
-        }
+        //        this.comando.Connection = this.conexion;
 
-        public List<Venta> ObtenerMancuerna()
-        {
+        //        comando.CommandText = "SELECT * FROM tproduc WHERE producto = barra";
+
+        //        this.conexion.Open();
+
+        //        SqlDataReader oDr = comando.ExecuteReader();
 
 
-            List<Venta> listaVentas = new List<Venta>();
+        //        listaVentas.Add(new Barra(oDr.GetInt32(2)));
 
-            try
-            {
-                this.comando = new SqlCommand();
+        //        oDr.Close();
+        //    }
 
-                this.comando.CommandType = CommandType.Text;
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.ToString());
+        //    }
+        //    finally
+        //    {
+        //        if (this.conexion.State == ConnectionState.Open)
+        //        {
+        //            this.conexion.Close();
+        //        }
+        //    }
 
-                this.comando.Connection = this.conexion;
+        //    return listaVentas;
+        //}
 
-                comando.CommandText = "SELECT * FROM tproduc WHERE producto = mancuerna";
-
-                this.conexion.Open();
-
-                SqlDataReader oDr = comando.ExecuteReader();
-
-
-                listaVentas.Add(new Mancuerna(oDr.GetInt32(2)));
-
-                oDr.Close();
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-            finally
-            {
-                if (this.conexion.State == ConnectionState.Open)
-                {
-                    this.conexion.Close();
-                }
-            }
-
-            return listaVentas;
-        }
-
-        public List<Venta> ObtenerColchoneta()
-        {
+        //public List<Venta> ObtenerMancuerna()
+        //{
 
 
-            List<Venta> listaVentas = new List<Venta>();
+        //    List<Venta> listaVentas = new List<Venta>();
 
-            try
-            {
-                this.comando = new SqlCommand();
+        //    try
+        //    {
+        //        this.comando = new SqlCommand();
 
-                this.comando.CommandType = CommandType.Text;
+        //        this.comando.CommandType = CommandType.Text;
 
-                this.comando.Connection = this.conexion;
+        //        this.comando.Connection = this.conexion;
 
-                comando.CommandText = "SELECT * FROM tproduc WHERE producto = colchoneta";
+        //        comando.CommandText = "SELECT * FROM tproduc WHERE producto = mancuerna";
 
-                this.conexion.Open();
+        //        this.conexion.Open();
 
-                SqlDataReader oDr = comando.ExecuteReader();
+        //        SqlDataReader oDr = comando.ExecuteReader();
 
 
-                listaVentas.Add(new Colchoneta(oDr.GetString(3)));
+        //        listaVentas.Add(new Mancuerna(oDr.GetInt32(2)));
 
-                oDr.Close();
-            }
+        //        oDr.Close();
+        //    }
 
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-            finally
-            {
-                if (this.conexion.State == ConnectionState.Open)
-                {
-                    this.conexion.Close();
-                }
-            }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.ToString());
+        //    }
+        //    finally
+        //    {
+        //        if (this.conexion.State == ConnectionState.Open)
+        //        {
+        //            this.conexion.Close();
+        //        }
+        //    }
 
-            return listaVentas;
-        }
+        //    return listaVentas;
+        //}
 
-        public DataTable ObtenerTablaVentas()
-        {
-            DataTable tabla = new DataTable("Ventas");
+        //public List<Venta> ObtenerColchoneta()
+        //{
 
-            try
-            {
-                this.comando = new SqlCommand();
 
-                this.comando.CommandType = CommandType.Text;
+        //    List<Venta> listaVentas = new List<Venta>();
 
-                this.comando.Connection = this.conexion;
+        //    try
+        //    {
+        //        this.comando = new SqlCommand();
 
-                this.comando.CommandText = "SELECT * FROM tproduc ORDER BY id DESC";
+        //        this.comando.CommandType = CommandType.Text;
 
-                this.conexion.Open();
+        //        this.comando.Connection = this.conexion;
 
-                SqlDataReader oDr = this.comando.ExecuteReader();
+        //        comando.CommandText = "SELECT * FROM tproduc WHERE producto = colchoneta";
 
-                tabla.Load(oDr);
+        //        this.conexion.Open();
 
-                oDr.Close();
-            }
+        //        SqlDataReader oDr = comando.ExecuteReader();
 
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-            finally
-            {
-                if (this.conexion.State == ConnectionState.Open)
-                {
-                    this.conexion.Close();
-                }
-            }
 
-            return tabla;
-        }
+        //        listaVentas.Add(new Colchoneta(oDr.GetString(3)));
+
+        //        oDr.Close();
+        //    }
+
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.ToString());
+        //    }
+        //    finally
+        //    {
+        //        if (this.conexion.State == ConnectionState.Open)
+        //        {
+        //            this.conexion.Close();
+        //        }
+        //    }
+
+        //    return listaVentas;
+        //}
+
+        //public DataTable ObtenerTablaVentas()
+        //{
+        //    DataTable tabla = new DataTable("Ventas");
+
+        //    try
+        //    {
+        //        this.comando = new SqlCommand();
+
+        //        this.comando.CommandType = CommandType.Text;
+
+        //        this.comando.Connection = this.conexion;
+
+        //        this.comando.CommandText = "SELECT * FROM tproduc ORDER BY id DESC";
+
+        //        this.conexion.Open();
+
+        //        SqlDataReader oDr = this.comando.ExecuteReader();
+
+        //        tabla.Load(oDr);
+
+        //        oDr.Close();
+        //    }
+
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.ToString());
+        //    }
+        //    finally
+        //    {
+        //        if (this.conexion.State == ConnectionState.Open)
+        //        {
+        //            this.conexion.Close();
+        //        }
+        //    }
+
+        //    return tabla;
+        //}
     }
 }

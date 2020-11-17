@@ -52,10 +52,12 @@ namespace ConsoleTest
                 Console.WriteLine(ventaDos.ToString());
                 Console.WriteLine(ventaTres.ToString());
 
-                if (Venta.Guardar(ventaUno) && Venta.Guardar(ventaDos) && Venta.Guardar(ventaTres))
+                if (Venta.Guardar(ventaUno) && Venta.Guardar(ventaDos) && Venta.Guardar(ventaTres)
+                    && Venta.GuardarSer(ventaUno))
                 {
 
                     Console.WriteLine("Ventas guardadas.\n\n");
+                    Console.WriteLine("Ventas serializada.\n\n");
                 }
 
                 Console.WriteLine("************************************************");

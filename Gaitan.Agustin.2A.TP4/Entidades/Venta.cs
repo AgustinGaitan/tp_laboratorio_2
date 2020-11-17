@@ -30,9 +30,9 @@ namespace Entidades
         private List<Barra> listaBarras;
         private List<Mancuerna> listaMancuernas;
         private List<Colchoneta> listaColchonetas;
-        private List<Venta> listaTotal;
+       private List<ElementosGimnasio> listaTotal;
 
-        public List<Venta> ListaTotal
+        public List<ElementosGimnasio> ListaTotal
         {
             get
             {
@@ -113,7 +113,7 @@ namespace Entidades
             this.listaBarras = new List<Barra>();
             this.listaMancuernas = new List<Mancuerna>();
             this.listaColchonetas = new List<Colchoneta>();
-            this.listaTotal = new List<Venta>();
+            this.listaTotal = new List<ElementosGimnasio>();
 
         }
 
@@ -143,7 +143,7 @@ namespace Entidades
             sb.AppendFormat($"Cantidad de colchonetas a vender: {this.listaColchonetas.Count}\n\n");
             sb.AppendLine("LISTADO DE PRODUCTOS: ");
 
-            foreach(Venta item in this.ListaTotal)
+            foreach(ElementosGimnasio item in this.ListaTotal)
             {
                 sb.Append(item.ToString());
             }
@@ -167,6 +167,20 @@ namespace Entidades
             nuevoTexto.Leer("Venta.txt", out string datos);
 
             return datos;
+        }
+
+        public static bool GuardarSer(Venta venta)
+        {
+            Xml<Venta> u = new Xml<Venta>();
+
+            return u.Guardar("venta.xml", venta);
+        }
+
+        public static Venta LeerSerializado()
+        {
+            Xml<Venta> u = new Xml<Venta>();
+            u.Leer("venta.xml", out Venta ventaXml); //out retorna el los datos leídos
+            return ventaXml;
         }
         public static Venta operator +(Venta elementos, Barra barra)
         {

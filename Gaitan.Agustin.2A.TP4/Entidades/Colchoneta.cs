@@ -4,10 +4,21 @@ using Excepciones;
 
 namespace Entidades
 {
-    public class Colchoneta : Barra
+    public class Colchoneta : ElementosGimnasio
     {
-       
+        protected int longitud;
 
+        public int Longitud
+        {
+            get
+            {
+                return this.longitud;
+            }
+            set
+            {
+                this.longitud = ValidarLongitud(value);
+            }
+        }
 
         public Colchoneta()
         {
@@ -19,7 +30,7 @@ namespace Entidades
             this.idProducto = 3;
         }
 
-        protected override int ValidarLongitud(int longitud)
+        protected int ValidarLongitud(int longitud)
         {
             int validado = 0;
 
@@ -48,7 +59,7 @@ namespace Entidades
 
             return validado;
         }
-        protected override string MostrarDatos()
+        private string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
 

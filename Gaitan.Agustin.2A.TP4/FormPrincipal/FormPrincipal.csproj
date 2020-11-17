@@ -52,9 +52,7 @@
     <Compile Include="FormAgregar.Designer.cs">
       <DependentUpon>FormAgregar.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPrincipal.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="FormPrincipal.cs" />
     <Compile Include="FormPrincipal.Designer.cs">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
@@ -87,20 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Archivos\Archivos.csproj">
-      <Project>{d3eec332-0ba4-455a-a3df-ed3ff8a2ec91}</Project>
-      <Name>Archivos</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Entidades\Entidades.csproj">
-      <Project>{d80df948-68fb-4abe-bccb-6a3c0981c582}</Project>
-      <Name>Entidades</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Excepciones\Excepciones.csproj">
-      <Project>{e4faf895-3cdb-4e09-94c9-13d8cf50da70}</Project>
-      <Name>Excepciones</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

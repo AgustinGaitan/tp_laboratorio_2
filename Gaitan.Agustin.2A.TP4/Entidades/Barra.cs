@@ -5,11 +5,11 @@ using Archivos;
 namespace Entidades
 {
    
-    public class Barra : Venta 
+    public class Barra : ElementosGimnasio
     {
-        //protected int precio;
+    
         private int longitud;
-        protected int idProducto;
+       
 
         public int Longitud
         {
@@ -23,17 +23,7 @@ namespace Entidades
             }
         }
 
-        public int Precio
-        {
-            get
-            {
-                return this.precio;
-            }
-            set
-            {
-                this.precio = value;
-            }
-        }
+       
 
         public Barra()
         {
@@ -46,21 +36,9 @@ namespace Entidades
             this.idProducto = 1;
         }
 
-        public static bool Guardar(Barra bar)
-        {
-            Xml<Barra> u = new Xml<Barra>();
+        
 
-            return u.Guardar("barra.xml", bar);
-        }
-
-        public Barra Leer()
-        {
-            Xml<Barra> u = new Xml<Barra>();
-            u.Leer("barra.xml", out Barra barraXml); //out retorna el los datos leídos
-            return barraXml;
-        }
-
-        protected override string MostrarDatos()
+        private string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
 
