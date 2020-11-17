@@ -1,5 +1,6 @@
 ﻿using Excepciones;
 using System.Text;
+using Archivos;
 
 namespace Entidades
 {
@@ -7,18 +8,18 @@ namespace Entidades
     public class Barra : Venta 
     {
         //protected int precio;
-        private int peso;
+        private int longitud;
         protected int idProducto;
 
         public int Longitud
         {
             get
             {
-                return this.peso;
+                return this.longitud;
             }
             set
             {
-                this.peso = ValidarLongitud(value);
+                this.longitud = ValidarLongitud(value);
             }
         }
 
@@ -45,6 +46,19 @@ namespace Entidades
             this.idProducto = 1;
         }
 
+        public static bool Guardar(Barra bar)
+        {
+            Xml<Barra> u = new Xml<Barra>();
+
+            return u.Guardar("barra.xml", bar);
+        }
+
+        public Barra Leer()
+        {
+            Xml<Barra> u = new Xml<Barra>();
+            u.Leer("barra.xml", out Barra barraXml); //out retorna el los datos leídos
+            return barraXml;
+        }
 
         protected override string MostrarDatos()
         {
@@ -57,7 +71,7 @@ namespace Entidades
 
         }
 
-        private int ValidarLongitud(int longitud)
+        protected virtual int ValidarLongitud(int longitud)
         {
             int validado = 0;
 

@@ -160,6 +160,7 @@ namespace Entidades
             Texto t = new Texto();
             return t.Guardar("Venta.txt", elementos.ToString());
         }
+
         public static string Leer()   
         {
             Texto nuevoTexto = new Texto();

@@ -126,7 +126,7 @@ namespace ClasesInstanciables
         /// Método que lee un archivo
         /// </summary>
         /// <returns>Datos del archivo Xml</returns>
-        public Universidad Leer()
+        public static Universidad Leer()
         {
             Xml<Universidad> u = new Xml<Universidad>();
             u.Leer("universidad.xml", out Universidad universidadXml); //out retorna el los datos leídos

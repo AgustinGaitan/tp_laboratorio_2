@@ -26,9 +26,9 @@ namespace ConsoleTest
                 Mancuerna mancuernaUno = new Mancuerna(5);
                 Mancuerna mancuernaDos = new Mancuerna(10);
                 Mancuerna mancuernaTres = new Mancuerna(2);
-                Colchoneta colchonetaUno = new Colchoneta("Azul");
-                Colchoneta colchonetaDos = new Colchoneta("Verde");
-                Colchoneta colchonetaTres = new Colchoneta("Rojo");
+                Colchoneta colchonetaUno = new Colchoneta(3);
+                Colchoneta colchonetaDos = new Colchoneta(5);
+                Colchoneta colchonetaTres = new Colchoneta(10);
 
 
                 ventaUno += barraUno;

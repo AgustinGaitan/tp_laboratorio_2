@@ -70,8 +70,6 @@
             this.comboBoxAgregarProductos.Size = new System.Drawing.Size(200, 21);
             this.comboBoxAgregarProductos.TabIndex = 5;
             this.comboBoxAgregarProductos.SelectedIndexChanged += new System.EventHandler(this.comboBoxAgregarProductos_SelectedIndexChanged);
-            this.comboBoxAgregarProductos.SelectionChangeCommitted += new System.EventHandler(this.comboBoxCaracteristicas_SelectedIndexChanged);
-            this.comboBoxAgregarProductos.SelectedValueChanged += new System.EventHandler(this.comboBoxCaracteristicas_SelectedIndexChanged);
             // 
             // comboBoxCaracteristicas
             // 
@@ -81,9 +79,6 @@
             this.comboBoxCaracteristicas.Name = "comboBoxCaracteristicas";
             this.comboBoxCaracteristicas.Size = new System.Drawing.Size(200, 21);
             this.comboBoxCaracteristicas.TabIndex = 6;
-            this.comboBoxCaracteristicas.SelectedIndexChanged += new System.EventHandler(this.comboBoxAgregarProductos_SelectedIndexChanged);
-            this.comboBoxCaracteristicas.SelectionChangeCommitted += new System.EventHandler(this.comboBoxAgregarProductos_SelectedIndexChanged);
-            this.comboBoxCaracteristicas.SelectedValueChanged += new System.EventHandler(this.comboBoxAgregarProductos_SelectedIndexChanged);
             // 
             // Producto
             // 

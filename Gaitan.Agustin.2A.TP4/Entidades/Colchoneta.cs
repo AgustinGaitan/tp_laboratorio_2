@@ -6,52 +6,54 @@ namespace Entidades
 {
     public class Colchoneta : Barra
     {
-        private string color;
-        
+       
 
-        public string Color
-        {
-            get
-            {
-                return this.color;
-            }
-            set
-            {
-                this.color = this.ValidarColor(value) ;
-            }
-        }
 
         public Colchoneta()
         {
         }
 
-        public Colchoneta(string color) : base()
+        public Colchoneta(int longitud) : base()
         {
-            this.Color = color;
+            this.Longitud = longitud;
             this.idProducto = 3;
         }
 
-        private string ValidarColor(string color)
+        protected override int ValidarLongitud(int longitud)
         {
+            int validado = 0;
 
-            if(color == "Azul" || color == "Rojo" || color == "Verde")
+            if (int.TryParse(longitud.ToString(), out validado))
             {
-                this.Precio = 1000;
+
+
+                if (longitud > 0 && longitud <= 2)
+                {
+                    this.Precio = 1000;
+                }
+                else if (longitud == 3)
+                {
+                    this.Precio = 3000;
+                }
+                else
+                {
+                    this.Precio = 1500 * longitud;
+                }
+
             }
             else
             {
-                throw new ColorInvalidoException();
+                throw new LongitudInvalidaException();
             }
 
-            return color;
-
+            return validado;
         }
         protected override string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
 
 
-            sb.AppendFormat($"Colchoneta de color: {this.Color}\n");
+            sb.AppendFormat($"Colchoneta de : {this.Longitud} metros.\n");
 
             return sb.ToString();
 

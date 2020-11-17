@@ -26,17 +26,27 @@ namespace FormPrincipal
             this.ventas = venta;
         }
 
+     
+
+        private void buttonAceptarFormAgregar_Click(object sender, EventArgs e)
+        {
+            //this.comboBoxAgregarProductos.SelectedValue;
+            //this.comboBoxCaracteristicas.SelectedValue;
+
+            this.DialogResult = DialogResult.OK;
+        }
+
+    
         private void comboBoxAgregarProductos_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            if(comboBoxAgregarProductos.SelectedItem.ToString() == "Barra")
+            if (comboBoxAgregarProductos.SelectedIndex == 0)
             {
                 comboBoxCaracteristicas.Items.Clear();
                 comboBoxCaracteristicas.Items.AddRange(new object[] { "2", "3", "5" });
-                //this.Controls.Add(comboBoxCaracteristicas);
-               
+                this.Controls.Add(comboBoxCaracteristicas);
+
             }
-            else if(comboBoxAgregarProductos.SelectedItem.ToString() == "Mancuerna")
+            else if (comboBoxAgregarProductos.SelectedIndex == 1)
             {
                 comboBoxCaracteristicas.Items.Clear();
                 comboBoxCaracteristicas.Items.AddRange(new object[] { "2", "5", "10" });
@@ -47,19 +57,6 @@ namespace FormPrincipal
                 comboBoxCaracteristicas.Items.AddRange(new object[] { "azul", "rojo", "verde" });
 
             }
-        }
-
-        private void buttonAceptarFormAgregar_Click(object sender, EventArgs e)
-        {
-            //this.comboBoxAgregarProductos.SelectedValue;
-            //this.comboBoxCaracteristicas.SelectedValue;
-
-            this.DialogResult = DialogResult.OK;
-        }
-
-        private void comboBoxCaracteristicas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
         }
     }
 }
