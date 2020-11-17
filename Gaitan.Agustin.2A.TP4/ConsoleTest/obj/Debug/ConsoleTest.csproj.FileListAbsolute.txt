@@ -12,3 +12,4 @@ D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\ConsoleTest\obj\Debug\Consol
 D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\ConsoleTest\obj\Debug\ConsoleTest.csproj.CopyComplete
 D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\ConsoleTest\obj\Debug\ConsoleTest.exe
 D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\ConsoleTest\obj\Debug\ConsoleTest.pdb
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\ConsoleTest\bin\Debug\Entidades.dll.config

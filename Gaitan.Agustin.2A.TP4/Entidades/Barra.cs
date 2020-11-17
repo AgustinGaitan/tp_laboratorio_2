@@ -4,13 +4,13 @@ using System.Text;
 namespace Entidades
 {
    
-
-
-    public class Barra : ElementosGimnasio
+    public class Barra : Venta 
     {
-        protected double longitud;
+        //protected int precio;
+        private ELongitud longitud;
+        protected int idProducto;
 
-        public double Longitud
+        public ELongitud Longitud
         {
             get
             {
@@ -22,14 +22,27 @@ namespace Entidades
             }
         }
 
-        public Barra()
+        public int Precio
         {
-
+            get
+            {
+                return this.precio;
+            }
+            set
+            {
+                this.precio = value;
+            }
         }
 
-        public Barra(int precio, double longitud,int idVenta) : base()
+        public Barra()
+        {
+            
+        }
+
+        public Barra(ELongitud longitud)
         {
             this.Longitud = longitud;
+            this.idProducto = 1;
         }
 
 
@@ -38,26 +51,31 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
 
 
-            sb.AppendFormat($"Barra de: {this.Longitud} metros.\n");
+            sb.AppendFormat($"Barra : {this.Longitud} \n");
 
             return sb.ToString();
 
         }
 
-        private double ValidarLongitud(double longitud)
+        private ELongitud ValidarLongitud(ELongitud longitud)
         {
-            double validado = 0;
 
-            //si puede convertirlo lo retorna como numero
-            if (double.TryParse(longitud.ToString(), out validado) && (longitud > 0 && longitud <= 5))
+            switch (longitud)
             {
-                return validado;
-            }
-            else
-            {
-                throw new LongitudInvalidaException();
+                case ELongitud.Chica:
+                    this.Precio = 1000;
+                    break;
+                case ELongitud.Mediana:
+                    this.Precio = 3000;
+                    break;
+                case ELongitud.Larga:
+                    this.Precio = 5000;
+                    break;
+
             }
 
+
+            return longitud;
 
         }
 

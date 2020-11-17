@@ -3,56 +3,66 @@ using System.Text;
 
 namespace Entidades
 {
-    public class Mancuerna : ElementosGimnasio
+    public class Mancuerna : Barra
     {
 
-        private int peso;
-
-
-        private int Peso
+        private EPeso peso;
+       
+        public EPeso Peso
         {
             get
             {
                 return this.peso;
+                
             }
             set
             {
-                this.peso = value;
+                this.peso = this.ValidarPeso(value);
             }
         }
+
         public Mancuerna()
         {
 
         }
 
-        public Mancuerna(int precio, int peso,int idVenta) : base()
+        public Mancuerna(EPeso peso) : base()
         {
+            
             this.Peso = peso;
+            this.idProducto = 2;
+             
 
         }
 
-        private float ValidarPeso(int peso)
+        private EPeso ValidarPeso(EPeso peso)
         {
-            int validado = 0;
 
-            //si puede convertirlo lo retorna como numero
-            if (int.TryParse(peso.ToString(), out validado) && (peso > 0 && peso <= 40))
+            switch (peso)
             {
-                return validado;
-            }
-            else
-            {
-                throw new PesoInvalidoException();
+                case EPeso.Liviana:
+                    this.Precio = 1000;
+                    break;
+                case EPeso.Media:
+                    this.Precio = 2000;
+                    break;
+                case EPeso.Pesada:
+                    this.Precio = 4000;
+                    break;
+
             }
 
+
+            return peso;
 
         }
+
         protected override string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
 
 
-            sb.AppendFormat($"Mancuerna de: {this.Peso} kilogramos.\n");
+            sb.AppendFormat($"Mancuerna : {this.Peso.ToString()} \n");
 
 
 

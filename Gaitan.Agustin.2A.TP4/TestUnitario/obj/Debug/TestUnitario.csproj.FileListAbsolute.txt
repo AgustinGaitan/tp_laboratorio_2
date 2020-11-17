@@ -21,3 +21,4 @@ D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\TestUnitario\bin\Debug\Archi
 D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\TestUnitario\obj\Debug\TestUnitario.csproj.CopyComplete
 D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\TestUnitario\obj\Debug\TestUnitario.dll
 D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\TestUnitario\obj\Debug\TestUnitario.pdb
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\TestUnitario\bin\Debug\Entidades.dll.config
