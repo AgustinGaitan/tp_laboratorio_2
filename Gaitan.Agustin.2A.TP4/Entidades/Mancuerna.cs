@@ -6,9 +6,9 @@ namespace Entidades
     public class Mancuerna : Barra
     {
 
-        private EPeso peso;
+        private int peso;
        
-        public EPeso Peso
+        public int Peso
         {
             get
             {
@@ -26,7 +26,7 @@ namespace Entidades
 
         }
 
-        public Mancuerna(EPeso peso) : base()
+        public Mancuerna(int peso) : base()
         {
             
             this.Peso = peso;
@@ -35,25 +35,35 @@ namespace Entidades
 
         }
 
-        private EPeso ValidarPeso(EPeso peso)
+        private int ValidarPeso(int peso)
         {
 
-            switch (peso)
-            {
-                case EPeso.Liviana:
-                    this.Precio = 1000;
-                    break;
-                case EPeso.Media:
-                    this.Precio = 2000;
-                    break;
-                case EPeso.Pesada:
-                    this.Precio = 4000;
-                    break;
+            int validado = 0;
 
+            if (int.TryParse(peso.ToString(), out validado))
+            {
+
+
+                if (peso > 0 && peso <= 2)
+                {
+                    this.Precio = 1000;
+                }
+                else if (peso >= 3 && peso <= 5)
+                {
+                    this.Precio = 2000;
+                }
+                else if (peso >= 6 && peso <= 10)
+                {
+                    this.Precio = 5000;
+                }
+            }
+            else
+            {
+                throw new PesoInvalidoException();
             }
 
 
-            return peso;
+            return validado;
 
         }
 
@@ -62,7 +72,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
 
 
-            sb.AppendFormat($"Mancuerna : {this.Peso.ToString()} \n");
+            sb.AppendFormat($"Mancuerna de : {this.Peso} KGs.\n");
 
 
 

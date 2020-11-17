@@ -10,51 +10,54 @@ namespace Entidades
 {
     public class AccesoDatos
     {
-        //private SqlConnection conexion;
-        //private SqlCommand comando;
+        private SqlConnection conexion;
+        private SqlCommand comando;
 
-        //public AccesoDatos()
-        //{
-        //    this.conexion = new SqlConnection(Properties.Settings.Default.conexionBD);
-        //}
+        public AccesoDatos()
+        {
+            this.conexion = new SqlConnection(Properties.Settings.Default.conexionBD);
+        }
 
-        //public Barra ObtenerBarra()
-        //{
-            
+        public List<Venta> ObtenerBarra()
+        {
 
-        //    try
-        //    {
-        //        this.comando = new SqlCommand();
+            Barra barraRetorno;
+            List<Venta> listaVentas = new List<Venta>();
 
-        //        this.comando.CommandType = CommandType.Text;
+            try
+            {
+                this.comando = new SqlCommand();
 
-        //        this.comando.Connection = this.conexion;
+                this.comando.CommandType = CommandType.Text;
 
-        //        comando.CommandText = "SELECT * FROM tablauno WHERE producto = barra";
+                this.comando.Connection = this.conexion;
 
-        //        this.conexion.Open();
+                comando.CommandText = "SELECT * FROM tproduc WHERE producto = barra";
 
-        //        SqlDataReader oDr = comando.ExecuteReader();
+                this.conexion.Open();
 
-        //        Barra barraRetorno = new Barra();
+                SqlDataReader oDr = comando.ExecuteReader();
 
-        //        oDr.Close();
-        //    }
+                barraRetorno = new Barra(oDr.GetInt32(1));
+                listaVentas.Add(barraRetorno);
 
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.ToString());
-        //    }
-        //    finally
-        //    {
-        //        if (this.conexion.State == ConnectionState.Open)
-        //        {
-        //            this.conexion.Close();
-        //        }
-        //    }
+                oDr.Close();
+            }
 
-        //    return  barraRetorno;
-        //}
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                if (this.conexion.State == ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
+
+            return listaVentas;
+        }
 
     }
 }

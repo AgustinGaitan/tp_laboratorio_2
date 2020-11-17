@@ -7,18 +7,18 @@ namespace Entidades
     public class Barra : Venta 
     {
         //protected int precio;
-        private ELongitud longitud;
+        private int peso;
         protected int idProducto;
 
-        public ELongitud Longitud
+        public int Longitud
         {
             get
             {
-                return this.longitud;
+                return this.peso;
             }
             set
             {
-                this.longitud = ValidarLongitud(value);
+                this.peso = ValidarLongitud(value);
             }
         }
 
@@ -39,7 +39,7 @@ namespace Entidades
             
         }
 
-        public Barra(ELongitud longitud)
+        public Barra(int longitud)
         {
             this.Longitud = longitud;
             this.idProducto = 1;
@@ -51,32 +51,40 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
 
 
-            sb.AppendFormat($"Barra : {this.Longitud} \n");
+            sb.AppendFormat($"Barra de : {this.Longitud} Mts. \n");
 
             return sb.ToString();
 
         }
 
-        private ELongitud ValidarLongitud(ELongitud longitud)
+        private int ValidarLongitud(int longitud)
         {
+            int validado = 0;
 
-            switch (longitud)
+            if (int.TryParse(longitud.ToString(), out validado))
             {
-                case ELongitud.Chica:
-                    this.Precio = 1000;
-                    break;
-                case ELongitud.Mediana:
-                    this.Precio = 3000;
-                    break;
-                case ELongitud.Larga:
-                    this.Precio = 5000;
-                    break;
+
+
+                if (longitud > 0 && longitud <= 2)
+                {
+                    this.Precio = 2000;
+                }
+                else if (longitud == 3)
+                {
+                    this.Precio = 4000;
+                }
+                else
+                {
+                    this.Precio = 1500 * longitud;
+                }
 
             }
+            else
+            {
+                throw new LongitudInvalidaException();
+            }
 
-
-            return longitud;
-
+            return validado;
         }
 
 

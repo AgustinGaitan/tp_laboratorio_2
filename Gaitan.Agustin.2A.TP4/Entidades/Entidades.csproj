@@ -42,10 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
-    <Compile Include="EPeso.cs" />
-    <Compile Include="ELongitud.cs" />
     <Compile Include="MetodoExtension.cs" />
-    <Compile Include="EColor.cs" />
     <Compile Include="Mancuerna.cs" />
     <Compile Include="Colchoneta.cs" />
     <Compile Include="Barra.cs" />

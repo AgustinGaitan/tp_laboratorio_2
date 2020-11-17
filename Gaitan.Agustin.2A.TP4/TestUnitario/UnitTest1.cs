@@ -13,7 +13,7 @@ namespace TestUnitario
         {
             try
             {
-                Barra barraUno = new Barra();
+                Barra barraUno = new Barra(500);
             }
             catch(Exception e)
             {
@@ -27,7 +27,7 @@ namespace TestUnitario
         {
             try
             {
-                Mancuerna barraUno = new Mancuerna();
+                Mancuerna barraUno = new Mancuerna(900);
             }
             catch (Exception e)
             {
@@ -41,7 +41,7 @@ namespace TestUnitario
         {
             try
             {
-                Venta barraUno = new Venta();
+                Venta barraUno = new Venta(522,674,125,1);
             }
             catch (Exception e)
             {

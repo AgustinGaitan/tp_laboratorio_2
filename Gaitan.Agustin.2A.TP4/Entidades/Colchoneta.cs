@@ -1,14 +1,15 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
+using Excepciones;
 
 namespace Entidades
 {
     public class Colchoneta : Barra
     {
-        private EColor color;
+        private string color;
         
 
-        public EColor Color
+        public string Color
         {
             get
             {
@@ -16,7 +17,7 @@ namespace Entidades
             }
             set
             {
-                this.color = value;
+                this.color = this.ValidarColor(value) ;
             }
         }
 
@@ -24,29 +25,23 @@ namespace Entidades
         {
         }
 
-        public Colchoneta(EColor color) : base()
+        public Colchoneta(string color) : base()
         {
             this.Color = color;
             this.idProducto = 3;
         }
 
-        private EColor ValidarColor(EColor color)
+        private string ValidarColor(string color)
         {
 
-            switch (color)
+            if(color == "Azul" || color == "Rojo" || color == "Verde")
             {
-                case EColor.Azul:
-                    this.Precio = 1000;
-                    break;
-                case EColor.Verde:
-                    this.Precio = 2000;
-                    break;
-                case EColor.Violeta:
-                    this.Precio = 4000;
-                    break;
-
+                this.Precio = 1000;
             }
-
+            else
+            {
+                throw new ColorInvalidoException();
+            }
 
             return color;
 
@@ -56,7 +51,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
 
 
-            sb.AppendFormat($"Colchoneta de color: {this.color}\n");
+            sb.AppendFormat($"Colchoneta de color: {this.Color}\n");
 
             return sb.ToString();
 

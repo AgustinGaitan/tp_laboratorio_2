@@ -18,17 +18,17 @@ namespace ConsoleTest
                 Venta ventaUno = new Venta(2, 2, 2, 1);
                 Venta ventaDos = new Venta(4, 4, 2, 2);
                 Venta ventaTres = new Venta(1, 1, 1, 3);
-                Barra barraUno = new Barra(ELongitud.Chica);
-                Barra barraDos = new Barra(ELongitud.Larga);
-                Barra barraTres = new Barra(ELongitud.Mediana);
-                Barra barraCuatro = new Barra(ELongitud.Larga);
-                Barra barraCinco = new Barra(ELongitud.Larga);
-                Mancuerna mancuernaUno = new Mancuerna(EPeso.Liviana);
-                Mancuerna mancuernaDos = new Mancuerna(EPeso.Media);
-                Mancuerna mancuernaTres = new Mancuerna(EPeso.Pesada);
-                Colchoneta colchonetaUno = new Colchoneta(EColor.Azul);
-                Colchoneta colchonetaDos = new Colchoneta(EColor.Verde);
-                Colchoneta colchonetaTres = new Colchoneta(EColor.Violeta);
+                Barra barraUno = new Barra(2);
+                Barra barraDos = new Barra(3);
+                Barra barraTres = new Barra(7);
+                Barra barraCuatro = new Barra(2);
+                Barra barraCinco = new Barra(1);
+                Mancuerna mancuernaUno = new Mancuerna(5);
+                Mancuerna mancuernaDos = new Mancuerna(10);
+                Mancuerna mancuernaTres = new Mancuerna(2);
+                Colchoneta colchonetaUno = new Colchoneta("Azul");
+                Colchoneta colchonetaDos = new Colchoneta("Verde");
+                Colchoneta colchonetaTres = new Colchoneta("Rojo");
 
 
                 ventaUno += barraUno;
@@ -43,8 +43,10 @@ namespace ConsoleTest
                 ventaUno += colchonetaDos;
                 ventaUno += colchonetaTres;
                 ventaDos += barraCinco;
+                ventaDos += colchonetaTres;
+                ventaDos += colchonetaUno;
                 ventaUno -= colchonetaUno;
-                ventaTres += new Mancuerna(EPeso.Pesada);
+                ventaTres += new Mancuerna(2);
 
                 Console.WriteLine(ventaUno.ToString());
                 Console.WriteLine(ventaDos.ToString());
@@ -62,9 +64,9 @@ namespace ConsoleTest
 
 
             }
-            catch (Exception e)
+            catch (ColorInvalidoException e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e.Informar());
             }
 
 
