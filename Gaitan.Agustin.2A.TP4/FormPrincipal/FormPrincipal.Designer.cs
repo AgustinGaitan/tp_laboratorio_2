@@ -44,6 +44,7 @@
             this.buttonAgregarProducto.TabIndex = 1;
             this.buttonAgregarProducto.Text = "Agregar producto";
             this.buttonAgregarProducto.UseVisualStyleBackColor = true;
+            this.buttonAgregarProducto.Click += new System.EventHandler(this.buttonAgregarProducto_Click);
             // 
             // buttonCrearTabla
             // 
@@ -88,6 +89,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ClientSize = new System.Drawing.Size(769, 565);
             this.Controls.Add(this.dgvGrilla);
             this.Controls.Add(this.button1);
@@ -96,6 +98,7 @@
             this.Controls.Add(this.buttonAgregarProducto);
             this.Name = "FormPrincipal";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FormPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrilla)).EndInit();
             this.ResumeLayout(false);
 
