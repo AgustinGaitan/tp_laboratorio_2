@@ -7,33 +7,17 @@ namespace Entidades
    
     public class Barra : ElementosGimnasio
     {
-    
-        private int longitud;
-       
-
-        public int Longitud
-        {
-            get
-            {
-                return this.longitud;
-            }
-            set
-            {
-                this.longitud = ValidarLongitud(value);
-            }
-        }
-
-       
-
+        
         public Barra()
+            :base()
         {
             
         }
 
         public Barra(int longitud)
         {
-            this.Longitud = longitud;
-            this.idProducto = 1;
+            this.Caracteristica = longitud;
+
         }
 
         
@@ -43,41 +27,40 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
 
 
-            sb.AppendFormat($"Barra de : {this.Longitud} Mts. \n");
+            sb.AppendFormat($"Barra de : {this.Caracteristica} Mts. \n");
 
             return sb.ToString();
 
         }
 
-        protected virtual int ValidarLongitud(int longitud)
-        {
-            int validado = 0;
+        //protected virtual int ValidarLongitud(int longitud)
+        //{
+        //    int validado = 0;
 
-            if (int.TryParse(longitud.ToString(), out validado))
-            {
+        //    if (int.TryParse(longitud.ToString(), out validado))
+        //    {
 
+        //        if (longitud > 0 && longitud <= 2)
+        //        {
+        //            this.Precio = 2000;
+        //        }
+        //        else if (longitud == 3)
+        //        {
+        //            this.Precio = 4000;
+        //        }
+        //        else
+        //        {
+        //            this.Precio = 7500;
+        //        }
 
-                if (longitud > 0 && longitud <= 2)
-                {
-                    this.Precio = 2000;
-                }
-                else if (longitud == 3)
-                {
-                    this.Precio = 4000;
-                }
-                else
-                {
-                    this.Precio = 1500 * longitud;
-                }
+        //    }
+        //    else
+        //    {
+        //        throw new LongitudInvalidaException();
+        //    }
 
-            }
-            else
-            {
-                throw new LongitudInvalidaException();
-            }
-
-            return validado;
-        }
+        //    return validado;
+        //}
 
 
         public override string ToString()

@@ -10,173 +10,185 @@ namespace Entidades
 {
     public class AccesoDatos
     {
-        //private SqlConnection conexion;
-        //private SqlCommand comando;
+        private SqlConnection conexion;
+        private SqlCommand comando;
 
-        //public AccesoDatos()
-        //{
-        //    this.conexion = new SqlConnection(Properties.Settings.Default.conexionBD);
-        //}
+        public AccesoDatos()
+        {
+            this.conexion = new SqlConnection(Properties.Settings.Default.conexionBD);
+        }
 
-        //public List<Venta> ObtenerBarra()
-        //{
-
-
-        //    List<Venta> listaVentas = new List<Venta>();
-
-        //    try
-        //    {
-        //        this.comando = new SqlCommand();
-
-        //        this.comando.CommandType = CommandType.Text;
-
-        //        this.comando.Connection = this.conexion;
-
-        //        comando.CommandText = "SELECT * FROM tproduc WHERE producto = barra";
-
-        //        this.conexion.Open();
-
-        //        SqlDataReader oDr = comando.ExecuteReader();
+        public Barra ObtenerBarra(int longitud)
+        {
 
 
-        //        listaVentas.Add(new Barra(oDr.GetInt32(2)));
+            Barra barra = default;
 
-        //        oDr.Close();
-        //    }
+            try
+            {
+                this.comando = new SqlCommand();
 
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.ToString());
-        //    }
-        //    finally
-        //    {
-        //        if (this.conexion.State == ConnectionState.Open)
-        //        {
-        //            this.conexion.Close();
-        //        }
-        //    }
+                this.comando.CommandType = CommandType.Text;
 
-        //    return listaVentas;
-        //}
+                this.comando.Connection = this.conexion;
+                this.comando.Parameters.AddWithValue("@longitud", longitud);
+                this.comando.Parameters.AddWithValue("@barra", "barra");
+                comando.CommandText = "SELECT * FROM [gimnasio].[dbo].[tablaproductos] WHERE producto = @barra AND caracteristica = @longitud";
 
-        //public List<Venta> ObtenerMancuerna()
-        //{
+                this.conexion.Open();
+
+                SqlDataReader oDr = comando.ExecuteReader();
+
+                if(oDr.Read())
+                {
+                    barra = new Barra(oDr.GetInt32(2));
+                }
+                
+
+                oDr.Close();
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                if (this.conexion.State == ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
+
+            return barra;
+        }
+
+        public Mancuerna ObtenerMancuerna(int peso)
+        {
+            Mancuerna mancuerna = default;
+
+            try
+            {
+                this.comando = new SqlCommand();
+
+                this.comando.CommandType = CommandType.Text;
+
+                this.comando.Connection = this.conexion;
+
+                this.comando.Parameters.AddWithValue("@peso", peso);
+                this.comando.Parameters.AddWithValue("@mancuerna", "mancuerna");
+
+                comando.CommandText = "SELECT * FROM [gimnasio].[dbo].[tablaproductos] WHERE producto = @mancuerna AND caracteristica = @peso";
+
+                this.conexion.Open();
+
+                SqlDataReader oDr = comando.ExecuteReader();
+
+                if (oDr.Read())
+                {
+                    mancuerna = new Mancuerna(oDr.GetInt32(2));
+                }
+
+                oDr.Close();
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                if (this.conexion.State == ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
+
+            return mancuerna;
+        }
+
+        public Colchoneta ObtenerColchoneta(int longitud)
+        {
 
 
-        //    List<Venta> listaVentas = new List<Venta>();
+            Colchoneta colchoneta = default;
 
-        //    try
-        //    {
-        //        this.comando = new SqlCommand();
+            try
+            {
+                this.comando = new SqlCommand();
 
-        //        this.comando.CommandType = CommandType.Text;
+                this.comando.CommandType = CommandType.Text;
 
-        //        this.comando.Connection = this.conexion;
+                this.comando.Connection = this.conexion;
 
-        //        comando.CommandText = "SELECT * FROM tproduc WHERE producto = mancuerna";
+                this.comando.Parameters.AddWithValue("@longitud", longitud);
+                this.comando.Parameters.AddWithValue("@colchoneta", "colchoneta");
 
-        //        this.conexion.Open();
+                comando.CommandText = "SELECT * FROM [gimnasio].[dbo].[tablaproductos] WHERE producto = @colchoneta AND caracteristica = @longitud";
 
-        //        SqlDataReader oDr = comando.ExecuteReader();
+                this.conexion.Open();
 
+                SqlDataReader oDr = comando.ExecuteReader();
 
-        //        listaVentas.Add(new Mancuerna(oDr.GetInt32(2)));
+                if (oDr.Read())
+                {
+                    colchoneta = new Colchoneta(oDr.GetInt32(2));
+                }
 
-        //        oDr.Close();
-        //    }
+                oDr.Close();
+            }
 
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.ToString());
-        //    }
-        //    finally
-        //    {
-        //        if (this.conexion.State == ConnectionState.Open)
-        //        {
-        //            this.conexion.Close();
-        //        }
-        //    }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                if (this.conexion.State == ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
 
-        //    return listaVentas;
-        //}
+            return colchoneta;
+        }
 
-        //public List<Venta> ObtenerColchoneta()
-        //{
+        public DataTable ObtenerTablaVentas()
+        {
+            DataTable tabla = new DataTable("Productos");
 
+            try
+            {
+                this.comando = new SqlCommand();
 
-        //    List<Venta> listaVentas = new List<Venta>();
+                this.comando.CommandType = CommandType.Text;
 
-        //    try
-        //    {
-        //        this.comando = new SqlCommand();
+                this.comando.Connection = this.conexion;
 
-        //        this.comando.CommandType = CommandType.Text;
+                this.comando.CommandText = "SELECT * FROM tablaproductos ORDER BY id";
 
-        //        this.comando.Connection = this.conexion;
+                this.conexion.Open();
 
-        //        comando.CommandText = "SELECT * FROM tproduc WHERE producto = colchoneta";
+                
+                    SqlDataReader oDr = this.comando.ExecuteReader();
+                tabla.Load(oDr);
 
-        //        this.conexion.Open();
+                oDr.Close();
+            }
 
-        //        SqlDataReader oDr = comando.ExecuteReader();
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                if (this.conexion.State == ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
 
-
-        //        listaVentas.Add(new Colchoneta(oDr.GetString(3)));
-
-        //        oDr.Close();
-        //    }
-
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.ToString());
-        //    }
-        //    finally
-        //    {
-        //        if (this.conexion.State == ConnectionState.Open)
-        //        {
-        //            this.conexion.Close();
-        //        }
-        //    }
-
-        //    return listaVentas;
-        //}
-
-        //public DataTable ObtenerTablaVentas()
-        //{
-        //    DataTable tabla = new DataTable("Ventas");
-
-        //    try
-        //    {
-        //        this.comando = new SqlCommand();
-
-        //        this.comando.CommandType = CommandType.Text;
-
-        //        this.comando.Connection = this.conexion;
-
-        //        this.comando.CommandText = "SELECT * FROM tproduc ORDER BY id DESC";
-
-        //        this.conexion.Open();
-
-        //        SqlDataReader oDr = this.comando.ExecuteReader();
-
-        //        tabla.Load(oDr);
-
-        //        oDr.Close();
-        //    }
-
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.ToString());
-        //    }
-        //    finally
-        //    {
-        //        if (this.conexion.State == ConnectionState.Open)
-        //        {
-        //            this.conexion.Close();
-        //        }
-        //    }
-
-        //    return tabla;
-        //}
+            return tabla;
+        }
     }
 }

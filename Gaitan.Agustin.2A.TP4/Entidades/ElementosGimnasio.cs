@@ -9,7 +9,7 @@ namespace Entidades
     public class ElementosGimnasio
     {
         protected int precio;
-        protected int idProducto;
+        protected int caracteristica;
 
         public int Precio
         {
@@ -23,9 +23,25 @@ namespace Entidades
             }
         }
 
+        public int Caracteristica
+        {
+            get
+            {
+                return this.caracteristica;
+            }
+            set
+            {
+              
+                 this.caracteristica = value;
+             
+                   
+            }
+        }
+
+
         public ElementosGimnasio()
         {
-    
+            this.Precio = precio;
 
         }
 

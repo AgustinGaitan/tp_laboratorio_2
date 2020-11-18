@@ -34,6 +34,8 @@
             this.comboBoxCaracteristicas = new System.Windows.Forms.ComboBox();
             this.Producto = new System.Windows.Forms.Label();
             this.Caracteristica = new System.Windows.Forms.Label();
+            this.labelPrecio = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonAceptarFormAgregar
@@ -79,6 +81,7 @@
             this.comboBoxCaracteristicas.Name = "comboBoxCaracteristicas";
             this.comboBoxCaracteristicas.Size = new System.Drawing.Size(200, 21);
             this.comboBoxCaracteristicas.TabIndex = 6;
+            this.comboBoxCaracteristicas.SelectedIndexChanged += new System.EventHandler(this.comboBoxCaracteristicas_SelectedIndexChanged);
             // 
             // Producto
             // 
@@ -98,11 +101,32 @@
             this.Caracteristica.TabIndex = 8;
             this.Caracteristica.Text = "Caracteristica";
             // 
+            // labelPrecio
+            // 
+            this.labelPrecio.AutoSize = true;
+            this.labelPrecio.Location = new System.Drawing.Point(230, 68);
+            this.labelPrecio.Name = "labelPrecio";
+            this.labelPrecio.Size = new System.Drawing.Size(59, 13);
+            this.labelPrecio.TabIndex = 9;
+            this.labelPrecio.Text = "labelPrecio";
+            this.labelPrecio.Click += new System.EventHandler(this.labelPrecio_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(239, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Precio";
+            // 
             // FormAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(301, 188);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelPrecio);
             this.Controls.Add(this.Caracteristica);
             this.Controls.Add(this.Producto);
             this.Controls.Add(this.comboBoxCaracteristicas);
@@ -111,6 +135,7 @@
             this.Controls.Add(this.buttonAceptarFormAgregar);
             this.Name = "FormAgregar";
             this.Text = "FormAgregar";
+            this.Load += new System.EventHandler(this.FormAgregar_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,5 +149,7 @@
         private System.Windows.Forms.ComboBox comboBoxCaracteristicas;
         private System.Windows.Forms.Label Producto;
         private System.Windows.Forms.Label Caracteristica;
+        private System.Windows.Forms.Label labelPrecio;
+        private System.Windows.Forms.Label label1;
     }
 }
