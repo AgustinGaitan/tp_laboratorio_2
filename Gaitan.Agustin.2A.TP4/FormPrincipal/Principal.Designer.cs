@@ -34,6 +34,7 @@ namespace FormPrincipal
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.buttonAgregarProducto = new System.Windows.Forms.Button();
             this.buttonEliminarProducto = new System.Windows.Forms.Button();
             this.buttonRealizarVenta = new System.Windows.Forms.Button();
@@ -43,7 +44,9 @@ namespace FormPrincipal
             this.buttonGuardarXML = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.labelTotal = new System.Windows.Forms.Label();
+            this.imagenPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrilla)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imagenPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonAgregarProducto
@@ -152,11 +155,22 @@ namespace FormPrincipal
             // 
             this.labelTotal.AutoSize = true;
             this.labelTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTotal.Location = new System.Drawing.Point(457, 525);
+            this.labelTotal.Location = new System.Drawing.Point(474, 515);
             this.labelTotal.Name = "labelTotal";
-            this.labelTotal.Size = new System.Drawing.Size(57, 20);
+            this.labelTotal.Size = new System.Drawing.Size(19, 20);
             this.labelTotal.TabIndex = 11;
-            this.labelTotal.Text = "label2";
+            this.labelTotal.Text = "0";
+            // 
+            // imagenPictureBox
+            // 
+            this.imagenPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("imagenPictureBox.Image")));
+            this.imagenPictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("imagenPictureBox.InitialImage")));
+            this.imagenPictureBox.Location = new System.Drawing.Point(30, 484);
+            this.imagenPictureBox.Name = "imagenPictureBox";
+            this.imagenPictureBox.Size = new System.Drawing.Size(120, 82);
+            this.imagenPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imagenPictureBox.TabIndex = 12;
+            this.imagenPictureBox.TabStop = false;
             // 
             // Principal
             // 
@@ -164,6 +178,7 @@ namespace FormPrincipal
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ClientSize = new System.Drawing.Size(591, 568);
+            this.Controls.Add(this.imagenPictureBox);
             this.Controls.Add(this.labelTotal);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonGuardarXML);
@@ -178,6 +193,7 @@ namespace FormPrincipal
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Principal_FormClosing_1);
             this.Load += new System.EventHandler(this.FormPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrilla)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imagenPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,5 +211,6 @@ namespace FormPrincipal
         private Button buttonGuardarXML;
         private Label label1;
         private Label labelTotal;
+        private PictureBox imagenPictureBox;
     }
 }

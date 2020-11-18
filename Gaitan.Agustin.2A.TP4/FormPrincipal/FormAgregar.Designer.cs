@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.buttonAceptarFormAgregar = new System.Windows.Forms.Button();
-            this.buttonCancelarFormAgregar = new System.Windows.Forms.Button();
             this.comboBoxAgregarProductos = new System.Windows.Forms.ComboBox();
             this.comboBoxCaracteristicas = new System.Windows.Forms.ComboBox();
             this.Producto = new System.Windows.Forms.Label();
@@ -40,22 +39,13 @@
             // 
             // buttonAceptarFormAgregar
             // 
-            this.buttonAceptarFormAgregar.Location = new System.Drawing.Point(12, 181);
+            this.buttonAceptarFormAgregar.Location = new System.Drawing.Point(67, 178);
             this.buttonAceptarFormAgregar.Name = "buttonAceptarFormAgregar";
             this.buttonAceptarFormAgregar.Size = new System.Drawing.Size(125, 30);
             this.buttonAceptarFormAgregar.TabIndex = 3;
             this.buttonAceptarFormAgregar.Text = "Aceptar";
             this.buttonAceptarFormAgregar.UseVisualStyleBackColor = true;
             this.buttonAceptarFormAgregar.Click += new System.EventHandler(this.buttonAceptarFormAgregar_Click);
-            // 
-            // buttonCancelarFormAgregar
-            // 
-            this.buttonCancelarFormAgregar.Location = new System.Drawing.Point(143, 181);
-            this.buttonCancelarFormAgregar.Name = "buttonCancelarFormAgregar";
-            this.buttonCancelarFormAgregar.Size = new System.Drawing.Size(121, 30);
-            this.buttonCancelarFormAgregar.TabIndex = 4;
-            this.buttonCancelarFormAgregar.Text = "Cancelar";
-            this.buttonCancelarFormAgregar.UseVisualStyleBackColor = true;
             // 
             // comboBoxAgregarProductos
             // 
@@ -105,7 +95,7 @@
             // 
             this.labelPrecio.AutoSize = true;
             this.labelPrecio.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPrecio.Location = new System.Drawing.Point(86, 135);
+            this.labelPrecio.Location = new System.Drawing.Point(82, 134);
             this.labelPrecio.Name = "labelPrecio";
             this.labelPrecio.Size = new System.Drawing.Size(18, 18);
             this.labelPrecio.TabIndex = 9;
@@ -133,7 +123,6 @@
             this.Controls.Add(this.Producto);
             this.Controls.Add(this.comboBoxCaracteristicas);
             this.Controls.Add(this.comboBoxAgregarProductos);
-            this.Controls.Add(this.buttonCancelarFormAgregar);
             this.Controls.Add(this.buttonAceptarFormAgregar);
             this.Name = "FormAgregar";
             this.Text = "FormAgregar";
@@ -146,7 +135,6 @@
         #endregion
 
         private System.Windows.Forms.Button buttonAceptarFormAgregar;
-        private System.Windows.Forms.Button buttonCancelarFormAgregar;
         private System.Windows.Forms.ComboBox comboBoxAgregarProductos;
         private System.Windows.Forms.ComboBox comboBoxCaracteristicas;
         private System.Windows.Forms.Label Producto;

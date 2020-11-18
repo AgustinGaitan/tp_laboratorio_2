@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using Entidades;
 using Excepciones;
 using Archivos;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace FormPrincipal
 {
@@ -19,20 +21,28 @@ namespace FormPrincipal
         private Venta venta;
         private DataTable tabla;
         private AccesoDatos objAcceso;
+        protected Thread hilo;
+        protected string labelAtributo;
+        private int acum;
+        public delegate void DelegadoThread();
+        //public event DelegadoThread EventoActualizar;
 
         public Principal()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            DelegadoThread delegado = new DelegadoThread(EjecutarAccion);
+            this.hilo = new Thread(this.EjecutarAccion);
+            this.hilo.Start();
 
             this.objAcceso = new AccesoDatos();
             this.venta = new Venta(10);
             
 
-           // this.ConfigurarDA();
+         
             this.ConfigurarDT();
 
-            //this.tabla = this.objAcceso.ObtenerTablaVentas();
+         
         }
 
         private void FormPrincipal_Load(object sender, EventArgs e)
@@ -44,20 +54,28 @@ namespace FormPrincipal
         private void buttonAgregarProducto_Click(object sender, EventArgs e)
         {
             FormAgregar formNuevo = new FormAgregar();
-          
+            
 
             formNuevo.StartPosition = FormStartPosition.CenterScreen;
 
             if (formNuevo.ShowDialog() == DialogResult.OK)
             {
                 DataRow fila = this.tabla.NewRow();
+                
 
                 fila["id"] = formNuevo.Elemento.Id;
                 fila["producto"] = formNuevo.Elemento.Nombre;
                 fila["caracteristica"] = formNuevo.Elemento.Caracteristica;
                 fila["precio"] = formNuevo.Elemento.Precio;
 
-                
+                int validado = 0;
+
+                if(int.TryParse(formNuevo.Elemento.Precio.ToString(), out validado))
+                {
+                    acum += validado;
+                    this.labelTotal.Text = acum.ToString();
+                }
+               
 
 
                 this.tabla.Rows.Add(fila);
@@ -195,6 +213,13 @@ namespace FormPrincipal
             {
                 e.Cancel = true;
             }
+            else
+            {
+                if(this.hilo.IsAlive)
+                {
+                    this.hilo.Abort();
+                }
+            }
         }
 
         private void buttonGuardarXML_Click(object sender, EventArgs e)
@@ -232,5 +257,33 @@ namespace FormPrincipal
                 MessageBox.Show(ex.Message, "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public void EjecutarAccion()
+        {
+            if (this.imagenPictureBox.InvokeRequired)
+            {
+                DelegadoThread delegado = new DelegadoThread(this.EjecutarAccion);
+
+                this.imagenPictureBox.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    do
+                    {
+                        //this.imagenPictureBox.ImageLocation = @"\arriba.jpg";
+                        
+
+                        //this.Invoke(delegado);
+
+                        //Thread.Sleep(5000);
+
+                        //this.imagenPictureBox.ImageLocation = @"\abajo.jpg";
+
+                    } while (true);
+                });
+                
+            }
+        }
+
+       
     }
 }
+

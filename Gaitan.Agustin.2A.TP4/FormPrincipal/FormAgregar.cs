@@ -15,8 +15,7 @@ namespace FormPrincipal
     public partial class FormAgregar : Form
     {
         private ElementosGimnasio elemento;
-
-
+      
         public ElementosGimnasio Elemento
         {
             get
@@ -31,7 +30,11 @@ namespace FormPrincipal
             this.elemento = new ElementosGimnasio();
 
         }
+        private void FormAgregar_Load(object sender, EventArgs e)
+        {
 
+            this.Text = "Gaitan Agustin";
+        }
 
         private void buttonAceptarFormAgregar_Click(object sender, EventArgs e)
         {
@@ -145,13 +148,7 @@ namespace FormPrincipal
                 this.comboBoxCaracteristicas.Items.AddRange(new object[] { "2 mts", "3 mts", "5 mts" });
 
             }
-        }
-
-
-    
-
-            
-
+        }       
            
         private void comboBoxCaracteristicas_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -206,10 +203,6 @@ namespace FormPrincipal
             }
         }
 
-        private void FormAgregar_Load(object sender, EventArgs e)
-        {
-           
-            this.Text = "Gaitan Agustin";
-        }
+     
     }
 }
