@@ -12,7 +12,6 @@ using Entidades;
 using Excepciones;
 using Archivos;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace FormPrincipal
 {
@@ -27,18 +26,17 @@ namespace FormPrincipal
         public delegate void DelegadoThread();
         //public event DelegadoThread EventoActualizar;
 
+       
         public Principal()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            DelegadoThread delegado = new DelegadoThread(EjecutarAccion);
+            //DelegadoThread delegado = new DelegadoThread(EjecutarAccion);
             this.hilo = new Thread(this.EjecutarAccion);
-            this.hilo.Start();
 
             this.objAcceso = new AccesoDatos();
             this.venta = new Venta(10);
-            
-
+           
          
             this.ConfigurarDT();
 
@@ -48,6 +46,9 @@ namespace FormPrincipal
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
             this.Text = "Gaitan Agustin";
+
+            if (!this.hilo.IsAlive)
+                this.hilo.Start();
 
         }
 
@@ -215,7 +216,7 @@ namespace FormPrincipal
             }
             else
             {
-                if(this.hilo.IsAlive)
+                if (this.hilo.IsAlive)
                 {
                     this.hilo.Abort();
                 }
@@ -260,27 +261,41 @@ namespace FormPrincipal
 
         public void EjecutarAccion()
         {
-            if (this.imagenPictureBox.InvokeRequired)
+            try
             {
-                DelegadoThread delegado = new DelegadoThread(this.EjecutarAccion);
-
-                this.imagenPictureBox.BeginInvoke((MethodInvoker)delegate ()
-                {
-                    do
-                    {
-                        //this.imagenPictureBox.ImageLocation = @"\arriba.jpg";
-                        
-
-                        //this.Invoke(delegado);
-
-                        //Thread.Sleep(5000);
-
-                        //this.imagenPictureBox.ImageLocation = @"\abajo.jpg";
-
-                    } while (true);
-                });
                 
+                Thread.Sleep(2000);
+                //do
+                //{
+                    if (this.imagenPictureBox.InvokeRequired)
+                    {
+                        
+                        this.imagenPictureBox.BeginInvoke((MethodInvoker)delegate ()
+                        {
+
+                            this.imagenPictureBox.ImageLocation = @"\arriba.jpg";
+
+
+
+                            ////this.Invoke(delegado);
+
+                            Thread.Sleep(2000);
+
+
+                            this.imagenPictureBox.ImageLocation = @"\abajo.jpg";
+
+                        });
+
+                    }
+
+               // } while (true);
+
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
        

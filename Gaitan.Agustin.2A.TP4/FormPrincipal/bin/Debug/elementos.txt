@@ -1,6 +1,8 @@
-Nombre: colchoneta
+
+
+Nombre: barra
 Caracteristica: 3
-Precio: 3000
+Precio: 4000
 
 ------------------------------------------
 
