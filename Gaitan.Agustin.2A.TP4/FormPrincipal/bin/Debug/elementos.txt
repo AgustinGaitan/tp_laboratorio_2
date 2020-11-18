@@ -1,6 +1,0 @@
-Nombre: mancuerna
-Caracteristica: 5
-Precio: 2000
-
-------------------------------------------
-
