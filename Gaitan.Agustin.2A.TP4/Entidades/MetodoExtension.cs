@@ -9,9 +9,9 @@ namespace Entidades
 {
     public static class MetodoExtension
     {
-        public static string Informar(this ColorInvalidoException e)
+        public static string Informar(this FilaVaciaException e)
         {
-            return "Color invalido. Elija uno que tengamos en stock.\n";
+            return "Error. No hay fila ...\n";
         }
     }
 }

@@ -17,7 +17,8 @@ namespace Entidades
         public Mancuerna(int peso) : base()
         {
             
-            this.Caracteristica = peso;          
+            this.Caracteristica = peso;
+            this.Nombre = "mancuerna";
 
         }
 

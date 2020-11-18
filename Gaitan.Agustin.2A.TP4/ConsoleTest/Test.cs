@@ -15,9 +15,9 @@ namespace ConsoleTest
         {
             try
             {
-                Venta ventaUno = new Venta(2, 2, 2);
-                Venta ventaDos = new Venta(4, 4, 2);
-                Venta ventaTres = new Venta(1, 1, 1);
+                Venta ventaUno = new Venta(10);
+                Venta ventaDos = new Venta(10);
+                Venta ventaTres = new Venta(10);
                 Barra barraUno = new Barra(2);
                 Barra barraDos = new Barra(3);
                 Barra barraTres = new Barra(7);
@@ -52,13 +52,13 @@ namespace ConsoleTest
                 Console.WriteLine(ventaDos.ToString());
                 Console.WriteLine(ventaTres.ToString());
 
-                if (Venta.Guardar(ventaUno) && Venta.Guardar(ventaDos) && Venta.Guardar(ventaTres)
-                    && Venta.GuardarSer(ventaUno))
-                {
+                //if (Venta.Guardar(ventaUno) && Venta.Guardar(ventaDos) && Venta.Guardar(ventaTres)
+                //    && Venta.GuardarSer(ventaUno))
+                //{
 
-                    Console.WriteLine("Ventas guardadas.\n\n");
-                    Console.WriteLine("Ventas serializada.\n\n");
-                }
+                //    Console.WriteLine("Ventas guardadas.\n\n");
+                //    Console.WriteLine("Ventas serializada.\n\n");
+                //}
 
                 Console.WriteLine("************************************************");
                 Console.WriteLine("Lectura de archivo:");
@@ -68,7 +68,7 @@ namespace ConsoleTest
             }
             catch (ColorInvalidoException e)
             {
-                Console.WriteLine(e.Informar());
+                Console.WriteLine(e.Message);
             }
 
 

@@ -16,6 +16,7 @@ namespace Entidades
         public Colchoneta(int longitud) : base()
         {
             this.Caracteristica = longitud;
+            this.Nombre = "colchoneta";
  
         }
 

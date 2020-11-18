@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
+using Excepciones;
+using Archivos;
 
 namespace FormPrincipal
 {
@@ -24,7 +26,8 @@ namespace FormPrincipal
             this.StartPosition = FormStartPosition.CenterScreen;
 
             this.objAcceso = new AccesoDatos();
-            this.venta = new Venta(5, 5, 5);
+            this.venta = new Venta(10);
+            
 
             ////this.ConfigurarDA();
             this.ConfigurarDT();
@@ -41,6 +44,7 @@ namespace FormPrincipal
         private void buttonAgregarProducto_Click(object sender, EventArgs e)
         {
             FormAgregar formNuevo = new FormAgregar();
+          
 
             formNuevo.StartPosition = FormStartPosition.CenterScreen;
 
@@ -48,23 +52,11 @@ namespace FormPrincipal
             {
                 DataRow fila = this.tabla.NewRow();
 
-                fila["producto"] = formNuevo.Elemento.GetType().Name;
+                fila["producto"] = formNuevo.Elemento.Nombre;
                 fila["caracteristica"] = formNuevo.Elemento.Caracteristica;
                 fila["precio"] = formNuevo.Elemento.Precio;
 
-                this.venta.ListaTotal.Add(formNuevo.Elemento);
-                if(formNuevo.Elemento is Barra)
-                {
-                    venta.ListaBarras.Add((Barra)formNuevo.Elemento);
-                }
-                else if (formNuevo.Elemento is Mancuerna)
-                {
-                    venta.ListaMancuernas.Add((Mancuerna)formNuevo.Elemento);
-                }
-                if (formNuevo.Elemento is Colchoneta)
-                {
-                    venta.ListaColchonetas.Add((Colchoneta)formNuevo.Elemento);
-                }
+                
 
 
                 this.tabla.Rows.Add(fila);
@@ -114,23 +106,122 @@ namespace FormPrincipal
 
         private void buttonEliminarProducto_Click(object sender, EventArgs e)
         {
-            int i = this.dgvGrilla.SelectedRows[0].Index;
+            try
+            {
+                if(!(dgvGrilla.Rows.Count == 0))
+                {
+                    int indice = this.dgvGrilla.CurrentRow.Index;
 
-            //DataRow fila = this.tabla.Rows[i];
-
-            object[] objeto = this.tabla.Rows[i].ItemArray;  //obtiene la fila a punto de ser eliminada, para tambien eliminarla de la venta.
-            this.venta.ListaBarras.Remove(new Barra((int)objeto[2]));
-
+                    ElementosGimnasio el = new ElementosGimnasio(this.tabla.Rows[indice]["producto"].ToString(),
+                        int.Parse(this.tabla.Rows[indice][2].ToString()),
+                        int.Parse(this.tabla.Rows[indice][3].ToString()));
 
 
-         
-            this.tabla.Rows[i].Delete();
-            this.tabla.AcceptChanges();
+
+                    Mostrar frmMostrar = new Mostrar(el);
+
+                    frmMostrar.StartPosition = FormStartPosition.CenterScreen;
+
+                    if (frmMostrar.ShowDialog() == DialogResult.OK)
+                    {
+                        this.tabla.Rows[indice].Delete();
+                    }
+
+                }
+                else
+                {
+                    throw new FilaVaciaException();
+                }
+               
+            }
+            catch(FilaVaciaException ex)
+            {
+                MessageBox.Show(ex.Informar(), "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
+            
+            
         }
 
         private void buttonGuardarVentaTXT_Click(object sender, EventArgs e)
         {
-            Venta.Guardar(this.venta);
+            try
+            {
+                if (!(dgvGrilla.Rows.Count == 0))
+                {
+                    int indice = this.dgvGrilla.CurrentRow.Index;
+
+                    ElementosGimnasio el = new ElementosGimnasio(this.tabla.Rows[indice]["producto"].ToString(),
+                        int.Parse(this.tabla.Rows[indice][2].ToString()),
+                        int.Parse(this.tabla.Rows[indice][3].ToString()));
+
+
+                    ElementosGimnasio.Guardar(el);
+                }
+                else
+                {
+                    throw new NoSePudoGuardarException();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+                
+        }
+
+        private void buttonAceptarCambios_Click(object sender, EventArgs e)
+        {
+            this.tabla.AcceptChanges();
+          
+        }
+
+        private void buttonGuardarVentaEntera_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!(dgvGrilla.Rows.Count == 0))
+                {
+                    this.dgvGrilla.SelectAll();
+
+                        for(int i = 0; i < this.dgvGrilla.RowCount; i++)
+                        {
+                            ElementosGimnasio el = new ElementosGimnasio(this.tabla.Rows[i]["producto"].ToString(),
+                            int.Parse(this.tabla.Rows[i][2].ToString()),
+                            int.Parse(this.tabla.Rows[i][3].ToString()));
+                            venta += el;
+                            if(i == this.dgvGrilla.RowCount -1)
+                            {
+                                Venta.Guardar(venta);
+                                venta -= el;
+                            }
+                        }
+                    
+                    
+
+                    
+                    
+                }
+                else
+                {
+                    throw new NoSePudoGuardarException();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ATENCION" ,MessageBoxButtons.OK, MessageBoxIcon.Error) ; 
+            }
+        }
+
+ 
+
+        private void Principal_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("¿Está seguro que desea salir?", "ATENCION", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+               MessageBoxDefaultButton.Button2) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

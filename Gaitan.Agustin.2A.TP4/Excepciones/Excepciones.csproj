@@ -42,9 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CantMaxElementosInvalidaException.cs" />
-    <Compile Include="LongitudInvalidaException.cs" />
+    <Compile Include="CaracteristicaSinSeleccionarException.cs" />
+    <Compile Include="NoSePudoGuardarException.cs" />
+    <Compile Include="FilaVaciaException.cs" />
     <Compile Include="ArchivosException.cs" />
-    <Compile Include="PesoInvalidoException.cs" />
+    <Compile Include="ProductoSinSeleccionarException.cs" />
     <Compile Include="CantBarrasInvalidaException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

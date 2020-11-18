@@ -11,25 +11,25 @@ namespace Entidades
     //interfaces//
     //generics;//
     //serializar;//
-    //archivos;
-    //base de datos;
-    //metodo de extension;
+    //archivos;//
+    //base de datos;//
+    //metodo de extension;//
     //hilos;
     //excepciones;//
-    //test unitarios;
+    //test unitarios;//
     //delegados y eventos
 
 
     public class Venta
     {
-        protected int idVenta;
-        protected int precio;
-        private int cantMaxBarras;
-        private int cantMaxMancuernas;
-        private int cantMaxColchonetas;
-        private List<Barra> listaBarras;
-        private List<Mancuerna> listaMancuernas;
-        private List<Colchoneta> listaColchonetas;
+      
+        private int cantMaxElementos;
+        //private int cantMaxBarras;
+        //private int cantMaxMancuernas;
+        //private int cantMaxColchonetas;
+        //private List<Barra> listaBarras;
+        //private List<Mancuerna> listaMancuernas;
+        //private List<Colchoneta> listaColchonetas;
        private List<ElementosGimnasio> listaTotal;
 
         public List<ElementosGimnasio> ListaTotal
@@ -39,64 +39,64 @@ namespace Entidades
                 return this.listaTotal;
             }
         }
-        public List<Barra> ListaBarras
-        {
-            get
-            {
-                return this.listaBarras;
-            }
-        }
-        public List<Mancuerna> ListaMancuernas
-        {
-            get
-            {
-                return this.listaMancuernas;
-            }
-        }
-        public List<Colchoneta> ListaColchonetas
-        {
-            get
-            {
-                return this.listaColchonetas;
-            }
-        }
+        //public List<Barra> ListaBarras
+        //{
+        //    get
+        //    {
+        //        return this.listaBarras;
+        //    }
+        //}
+        //public List<Mancuerna> ListaMancuernas
+        //{
+        //    get
+        //    {
+        //        return this.listaMancuernas;
+        //    }
+        //}
+        //public List<Colchoneta> ListaColchonetas
+        //{
+        //    get
+        //    {
+        //        return this.listaColchonetas;
+        //    }
+        //}
 
-        public int CantidadMaximaMancuernas
-        {
-            get
-            {
-                return this.cantMaxMancuernas;
-            }
-            set
-            {
-                this.cantMaxMancuernas = this.ValidarCantMax(value);
-            }
-        }
+        //public int CantidadMaximaMancuernas
+        //{
+        //    get
+        //    {
+        //        return this.cantMaxMancuernas;
+        //    }
+        //    set
+        //    {
+        //        this.cantMaxMancuernas = this.ValidarCantMax(value);
+        //    }
+        //}
 
-        public int CantidadMaximaBarras
-        {
-            get
-            {
-                return this.cantMaxBarras;
-            }
-            set
-            {
-                this.cantMaxBarras = this.ValidarCantMax(value);
-            }
-        }
+        //public int CantidadMaximaBarras
+        //{
+        //    get
+        //    {
+        //        return this.cantMaxBarras;
+        //    }
+        //    set
+        //    {
+        //        this.cantMaxBarras = this.ValidarCantMax(value);
+        //    }
+        //}
 
 
-        public int CantidadMaximaColchonetas
-        {
-            get
-            {
-                return this.cantMaxColchonetas;
-            }
-            set
-            {
-                this.cantMaxColchonetas = this.ValidarCantMax(value);
-            }
-        }
+        //public int CantidadMaximaColchonetas
+        //{
+        //    get
+        //    {
+        //        return this.cantMaxColchonetas;
+        //    }
+        //    set
+        //    {
+        //        this.cantMaxColchonetas = this.ValidarCantMax(value);
+        //    }
+        //}
 
         public Venta()
         {
@@ -104,15 +104,15 @@ namespace Entidades
         }
 
 
-        public Venta(int cantMaxMancuernas, int cantMaxBarras, int cantMaxColchonetas)
+        public Venta(int cantMaxElementos)
         {
-  
-            this.CantidadMaximaBarras = cantMaxBarras;
-            this.CantidadMaximaColchonetas = cantMaxColchonetas;
-            this.CantidadMaximaMancuernas = cantMaxColchonetas;
-            this.listaBarras = new List<Barra>();
-            this.listaMancuernas = new List<Mancuerna>();
-            this.listaColchonetas = new List<Colchoneta>();
+            this.cantMaxElementos = cantMaxElementos;
+            //this.CantidadMaximaBarras = cantMaxBarras;
+            //this.CantidadMaximaColchonetas = cantMaxColchonetas;
+            //this.CantidadMaximaMancuernas = cantMaxColchonetas;
+            //this.listaBarras = new List<Barra>();
+            //this.listaMancuernas = new List<Mancuerna>();
+            //this.listaColchonetas = new List<Colchoneta>();
             this.listaTotal = new List<ElementosGimnasio>();
 
         }
@@ -134,12 +134,24 @@ namespace Entidades
 
         }
 
-        protected virtual string MostrarDatos()
+        public static bool Guardar(Venta venta)
+        {
+            Texto t = new Texto();
+            return t.Guardar("ventas.txt", venta.ToString());
+        }
+
+        public static string Leer()
+        {
+            Texto nuevoTexto = new Texto();
+            nuevoTexto.Leer("ventas.txt", out string datos);
+
+            return datos;
+        }
+
+        private string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat($"Cantidad de barras a vender: {this.listaBarras.Count}\n");
-            sb.AppendFormat($"Cantidad de mancuernas a vender: {this.listaMancuernas.Count}\n");
-            sb.AppendFormat($"Cantidad de colchonetas a vender: {this.listaColchonetas.Count}\n\n");
+            sb.AppendLine("VENTA ");
             sb.AppendLine("LISTADO DE PRODUCTOS: ");
 
             foreach(ElementosGimnasio item in this.ListaTotal)
@@ -151,22 +163,6 @@ namespace Entidades
             return sb.ToString();
         }
 
-
-        
-
-        public static bool Guardar(Venta elementos)
-        {
-            Texto t = new Texto();
-            return t.Guardar("Venta.txt", elementos.ToString());
-        }
-
-        public static string Leer()   
-        {
-            Texto nuevoTexto = new Texto();
-            nuevoTexto.Leer("Venta.txt", out string datos);
-
-            return datos;
-        }
 
         public static bool GuardarSer(Venta venta)
         {
@@ -181,82 +177,40 @@ namespace Entidades
             u.Leer("venta.xml", out Venta ventaXml); //out retorna el los datos leídos
             return ventaXml;
         }
-        public static Venta operator +(Venta elementos, Barra barra)
+
+        public static Venta operator +(Venta venta, ElementosGimnasio elemento)
         {
-
-            if (elementos.listaBarras.Count < elementos.cantMaxBarras)
+            if(venta.ListaTotal.Count < venta.cantMaxElementos)
             {
-                elementos.listaTotal.Add(barra);
-                elementos.listaBarras.Add(barra);           
+                venta.ListaTotal.Add(elemento);
             }
+           
 
-            return elementos;
-
+            return venta;
         }
 
-        public static Venta operator +(Venta elementos, Mancuerna mancuerna)
+        public static Venta operator -(Venta venta, ElementosGimnasio elemento)
         {
-
-            if (elementos.listaMancuernas.Count < elementos.cantMaxMancuernas)
-            {
-                elementos.listaTotal.Add(mancuerna);
-                elementos.listaMancuernas.Add(mancuerna);
-             
-            }
-
-            return elementos;
+           
+                venta.ListaTotal.Remove(elemento);
+          
+            return venta;
         }
-
-
-        public static Venta operator +(Venta elementos, Colchoneta col)
-        {
-
-            if (elementos.listaColchonetas.Count < elementos.cantMaxColchonetas)
-            {
-                elementos.listaTotal.Add(col);
-                elementos.listaColchonetas.Add(col);
-              
-            }
-
-            return elementos;
-        }
-
-        public static Venta operator -(Venta elementos, Colchoneta col)
-        {
-
-            if(elementos.listaColchonetas.Contains(col))
-            {
-                elementos.listaTotal.Remove(col);
-                elementos.listaColchonetas.Remove(col);
-            }
-
-            return elementos;
-        }
-        public static Venta operator -(Venta elementos, Barra barra)
-        {
-
-            if (elementos.listaBarras.Contains(barra))
-            {
-                elementos.listaTotal.Remove(barra);
-                elementos.listaBarras.Remove(barra);
-            }
-
-            return elementos;
-        }
-        public static Venta operator -(Venta elementos, Mancuerna mancuerna)
-        {
-
-            if (elementos.listaMancuernas.Contains(mancuerna))
-            {
-                elementos.listaTotal.Add(mancuerna);
-                elementos.listaMancuernas.Remove(mancuerna);
-            }
-
-            return elementos;
-        }
+       
         public override string ToString()
         {
             return this.MostrarDatos();
+        }
+
+        public static Venta operator +(Venta venta, List<ElementosGimnasio> elemento)
+        {
+            if (venta.ListaTotal.Count < venta.cantMaxElementos)
+            {
+                
+            }
+
+
+            return venta;
         }
 
     }

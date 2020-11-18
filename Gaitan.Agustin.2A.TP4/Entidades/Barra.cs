@@ -17,10 +17,11 @@ namespace Entidades
         public Barra(int longitud)
         {
             this.Caracteristica = longitud;
+            this.Nombre = "barra";
 
         }
 
-        
+
 
         private string MostrarDatos()
         {

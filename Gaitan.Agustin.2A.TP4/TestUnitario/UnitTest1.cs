@@ -17,7 +17,7 @@ namespace TestUnitario
             }
             catch(Exception e)
             {
-                Assert.IsInstanceOfType(e, typeof(LongitudInvalidaException));
+                Assert.IsInstanceOfType(e, typeof(FilaVaciaException));
             }
             
         }
@@ -31,7 +31,7 @@ namespace TestUnitario
             }
             catch (Exception e)
             {
-                Assert.IsInstanceOfType(e, typeof(PesoInvalidoException));
+                Assert.IsInstanceOfType(e, typeof(ProductoSinSeleccionarException));
             }
 
         }

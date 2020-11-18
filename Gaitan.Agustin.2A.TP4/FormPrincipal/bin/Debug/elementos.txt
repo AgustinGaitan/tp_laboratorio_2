@@ -1,0 +1,8 @@
+
+
+Nombre: colchoneta
+Caracteristica: 3
+Precio: 3000
+
+------------------------------------------
+

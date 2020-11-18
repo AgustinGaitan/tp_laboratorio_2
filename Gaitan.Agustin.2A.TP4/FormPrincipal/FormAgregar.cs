@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
+using Excepciones;
 
 namespace FormPrincipal
 {
@@ -30,80 +31,106 @@ namespace FormPrincipal
             this.elemento = new ElementosGimnasio();
 
         }
-  
+
 
         private void buttonAceptarFormAgregar_Click(object sender, EventArgs e)
         {
-            AccesoDatos ac = new AccesoDatos();
-            
-            switch(this.comboBoxAgregarProductos.SelectedIndex)
+            try
             {
-                case 0:
-                    switch(this.comboBoxCaracteristicas.SelectedIndex)
+                AccesoDatos ac = new AccesoDatos();
+                if (!(this.comboBoxAgregarProductos.SelectedIndex == -1))
+                {
+                    if(!(this.comboBoxCaracteristicas.SelectedIndex == -1))
                     {
-                           case 0:
-                            this.elemento = ac.ObtenerBarra(2);
-                            break;
-                        case 1:
-                            this.elemento = ac.ObtenerBarra(3);
-                            break;
-                        case 2:
-                            this.elemento = ac.ObtenerBarra(5);
-                            break;
+                        switch (this.comboBoxAgregarProductos.SelectedIndex)
+                        {
+                            case 0:
+                                switch (this.comboBoxCaracteristicas.SelectedIndex)
+                                {
+                                    case 0:
+                                        this.elemento = ac.ObtenerBarra(2);
+                                        break;
+                                    case 1:
+                                        this.elemento = ac.ObtenerBarra(3);
+                                        break;
+                                    case 2:
+                                        this.elemento = ac.ObtenerBarra(5);
+                                        break;
 
+                                }
+                                break;
+                            case 1:
+                                switch (this.comboBoxCaracteristicas.SelectedIndex)
+                                {
+                                    case 0:
+                                        this.elemento = ac.ObtenerMancuerna(2);
+                                        break;
+                                    case 1:
+                                        this.elemento = ac.ObtenerMancuerna(5);
+                                        break;
+                                    case 2:
+                                        this.elemento = ac.ObtenerMancuerna(10);
+                                        break;
+
+                                }
+                                break;
+                            case 2:
+                                switch (this.comboBoxCaracteristicas.SelectedIndex)
+                                {
+                                    case 0:
+                                        this.elemento = ac.ObtenerColchoneta(2);
+                                        break;
+                                    case 1:
+                                        this.elemento = ac.ObtenerColchoneta(3);
+                                        break;
+                                    case 2:
+                                        this.elemento = ac.ObtenerColchoneta(5);
+                                        break;
+
+                                }
+                                break;
+                        }
                     }
-                    break;
-                case 1:
-                    switch (this.comboBoxCaracteristicas.SelectedIndex)
+                    else
                     {
-                        case 0:
-                            this.elemento = ac.ObtenerMancuerna(2);
-                            break;
-                        case 1:
-                            this.elemento = ac.ObtenerMancuerna(5);
-                            break;
-                        case 2:
-                            this.elemento = ac.ObtenerMancuerna(10);
-                            break;
-
+                        throw new CaracteristicaSinSeleccionarException();
                     }
-                    break;
-                case 2:
-                    switch (this.comboBoxCaracteristicas.SelectedIndex)
-                    {
-                        case 0:
-                            this.elemento = ac.ObtenerColchoneta(2);
-                            break;
-                        case 1:
-                            this.elemento = ac.ObtenerColchoneta(3);
-                            break;
-                        case 2:
-                            this.elemento = ac.ObtenerColchoneta(5);
-                            break;
+                   
+                }
+                else
+                {
+                    throw new ProductoSinSeleccionarException();
+                }
 
-                    }
-                    break;
+                int validado = 0;
+
+                if (int.TryParse(this.labelPrecio.Text, out validado))
+                {
+                    this.Elemento.Precio = validado;
+                }
+
+                this.DialogResult = DialogResult.OK;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            int validado = 0;
 
-            if(int.TryParse(this.labelPrecio.Text, out validado))
-            {
-                this.Elemento.Precio = validado;
-            }
-            
-            this.DialogResult = DialogResult.OK;
         }
 
-    
+
         private void comboBoxAgregarProductos_SelectedIndexChanged(object sender, EventArgs e)
         {
+          
+
+
             if (this.comboBoxAgregarProductos.SelectedIndex == 0)
             {
                 this.comboBoxCaracteristicas.Items.Clear();
                 this.labelPrecio.Text = "0";
                 this.comboBoxCaracteristicas.Items.AddRange(new object[] { "2 mts", "3 mts", "5 mts" });
-               
+
             }
             else if (comboBoxAgregarProductos.SelectedIndex == 1)
             {
@@ -120,8 +147,12 @@ namespace FormPrincipal
             }
         }
 
-   
 
+    
+
+            
+
+           
         private void comboBoxCaracteristicas_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.comboBoxAgregarProductos.SelectedIndex == 0)

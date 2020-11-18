@@ -17,3 +17,4 @@ D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\FormPrincipal\obj\Debug\Form
 D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\FormPrincipal\obj\Debug\FormPrincipal.exe
 D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\FormPrincipal\obj\Debug\FormPrincipal.pdb
 D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\FormPrincipal\obj\Debug\FormPrincipal.Principal.resources
+D:\Proyectos\tp_laboratorio_2\Gaitan.Agustin.2A.TP4\FormPrincipal\obj\Debug\FormPrincipal.Mostrar.resources
