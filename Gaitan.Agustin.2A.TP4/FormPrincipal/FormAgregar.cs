@@ -13,7 +13,6 @@ namespace FormPrincipal
 {
     public partial class FormAgregar : Form
     {
-        private Venta ventas;
         private ElementosGimnasio elemento;
 
 
@@ -28,7 +27,7 @@ namespace FormPrincipal
         public FormAgregar()
         {
             InitializeComponent();
-            
+            this.elemento = new ElementosGimnasio();
 
         }
   
@@ -37,54 +36,53 @@ namespace FormPrincipal
         {
             AccesoDatos ac = new AccesoDatos();
             
-
-
-            if (comboBoxAgregarProductos.SelectedIndex == 0)
+            switch(this.comboBoxAgregarProductos.SelectedIndex)
             {
-                if(this.comboBoxCaracteristicas.SelectedIndex == 0)
-                {
-                    this.elemento = ac.ObtenerBarra(2);
-                  
-                }
-                else if (this.comboBoxCaracteristicas.SelectedIndex == 1)
-                {
-                    this.elemento = ac.ObtenerBarra(3);
-                }
-                else
-                {
-                    this.elemento = ac.ObtenerBarra(5);
-                }
-            }
-            else if (this.comboBoxAgregarProductos.SelectedIndex == 1)
-            {
-                if (this.comboBoxCaracteristicas.SelectedIndex == 0)
-                {
-                    this.elemento = ac.ObtenerMancuerna(2);
-                }
-                else if (this.comboBoxCaracteristicas.SelectedIndex == 1)
-                {
-                    this.elemento = ac.ObtenerMancuerna(5);
-                }
-                else
-                {
-                    this.elemento = ac.ObtenerMancuerna(10);
-                }
-            }
-            else
-            {
-                if (this.comboBoxCaracteristicas.SelectedIndex == 0)
-                {
-                    this.elemento = ac.ObtenerColchoneta(2);
-                }
-                else if (this.comboBoxCaracteristicas.SelectedIndex == 1)
-                {
-                    this.elemento = ac.ObtenerColchoneta(5);
-                }
-                else
-                {
-                    this.elemento = ac.ObtenerColchoneta(10);
-                }
+                case 0:
+                    switch(this.comboBoxCaracteristicas.SelectedIndex)
+                    {
+                           case 0:
+                            this.elemento = ac.ObtenerBarra(2);
+                            break;
+                        case 1:
+                            this.elemento = ac.ObtenerBarra(3);
+                            break;
+                        case 2:
+                            this.elemento = ac.ObtenerBarra(5);
+                            break;
 
+                    }
+                    break;
+                case 1:
+                    switch (this.comboBoxCaracteristicas.SelectedIndex)
+                    {
+                        case 0:
+                            this.elemento = ac.ObtenerMancuerna(2);
+                            break;
+                        case 1:
+                            this.elemento = ac.ObtenerMancuerna(5);
+                            break;
+                        case 2:
+                            this.elemento = ac.ObtenerMancuerna(10);
+                            break;
+
+                    }
+                    break;
+                case 2:
+                    switch (this.comboBoxCaracteristicas.SelectedIndex)
+                    {
+                        case 0:
+                            this.elemento = ac.ObtenerColchoneta(2);
+                            break;
+                        case 1:
+                            this.elemento = ac.ObtenerColchoneta(3);
+                            break;
+                        case 2:
+                            this.elemento = ac.ObtenerColchoneta(5);
+                            break;
+
+                    }
+                    break;
             }
 
             int validado = 0;
@@ -104,28 +102,25 @@ namespace FormPrincipal
             {
                 this.comboBoxCaracteristicas.Items.Clear();
                 this.labelPrecio.Text = "0";
-                this.comboBoxCaracteristicas.Items.AddRange(new object[] { "2", "3", "5" });
+                this.comboBoxCaracteristicas.Items.AddRange(new object[] { "2 mts", "3 mts", "5 mts" });
                
             }
             else if (comboBoxAgregarProductos.SelectedIndex == 1)
             {
                 this.comboBoxCaracteristicas.Items.Clear();
                 this.labelPrecio.Text = "0";
-                this.comboBoxCaracteristicas.Items.AddRange(new object[] { "2", "5", "10" });
+                this.comboBoxCaracteristicas.Items.AddRange(new object[] { "2 kg", "5 kg", "10 kg" });
             }
             else
             {
                 this.comboBoxCaracteristicas.Items.Clear();
                 this.labelPrecio.Text = "0";
-                this.comboBoxCaracteristicas.Items.AddRange(new object[] { "2", "3", "10" });
+                this.comboBoxCaracteristicas.Items.AddRange(new object[] { "2 mts", "3 mts", "5 mts" });
 
             }
         }
 
-        private void labelPrecio_Click(object sender, EventArgs e)
-        {
-
-        }
+   
 
         private void comboBoxCaracteristicas_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -182,7 +177,8 @@ namespace FormPrincipal
 
         private void FormAgregar_Load(object sender, EventArgs e)
         {
-            this.elemento = new ElementosGimnasio();
+           
+            this.Text = "Gaitan Agustin";
         }
     }
 }

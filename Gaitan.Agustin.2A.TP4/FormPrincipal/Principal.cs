@@ -14,19 +14,19 @@ namespace FormPrincipal
 {
     public partial class Principal : Form
     {
-        //private Venta ventas;
-        private SqlConnection conexion;
-        private SqlCommand comando;
+        private Venta venta;
         private DataTable tabla;
-        private SqlDataAdapter data;
         private AccesoDatos objAcceso;
 
         public Principal()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
 
             this.objAcceso = new AccesoDatos();
-            this.ConfigurarDA();
+            this.venta = new Venta(5, 5, 5);
+
+            ////this.ConfigurarDA();
             this.ConfigurarDT();
 
             //this.tabla = this.objAcceso.ObtenerTablaVentas();
@@ -34,15 +34,7 @@ namespace FormPrincipal
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-            try
-            {
-                //this.data.Fill(tabla);
-                //this.dgvGrilla.DataSource = this.tabla;
-            }
-            catch (Exception)
-            {
-
-            }
+            this.Text = "Gaitan Agustin";
 
         }
 
@@ -60,31 +52,46 @@ namespace FormPrincipal
                 fila["caracteristica"] = formNuevo.Elemento.Caracteristica;
                 fila["precio"] = formNuevo.Elemento.Precio;
 
+                this.venta.ListaTotal.Add(formNuevo.Elemento);
+                if(formNuevo.Elemento is Barra)
+                {
+                    venta.ListaBarras.Add((Barra)formNuevo.Elemento);
+                }
+                else if (formNuevo.Elemento is Mancuerna)
+                {
+                    venta.ListaMancuernas.Add((Mancuerna)formNuevo.Elemento);
+                }
+                if (formNuevo.Elemento is Colchoneta)
+                {
+                    venta.ListaColchonetas.Add((Colchoneta)formNuevo.Elemento);
+                }
+
+
                 this.tabla.Rows.Add(fila);
                 this.dgvGrilla.DataSource = this.tabla;
             }
         }
 
-            public bool ConfigurarDA()
-            {
-                bool todoOk = true;
+            //public bool ConfigurarDA()
+            //{
+            //    bool todoOk = true;
 
-                this.data = new SqlDataAdapter();
-                try
-                {
-                    this.conexion = new SqlConnection(Properties.Settings.Default.conexionBD);
+            //    this.data = new SqlDataAdapter();
+            //    try
+            //    {
+            //        this.conexion = new SqlConnection(Properties.Settings.Default.conexionBD);
 
-                    this.data.SelectCommand = new SqlCommand("SELECT * FROM [gimnasio].[dbo].[tablaproductos] ", this.conexion);
+            //        this.data.SelectCommand = new SqlCommand("SELECT * FROM [gimnasio].[dbo].[tablaproductos] ", this.conexion);
 
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.Message);
-                    todoOk = false;
-                }
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        MessageBox.Show(e.Message);
+            //        todoOk = false;
+            //    }
 
-                return todoOk;
-            }
+            //    return todoOk;
+            //}
 
             public void ConfigurarDT()
             {
@@ -104,6 +111,26 @@ namespace FormPrincipal
 
 
             }
-        
+
+        private void buttonEliminarProducto_Click(object sender, EventArgs e)
+        {
+            int i = this.dgvGrilla.SelectedRows[0].Index;
+
+            //DataRow fila = this.tabla.Rows[i];
+
+            object[] objeto = this.tabla.Rows[i].ItemArray;  //obtiene la fila a punto de ser eliminada, para tambien eliminarla de la venta.
+            this.venta.ListaBarras.Remove(new Barra((int)objeto[2]));
+
+
+
+         
+            this.tabla.Rows[i].Delete();
+            this.tabla.AcceptChanges();
+        }
+
+        private void buttonGuardarVentaTXT_Click(object sender, EventArgs e)
+        {
+            Venta.Guardar(this.venta);
+        }
     }
 }

@@ -153,42 +153,6 @@ namespace Entidades
             return colchoneta;
         }
 
-        public DataTable ObtenerTablaVentas()
-        {
-            DataTable tabla = new DataTable("Productos");
-
-            try
-            {
-                this.comando = new SqlCommand();
-
-                this.comando.CommandType = CommandType.Text;
-
-                this.comando.Connection = this.conexion;
-
-                this.comando.CommandText = "SELECT * FROM tablaproductos ORDER BY id";
-
-                this.conexion.Open();
-
-                
-                    SqlDataReader oDr = this.comando.ExecuteReader();
-                tabla.Load(oDr);
-
-                oDr.Close();
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-            finally
-            {
-                if (this.conexion.State == ConnectionState.Open)
-                {
-                    this.conexion.Close();
-                }
-            }
-
-            return tabla;
-        }
+        
     }
 }

@@ -40,7 +40,7 @@
             // 
             // buttonAceptarFormAgregar
             // 
-            this.buttonAceptarFormAgregar.Location = new System.Drawing.Point(12, 143);
+            this.buttonAceptarFormAgregar.Location = new System.Drawing.Point(12, 181);
             this.buttonAceptarFormAgregar.Name = "buttonAceptarFormAgregar";
             this.buttonAceptarFormAgregar.Size = new System.Drawing.Size(125, 30);
             this.buttonAceptarFormAgregar.TabIndex = 3;
@@ -50,7 +50,7 @@
             // 
             // buttonCancelarFormAgregar
             // 
-            this.buttonCancelarFormAgregar.Location = new System.Drawing.Point(155, 143);
+            this.buttonCancelarFormAgregar.Location = new System.Drawing.Point(143, 181);
             this.buttonCancelarFormAgregar.Name = "buttonCancelarFormAgregar";
             this.buttonCancelarFormAgregar.Size = new System.Drawing.Size(121, 30);
             this.buttonCancelarFormAgregar.TabIndex = 4;
@@ -104,19 +104,21 @@
             // labelPrecio
             // 
             this.labelPrecio.AutoSize = true;
-            this.labelPrecio.Location = new System.Drawing.Point(230, 68);
+            this.labelPrecio.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPrecio.Location = new System.Drawing.Point(86, 135);
             this.labelPrecio.Name = "labelPrecio";
-            this.labelPrecio.Size = new System.Drawing.Size(59, 13);
+            this.labelPrecio.Size = new System.Drawing.Size(18, 18);
             this.labelPrecio.TabIndex = 9;
-            this.labelPrecio.Text = "labelPrecio";
-            this.labelPrecio.Click += new System.EventHandler(this.labelPrecio_Click);
+            this.labelPrecio.Text = "0";
+            this.labelPrecio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(239, 37);
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 132);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.Size = new System.Drawing.Size(55, 20);
             this.label1.TabIndex = 10;
             this.label1.Text = "Precio";
             // 
@@ -124,7 +126,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(301, 188);
+            this.ClientSize = new System.Drawing.Size(273, 232);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelPrecio);
             this.Controls.Add(this.Caracteristica);

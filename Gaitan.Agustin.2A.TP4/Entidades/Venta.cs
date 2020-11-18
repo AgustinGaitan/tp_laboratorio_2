@@ -104,9 +104,9 @@ namespace Entidades
         }
 
 
-        public Venta(int cantMaxMancuernas, int cantMaxBarras, int cantMaxColchonetas,int id)
+        public Venta(int cantMaxMancuernas, int cantMaxBarras, int cantMaxColchonetas)
         {
-            this.idVenta = id;
+  
             this.CantidadMaximaBarras = cantMaxBarras;
             this.CantidadMaximaColchonetas = cantMaxColchonetas;
             this.CantidadMaximaMancuernas = cantMaxColchonetas;
@@ -137,7 +137,6 @@ namespace Entidades
         protected virtual string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat($"ID DE LA VENTA: {this.idVenta}\n\n");
             sb.AppendFormat($"Cantidad de barras a vender: {this.listaBarras.Count}\n");
             sb.AppendFormat($"Cantidad de mancuernas a vender: {this.listaMancuernas.Count}\n");
             sb.AppendFormat($"Cantidad de colchonetas a vender: {this.listaColchonetas.Count}\n\n");

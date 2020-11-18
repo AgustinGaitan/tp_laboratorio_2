@@ -15,9 +15,9 @@ namespace ConsoleTest
         {
             try
             {
-                Venta ventaUno = new Venta(2, 2, 2, 1);
-                Venta ventaDos = new Venta(4, 4, 2, 2);
-                Venta ventaTres = new Venta(1, 1, 1, 3);
+                Venta ventaUno = new Venta(2, 2, 2);
+                Venta ventaDos = new Venta(4, 4, 2);
+                Venta ventaTres = new Venta(1, 1, 1);
                 Barra barraUno = new Barra(2);
                 Barra barraDos = new Barra(3);
                 Barra barraTres = new Barra(7);
