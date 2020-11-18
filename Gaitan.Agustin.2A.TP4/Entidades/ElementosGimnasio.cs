@@ -14,6 +14,9 @@ namespace Entidades
         protected int precio;
         protected int caracteristica;
 
+        /// <summary>
+        /// propiedad de solo lectura que retorna la id
+        /// </summary>
 
         public int Id
         {
@@ -22,6 +25,11 @@ namespace Entidades
                 return this.id;
             }
         }
+
+        /// <summary>
+        /// propiedad de lectura y escritura que retorna el precio y
+        /// lo agrega.
+        /// </summary>
         public int Precio
         {
             get
@@ -34,6 +42,10 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// propiedad de lectura y escritura que retorna el nombre y
+        /// lo agrega.
+        /// </summary>
         public string Nombre
         {
             get
@@ -45,7 +57,10 @@ namespace Entidades
                 this.nombre = value;
             }
         }
-
+        /// <summary>
+        /// propiedad de lectura y escritura que retorna la caracteristica y
+        /// lo agrega.
+        /// </summary>
         public int Caracteristica
         {
             get
@@ -61,18 +76,34 @@ namespace Entidades
         }
 
 
+        /// <summary>
+        /// Constructor por default
+        /// </summary>
         public ElementosGimnasio()
         {
             
 
         }
+
+        /// <summary>
+        /// Constructor con parametro
+        /// </summary>
+        /// <param name="caracteristica">caracteristica del elemento</param>
         public ElementosGimnasio(int caracteristica)
         {
-        
+
             this.Caracteristica = caracteristica;
-           
+
 
         }
+
+        /// <summary>
+        /// Constructor con parametro
+        /// </summary>
+        /// <param name="id">id del producto</param>
+        /// <param name="nombre">nombre del producto</param>
+        /// <param name="caracteristica">caracteristica del producto</param>
+        /// <param name="precio">precio del producto</param>
         public ElementosGimnasio(int id, string nombre, int caracteristica, int precio)
         {
             this.id = id;
@@ -82,12 +113,22 @@ namespace Entidades
 
         }
 
+        /// <summary>
+        /// metodo estatico que guarda el elemento
+        /// en un .txt
+        /// </summary>
+        /// <param name="elementos">elemento a guardar</param>
+        /// <returns></returns>
         public static bool Guardar(ElementosGimnasio elementos)
         {
             Texto t = new Texto();
             return t.Guardar("elementos.txt", elementos.ToString());
         }
 
+        /// <summary>
+        /// metodo estatico que lee un .txt
+        /// </summary>
+        /// <returns>los datos leidos</returns>
         public static string Leer()
         {
             Texto nuevoTexto = new Texto();
@@ -96,6 +137,10 @@ namespace Entidades
             return datos;
         }
 
+        /// <summary>
+        /// Sobreescritura de ToString
+        /// </summary>
+        /// <returns>la informacion del producto</returns>
         public override string ToString()  
         {
             StringBuilder sb = new StringBuilder();

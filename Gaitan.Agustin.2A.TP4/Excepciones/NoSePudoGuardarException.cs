@@ -8,6 +8,9 @@ namespace Excepciones
 {
     public class NoSePudoGuardarException : Exception
     {
+        /// <summary>
+        /// Constructor por default con mensaje de error.
+        /// </summary>
         public NoSePudoGuardarException()
             : base("No se pudo guardar el archivo. No hay filas...")
         {

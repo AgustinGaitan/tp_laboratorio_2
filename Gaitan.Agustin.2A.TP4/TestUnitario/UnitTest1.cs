@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Entidades;
 using Excepciones;
+using Archivos;
 
 namespace TestUnitario
 {
@@ -9,44 +10,41 @@ namespace TestUnitario
     public class UnitTest1
     {
         [TestMethod]
-        public void Test_LongitudInvalida()
+        public void Test_MeterListaElementos()
         {
-            try
-            {
-                Barra barraUno = new Barra(500);
-            }
-            catch(Exception e)
-            {
-                Assert.IsInstanceOfType(e, typeof(FilaVaciaException));
-            }
+           
+                Venta venta = new Venta(1);
+                ElementosGimnasio elemento = new ElementosGimnasio(5);
+                
+                venta += elemento;
+                int count = venta.ListaTotal.Count;
+                Assert.AreEqual(1, count);
+       
             
         }
 
         [TestMethod]
-        public void Test_PesoInvalido()
+        public void Test_SacarListaElementos()
         {
-            try
-            {
-                Mancuerna barraUno = new Mancuerna(900);
-            }
-            catch (Exception e)
-            {
-                Assert.IsInstanceOfType(e, typeof(ProductoSinSeleccionarException));
-            }
 
+            Venta venta = new Venta(2);
+            ElementosGimnasio elemento = new ElementosGimnasio(5);
+
+            venta += elemento;
+            venta -= elemento;
+            int count = venta.ListaTotal.Count;
+            Assert.AreEqual(0, count);
         }
 
         [TestMethod]
-        public void Test_ElementosMaxInvalido()
+        [ExpectedException(typeof(ArchivosException))]
+        public void Test_ArchivoError()
         {
-            try
-            {
-                //Venta barraUno = new Venta(522,674,125,1);
-            }
-            catch (Exception e)
-            {
-                Assert.IsInstanceOfType(e, typeof(CantMaxElementosInvalidaException));
-            }
+            Texto txt = new Texto();
+            string dato;
+
+            txt.Leer("asdasd.txt", out dato );
+
 
         }
     }

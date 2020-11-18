@@ -5,6 +5,10 @@ using System.Xml.Serialization;
 
 namespace Archivos
 {
+    /// <summary>
+    /// Clase generica
+    /// </summary>
+    /// <typeparam name="T">tipo de dato a pasarle</typeparam>
     public class Xml<T> : IArchivo<T>
     {
         /// <summary>

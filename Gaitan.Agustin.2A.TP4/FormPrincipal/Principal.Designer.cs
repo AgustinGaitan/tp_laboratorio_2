@@ -39,7 +39,7 @@ namespace FormPrincipal
             this.buttonEliminarProducto = new System.Windows.Forms.Button();
             this.buttonRealizarVenta = new System.Windows.Forms.Button();
             this.dgvGrilla = new System.Windows.Forms.DataGridView();
-            this.buttonGuardarVentaTXT = new System.Windows.Forms.Button();
+            this.buttonGuardarElementoTXT = new System.Windows.Forms.Button();
             this.buttonGuardarVentaEntera = new System.Windows.Forms.Button();
             this.buttonGuardarXML = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,22 +51,24 @@ namespace FormPrincipal
             // 
             // buttonAgregarProducto
             // 
+            this.buttonAgregarProducto.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.buttonAgregarProducto.Location = new System.Drawing.Point(30, 396);
             this.buttonAgregarProducto.Name = "buttonAgregarProducto";
             this.buttonAgregarProducto.Size = new System.Drawing.Size(120, 32);
             this.buttonAgregarProducto.TabIndex = 1;
             this.buttonAgregarProducto.Text = "Agregar producto";
-            this.buttonAgregarProducto.UseVisualStyleBackColor = true;
+            this.buttonAgregarProducto.UseVisualStyleBackColor = false;
             this.buttonAgregarProducto.Click += new System.EventHandler(this.buttonAgregarProducto_Click);
             // 
             // buttonEliminarProducto
             // 
+            this.buttonEliminarProducto.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.buttonEliminarProducto.Location = new System.Drawing.Point(30, 444);
             this.buttonEliminarProducto.Name = "buttonEliminarProducto";
             this.buttonEliminarProducto.Size = new System.Drawing.Size(120, 34);
             this.buttonEliminarProducto.TabIndex = 3;
             this.buttonEliminarProducto.Text = "Eliminar producto";
-            this.buttonEliminarProducto.UseVisualStyleBackColor = true;
+            this.buttonEliminarProducto.UseVisualStyleBackColor = false;
             this.buttonEliminarProducto.Click += new System.EventHandler(this.buttonEliminarProducto_Click);
             // 
             // buttonRealizarVenta
@@ -111,34 +113,38 @@ namespace FormPrincipal
             this.dgvGrilla.Size = new System.Drawing.Size(522, 375);
             this.dgvGrilla.TabIndex = 5;
             // 
-            // buttonGuardarVentaTXT
+            // buttonGuardarElementoTXT
             // 
-            this.buttonGuardarVentaTXT.Location = new System.Drawing.Point(231, 396);
-            this.buttonGuardarVentaTXT.Name = "buttonGuardarVentaTXT";
-            this.buttonGuardarVentaTXT.Size = new System.Drawing.Size(120, 38);
-            this.buttonGuardarVentaTXT.TabIndex = 6;
-            this.buttonGuardarVentaTXT.Text = "Guardar producto seleccionado en .txt";
-            this.buttonGuardarVentaTXT.UseVisualStyleBackColor = true;
-            this.buttonGuardarVentaTXT.Click += new System.EventHandler(this.buttonGuardarVentaTXT_Click);
+            this.buttonGuardarElementoTXT.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonGuardarElementoTXT.Location = new System.Drawing.Point(231, 396);
+            this.buttonGuardarElementoTXT.Name = "buttonGuardarElementoTXT";
+            this.buttonGuardarElementoTXT.Size = new System.Drawing.Size(120, 38);
+            this.buttonGuardarElementoTXT.TabIndex = 6;
+            this.buttonGuardarElementoTXT.Text = "Guardar producto seleccionado en .txt";
+            this.buttonGuardarElementoTXT.UseVisualStyleBackColor = false;
+            this.buttonGuardarElementoTXT.Click += new System.EventHandler(this.buttonGuardarVentaTXT_Click);
             // 
             // buttonGuardarVentaEntera
             // 
+            this.buttonGuardarVentaEntera.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.buttonGuardarVentaEntera.Location = new System.Drawing.Point(231, 440);
             this.buttonGuardarVentaEntera.Name = "buttonGuardarVentaEntera";
             this.buttonGuardarVentaEntera.Size = new System.Drawing.Size(120, 38);
             this.buttonGuardarVentaEntera.TabIndex = 8;
             this.buttonGuardarVentaEntera.Text = "Guardar venta en .txt";
-            this.buttonGuardarVentaEntera.UseVisualStyleBackColor = true;
+            this.buttonGuardarVentaEntera.UseVisualStyleBackColor = false;
             this.buttonGuardarVentaEntera.Click += new System.EventHandler(this.buttonGuardarVentaEntera_Click);
             // 
             // buttonGuardarXML
             // 
+            this.buttonGuardarXML.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.buttonGuardarXML.Location = new System.Drawing.Point(432, 396);
             this.buttonGuardarXML.Name = "buttonGuardarXML";
             this.buttonGuardarXML.Size = new System.Drawing.Size(120, 38);
             this.buttonGuardarXML.TabIndex = 9;
-            this.buttonGuardarXML.Text = "Guardar producto seleccionado en .xml";
-            this.buttonGuardarXML.UseVisualStyleBackColor = true;
+            this.buttonGuardarXML.Text = "Guardar venta en .xml";
+            this.buttonGuardarXML.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonGuardarXML.UseVisualStyleBackColor = false;
             this.buttonGuardarXML.Click += new System.EventHandler(this.buttonGuardarXML_Click);
             // 
             // label1
@@ -177,17 +183,21 @@ namespace FormPrincipal
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(591, 568);
             this.Controls.Add(this.imagenPictureBox);
             this.Controls.Add(this.labelTotal);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonGuardarXML);
             this.Controls.Add(this.buttonGuardarVentaEntera);
-            this.Controls.Add(this.buttonGuardarVentaTXT);
+            this.Controls.Add(this.buttonGuardarElementoTXT);
             this.Controls.Add(this.dgvGrilla);
             this.Controls.Add(this.buttonRealizarVenta);
             this.Controls.Add(this.buttonEliminarProducto);
             this.Controls.Add(this.buttonAgregarProducto);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Principal";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Principal_FormClosing_1);
@@ -206,7 +216,7 @@ namespace FormPrincipal
         private System.Windows.Forms.Button buttonAgregarProducto;
         private System.Windows.Forms.Button buttonEliminarProducto;
         private System.Windows.Forms.Button buttonRealizarVenta;
-        private System.Windows.Forms.Button buttonGuardarVentaTXT;
+        private System.Windows.Forms.Button buttonGuardarElementoTXT;
         private Button buttonGuardarVentaEntera;
         private Button buttonGuardarXML;
         private Label label1;

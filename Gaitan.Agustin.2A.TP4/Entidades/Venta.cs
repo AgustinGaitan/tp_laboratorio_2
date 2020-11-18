@@ -17,21 +17,18 @@ namespace Entidades
     //hilos;
     //excepciones;//
     //test unitarios;//
-    //delegados y eventos
+    //delegados y eventos//
 
 
     public class Venta
     {
       
         private int cantMaxElementos;
-        //private int cantMaxBarras;
-        //private int cantMaxMancuernas;
-        //private int cantMaxColchonetas;
-        //private List<Barra> listaBarras;
-        //private List<Mancuerna> listaMancuernas;
-        //private List<Colchoneta> listaColchonetas;
        private List<ElementosGimnasio> listaTotal;
 
+        /// <summary>
+        /// Propiedad s/l que retorna la lista total de elementos
+        /// </summary>
         public List<ElementosGimnasio> ListaTotal
         {
             get
@@ -39,107 +36,42 @@ namespace Entidades
                 return this.listaTotal;
             }
         }
-        //public List<Barra> ListaBarras
-        //{
-        //    get
-        //    {
-        //        return this.listaBarras;
-        //    }
-        //}
-        //public List<Mancuerna> ListaMancuernas
-        //{
-        //    get
-        //    {
-        //        return this.listaMancuernas;
-        //    }
-        //}
-        //public List<Colchoneta> ListaColchonetas
-        //{
-        //    get
-        //    {
-        //        return this.listaColchonetas;
-        //    }
-        //}
-
-        //public int CantidadMaximaMancuernas
-        //{
-        //    get
-        //    {
-        //        return this.cantMaxMancuernas;
-        //    }
-        //    set
-        //    {
-        //        this.cantMaxMancuernas = this.ValidarCantMax(value);
-        //    }
-        //}
-
-        //public int CantidadMaximaBarras
-        //{
-        //    get
-        //    {
-        //        return this.cantMaxBarras;
-        //    }
-        //    set
-        //    {
-        //        this.cantMaxBarras = this.ValidarCantMax(value);
-        //    }
-        //}
-
-
-        //public int CantidadMaximaColchonetas
-        //{
-        //    get
-        //    {
-        //        return this.cantMaxColchonetas;
-        //    }
-        //    set
-        //    {
-        //        this.cantMaxColchonetas = this.ValidarCantMax(value);
-        //    }
-        //}
-
+    
+        /// <summary>
+        /// constructor por default
+        /// </summary>
         public Venta()
         {
             
         }
 
-
+        /// <summary>
+        /// Constructor con parametros
+        /// </summary>
+        /// <param name="cantMaxElementos">Cantidad maxima de elementos</param>
         public Venta(int cantMaxElementos)
         {
             this.cantMaxElementos = cantMaxElementos;
-            //this.CantidadMaximaBarras = cantMaxBarras;
-            //this.CantidadMaximaColchonetas = cantMaxColchonetas;
-            //this.CantidadMaximaMancuernas = cantMaxColchonetas;
-            //this.listaBarras = new List<Barra>();
-            //this.listaMancuernas = new List<Mancuerna>();
-            //this.listaColchonetas = new List<Colchoneta>();
+ 
             this.listaTotal = new List<ElementosGimnasio>();
 
         }
 
-        public int ValidarCantMax(int cant)
-        {
-            int validado = 0;
-
-            //si puede convertirlo lo retorna como numero
-            if (int.TryParse(cant.ToString(), out validado) && (cant > 0 && cant <= 20))
-            {
-                return validado;
-            }
-            else
-            {
-                throw new CantMaxElementosInvalidaException();
-            }
-
-
-        }
-
+        /// <summary>
+        /// metodo estatico para guadar en un .txt
+        /// </summary>
+        /// <param name="venta">venta a guardar</param>
+        /// <returns></returns>
         public static bool Guardar(Venta venta)
         {
             Texto t = new Texto();
             return t.Guardar("ventas.txt", venta.ToString());
         }
 
+        /// <summary>
+        /// metodo estatico para leer un txt
+        /// </summary>
+        /// <returns>los datos leidos</returns>
         public static string Leer()
         {
             Texto nuevoTexto = new Texto();
@@ -148,6 +80,10 @@ namespace Entidades
             return datos;
         }
 
+        /// <summary>
+        /// Muestra los datos
+        /// </summary>
+        /// <returns>Un string con los datos</returns>
         private string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
@@ -164,6 +100,11 @@ namespace Entidades
         }
 
 
+        /// <summary>
+        /// Metodo estatico que guarda un archivo en .xml
+        /// </summary>
+        /// <param name="venta">venta a guardar</param>
+        /// <returns></returns>
         public static bool GuardarSer(Venta venta)
         {
             Xml<Venta> u = new Xml<Venta>();
@@ -171,6 +112,10 @@ namespace Entidades
             return u.Guardar("venta.xml", venta);
         }
 
+        /// <summary>
+        /// Metodo estatico que lee un archivo .xml
+        /// </summary>
+        /// <returns></returns>
         public static Venta LeerSerializado()
         {
             Xml<Venta> u = new Xml<Venta>();
@@ -178,6 +123,12 @@ namespace Entidades
             return ventaXml;
         }
 
+        /// <summary>
+        /// sobrecarga del operador +
+        /// </summary>
+        /// <param name="venta">venta a ser sumada</param>
+        /// <param name="elemento">elemento a ser sumado</param>
+        /// <returns>la venta ya sumada/returns>
         public static Venta operator +(Venta venta, ElementosGimnasio elemento)
         {
             if(venta.ListaTotal.Count < venta.cantMaxElementos)
@@ -189,6 +140,12 @@ namespace Entidades
             return venta;
         }
 
+        /// <summary>
+        /// sobrecarga del operador -
+        /// </summary>
+        /// <param name="venta">venta a ser restado</param>
+        /// <param name="elemento">elemento a ser restado</param>
+        /// <returns>la venta ya restada/returns>
         public static Venta operator -(Venta venta, ElementosGimnasio elemento)
         {
            
@@ -197,11 +154,21 @@ namespace Entidades
             return venta;
         }
        
+        /// <summary>
+        /// Sobreescritura del metodo ToString
+        /// </summary>
+        /// <returns>Cadena con los datos</returns>
         public override string ToString()
         {
             return this.MostrarDatos();
         }
 
+        /// <summary>
+        /// Sobrecarga del operador +
+        /// </summary>
+        /// <param name="venta">Venta a ser sumada</param>
+        /// <param name="elemento">Lista a ser sumada</param>
+        /// <returns>Venta sumada</returns>
         public static Venta operator +(Venta venta, List<ElementosGimnasio> elemento)
         {
 
@@ -214,6 +181,12 @@ namespace Entidades
             return venta;
         }
 
+        /// <summary>
+        /// Sobrecarga del operador -
+        /// </summary>
+        /// <param name="venta">Venta a ser restada</param>
+        /// <param name="elemento">Lista a restar</param>
+        /// <returns>Venta restada</returns>
         public static Venta operator -(Venta venta, List<ElementosGimnasio> elemento)
         {
             for (int indice = 0; indice < elemento.Count; indice++)

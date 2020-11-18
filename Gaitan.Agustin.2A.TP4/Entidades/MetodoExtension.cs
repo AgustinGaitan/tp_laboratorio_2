@@ -9,9 +9,14 @@ namespace Entidades
 {
     public static class MetodoExtension
     {
+        /// <summary>
+        /// Método de extension
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
         public static string Informar(this FilaVaciaException e)
         {
-            return "Error. No hay fila ...\n";
+            return "Error. No hay elementos en la grilla...\n";
         }
     }
 }

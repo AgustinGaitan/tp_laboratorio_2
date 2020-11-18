@@ -124,6 +124,9 @@
             this.Controls.Add(this.comboBoxCaracteristicas);
             this.Controls.Add(this.comboBoxAgregarProductos);
             this.Controls.Add(this.buttonAceptarFormAgregar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormAgregar";
             this.Text = "FormAgregar";
             this.Load += new System.EventHandler(this.FormAgregar_Load);

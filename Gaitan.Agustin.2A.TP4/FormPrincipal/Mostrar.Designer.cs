@@ -157,6 +157,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelDondeVaNombreProducto);
             this.Controls.Add(this.labelProductoMostrar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Mostrar";
             this.Text = "Form1";
             this.ResumeLayout(false);

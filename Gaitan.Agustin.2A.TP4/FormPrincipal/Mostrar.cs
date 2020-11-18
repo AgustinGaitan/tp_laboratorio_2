@@ -14,6 +14,11 @@ namespace FormPrincipal
     public partial class Mostrar : Form
     {
         protected ElementosGimnasio elemento;
+
+        /// <summary>
+        /// Propiedad de solo lectura que retorna el elemento
+        /// del form
+        /// </summary>
         public ElementosGimnasio Elemento
         {
             get
@@ -22,11 +27,20 @@ namespace FormPrincipal
             }
         }
 
+        /// <summary>
+        /// Constructor por default que inicializa el componente y cambia
+        /// el nombre de la ventana
+        /// </summary>
         public Mostrar()
         {
             InitializeComponent();
+            this.Text = "Eliminar producto";
         }
 
+        /// <summary>
+        /// Constructor al que se le pasa un elemento del gimnasio
+        /// </summary>
+        /// <param name="eg"></param>
         public Mostrar(ElementosGimnasio eg) : this()
         {
             this.elemento = eg;
@@ -36,17 +50,22 @@ namespace FormPrincipal
             this.labelDondeVaPrecio.Text = eg.Precio.ToString();
         }
 
+        /// <summary>
+        /// Boton para aceptar los cambios
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
-            if (this.elemento is Barra)
+            if (this.elemento is Barra)     //Si el elemento es barra agrega una nueva barra
             {
                 this.elemento = new Barra(int.Parse(this.labelDondeVaCaracteristica.Text));
             }
-            else if (this.elemento is Mancuerna)
+            else if (this.elemento is Mancuerna)    //Si el elemento es mancuerna agrega una nueva mancuerna
             {
                 this.elemento = new Mancuerna(int.Parse(this.labelDondeVaCaracteristica.Text));
             }
-            else
+            else                                     //Si el elemento es una colchoneta, agrega una nueva colchoneta
             {
                 this.elemento = new Colchoneta(int.Parse(this.labelDondeVaCaracteristica.Text));
             }

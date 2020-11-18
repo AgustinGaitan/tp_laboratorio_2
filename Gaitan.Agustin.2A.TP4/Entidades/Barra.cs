@@ -4,19 +4,32 @@ using Archivos;
 
 namespace Entidades
 {
-   
+   /// <summary>
+   /// Clase que deriva de ElementosGimnasio
+   /// </summary>
     public class Barra : ElementosGimnasio
     {
-        
+        /// <summary>
+        /// Constructor por default
+        /// </summary>
         public Barra()         
         {
             
         }
 
+        /// <summary>
+        /// Constructor con parametro
+        /// </summary>
+        /// <param name="longitud">Longitud de la barra</param>
         public Barra(int longitud):base(longitud)
         {
 
         }
+        /// <summary>
+        /// Constructor con parametros
+        /// </summary>
+        /// <param name="id">id del producto</param>
+        /// <param name="longitud">longitud de la barra</param>
         public Barra(int id, int longitud):base(id,"barra",longitud,0)
         {
           
@@ -24,7 +37,10 @@ namespace Entidades
         }
 
 
-
+        /// <summary>
+        /// Muestra los datos 
+        /// </summary>
+        /// <returns>String con los datos</returns>
         private string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
@@ -36,36 +52,10 @@ namespace Entidades
 
         }
 
-        //protected virtual int ValidarLongitud(int longitud)
-        //{
-        //    int validado = 0;
-
-        //    if (int.TryParse(longitud.ToString(), out validado))
-        //    {
-
-        //        if (longitud > 0 && longitud <= 2)
-        //        {
-        //            this.Precio = 2000;
-        //        }
-        //        else if (longitud == 3)
-        //        {
-        //            this.Precio = 4000;
-        //        }
-        //        else
-        //        {
-        //            this.Precio = 7500;
-        //        }
-
-        //    }
-        //    else
-        //    {
-        //        throw new LongitudInvalidaException();
-        //    }
-
-        //    return validado;
-        //}
-
-
+        /// <summary>
+        /// Override de ToString para acceder publicamente a la informacion del objeto
+        /// </summary>
+        /// <returns>Informacion del objeto</returns>
         public override string ToString()
         {
             return this.MostrarDatos();

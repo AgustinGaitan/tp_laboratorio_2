@@ -13,11 +13,19 @@ namespace Entidades
         private SqlConnection conexion;
         private SqlCommand comando;
 
+        /// <summary>
+        /// Constructor por default que establece la conexion
+        /// </summary>
         public AccesoDatos()
         {
             this.conexion = new SqlConnection(Properties.Settings.Default.conexionBD);
         }
 
+        /// <summary>
+        /// Metodo para obtener la barra
+        /// </summary>
+        /// <param name="longitud"></param>
+        /// <returns>La barra obtenida de la base de datos</returns>
         public Barra ObtenerBarra(int longitud)
         {
 
@@ -63,6 +71,12 @@ namespace Entidades
             return barra;
         }
 
+        /// <summary>
+        /// Metodo para obtener una mancuerna
+        /// de la base de datos
+        /// </summary>
+        /// <param name="peso">Peso de la mancuerna</param>
+        /// <returns>La mancuerna obtenida de la base de datos</returns>
         public Mancuerna ObtenerMancuerna(int peso)
         {
             Mancuerna mancuerna = default;
@@ -107,6 +121,11 @@ namespace Entidades
             return mancuerna;
         }
 
+        /// <summary>
+        /// Metodo para obtener una colchoneta
+        /// </summary>
+        /// <param name="longitud">longitud de la colchoneta</param>
+        /// <returns>Colchoneta obtenida de la base de datos</returns>
         public Colchoneta ObtenerColchoneta(int longitud)
         {
 

@@ -41,13 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CantMaxElementosInvalidaException.cs" />
     <Compile Include="CaracteristicaSinSeleccionarException.cs" />
     <Compile Include="NoSePudoGuardarException.cs" />
     <Compile Include="FilaVaciaException.cs" />
     <Compile Include="ArchivosException.cs" />
     <Compile Include="ProductoSinSeleccionarException.cs" />
-    <Compile Include="CantBarrasInvalidaException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
