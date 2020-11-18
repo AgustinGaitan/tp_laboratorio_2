@@ -204,11 +204,22 @@ namespace Entidades
 
         public static Venta operator +(Venta venta, List<ElementosGimnasio> elemento)
         {
-            if (venta.ListaTotal.Count < venta.cantMaxElementos)
-            {
-                
-            }
 
+           
+            for(int indice = 0; indice < elemento.Count; indice++)
+            {
+                venta.listaTotal.Add(elemento[indice]);
+            }
+            
+            return venta;
+        }
+
+        public static Venta operator -(Venta venta, List<ElementosGimnasio> elemento)
+        {
+            for (int indice = 0; indice < elemento.Count; indice++)
+            {
+                venta.listaTotal.Remove(elemento[indice]);
+            }
 
             return venta;
         }

@@ -1,8 +1,12 @@
-
-
 Nombre: colchoneta
 Caracteristica: 3
 Precio: 3000
+
+------------------------------------------
+
+Nombre: mancuerna
+Caracteristica: 5
+Precio: 2000
 
 ------------------------------------------
 

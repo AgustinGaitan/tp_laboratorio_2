@@ -41,7 +41,7 @@ namespace Entidades
 
                 if(oDr.Read())
                 {
-                    barra = new Barra(oDr.GetInt32(2));
+                    barra = new Barra(oDr.GetInt32(0), oDr.GetInt32(2));
                 }
                 
 
@@ -86,7 +86,7 @@ namespace Entidades
 
                 if (oDr.Read())
                 {
-                    mancuerna = new Mancuerna(oDr.GetInt32(2));
+                    mancuerna = new Mancuerna(oDr.GetInt32(0), oDr.GetInt32(2));
                 }
 
                 oDr.Close();
@@ -132,7 +132,8 @@ namespace Entidades
 
                 if (oDr.Read())
                 {
-                    colchoneta = new Colchoneta(oDr.GetInt32(2));
+                    colchoneta = new Colchoneta(oDr.GetInt32(0), oDr.GetInt32(2));
+                    
                 }
 
                 oDr.Close();
@@ -152,6 +153,8 @@ namespace Entidades
 
             return colchoneta;
         }
+
+
 
         
     }

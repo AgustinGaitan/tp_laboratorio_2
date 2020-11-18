@@ -13,12 +13,14 @@ namespace Entidades
         {
 
         }
+        public Mancuerna(int peso):base(peso)
+        {
 
-        public Mancuerna(int peso) : base()
+        }
+        public Mancuerna(int id, int peso) : base(id, "mancuerna", peso, 0)
         {
             
-            this.Caracteristica = peso;
-            this.Nombre = "mancuerna";
+
 
         }
 

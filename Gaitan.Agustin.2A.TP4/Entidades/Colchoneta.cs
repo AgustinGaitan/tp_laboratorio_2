@@ -9,15 +9,17 @@ namespace Entidades
        
 
         public Colchoneta()
-            : base()
+           
         {
         }
 
-        public Colchoneta(int longitud) : base()
+        public Colchoneta(int longitud) : base(longitud)
         {
-            this.Caracteristica = longitud;
-            this.Nombre = "colchoneta";
- 
+
+        }
+        public Colchoneta(int id, int longitud) : base(id, "colchoneta", longitud, 0)
+        {
+    
         }
 
         //protected int ValidarLongitud(int longitud)

@@ -41,7 +41,7 @@ namespace TestUnitario
         {
             try
             {
-                Venta barraUno = new Venta(522,674,125,1);
+                //Venta barraUno = new Venta(522,674,125,1);
             }
             catch (Exception e)
             {

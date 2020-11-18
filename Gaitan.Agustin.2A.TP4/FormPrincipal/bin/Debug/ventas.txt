@@ -1,71 +1,39 @@
+
+
 VENTA 
 LISTADO DE PRODUCTOS: 
-Nombre: mancuerna
-Caracteristica: 10
-Precio: 5000
-
-------------------------------------------
-Nombre: mancuerna
+Nombre: barra
 Caracteristica: 2
-Precio: 1000
+Precio: 2000
 
 ------------------------------------------
 Nombre: colchoneta
+Caracteristica: 3
+Precio: 3000
+
+------------------------------------------
+Nombre: mancuerna
 Caracteristica: 5
-Precio: 5000
+Precio: 2000
+
+------------------------------------------
+Nombre: mancuerna
+Caracteristica: 5
+Precio: 2000
 
 ------------------------------------------
 ------------------------------------------
 
 VENTA 
 LISTADO DE PRODUCTOS: 
-Nombre: mancuerna
-Caracteristica: 10
-Precio: 5000
-
-------------------------------------------
-Nombre: mancuerna
-Caracteristica: 2
-Precio: 1000
-
-------------------------------------------
-Nombre: mancuerna
-Caracteristica: 10
-Precio: 5000
-
-------------------------------------------
-Nombre: mancuerna
-Caracteristica: 2
-Precio: 1000
-
-------------------------------------------
 Nombre: colchoneta
+Caracteristica: 3
+Precio: 3000
+
+------------------------------------------
+Nombre: mancuerna
 Caracteristica: 5
-Precio: 5000
-
-------------------------------------------
-------------------------------------------
-
-VENTA 
-LISTADO DE PRODUCTOS: 
-Nombre: mancuerna
-Caracteristica: 10
-Precio: 5000
-
-------------------------------------------
-Nombre: mancuerna
-Caracteristica: 2
-Precio: 1000
-
-------------------------------------------
-Nombre: mancuerna
-Caracteristica: 10
-Precio: 5000
-
-------------------------------------------
-Nombre: mancuerna
-Caracteristica: 2
-Precio: 1000
+Precio: 2000
 
 ------------------------------------------
 Nombre: mancuerna

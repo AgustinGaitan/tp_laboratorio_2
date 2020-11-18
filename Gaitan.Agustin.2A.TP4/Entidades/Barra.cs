@@ -8,17 +8,19 @@ namespace Entidades
     public class Barra : ElementosGimnasio
     {
         
-        public Barra()
-            :base()
+        public Barra()         
         {
             
         }
 
-        public Barra(int longitud)
+        public Barra(int longitud):base(longitud)
         {
-            this.Caracteristica = longitud;
-            this.Nombre = "barra";
 
+        }
+        public Barra(int id, int longitud):base(id,"barra",longitud,0)
+        {
+          
+  
         }
 
 

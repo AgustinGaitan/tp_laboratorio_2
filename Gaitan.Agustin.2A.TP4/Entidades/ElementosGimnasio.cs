@@ -9,10 +9,19 @@ namespace Entidades
 {
     public class ElementosGimnasio
     {
+       protected int id;
         protected string nombre;
         protected int precio;
         protected int caracteristica;
 
+
+        public int Id
+        {
+            get
+            {
+                return this.id;
+            }
+        }
         public int Precio
         {
             get
@@ -57,9 +66,16 @@ namespace Entidades
             
 
         }
-
-        public ElementosGimnasio(string nombre, int caracteristica, int precio)
+        public ElementosGimnasio(int caracteristica)
         {
+        
+            this.Caracteristica = caracteristica;
+           
+
+        }
+        public ElementosGimnasio(int id, string nombre, int caracteristica, int precio)
+        {
+            this.id = id;
             this.Caracteristica = caracteristica;
             this.Nombre = nombre;
             this.Precio = precio;

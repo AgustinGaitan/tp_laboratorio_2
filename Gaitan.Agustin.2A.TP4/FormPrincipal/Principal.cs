@@ -29,7 +29,7 @@ namespace FormPrincipal
             this.venta = new Venta(10);
             
 
-            ////this.ConfigurarDA();
+           // this.ConfigurarDA();
             this.ConfigurarDT();
 
             //this.tabla = this.objAcceso.ObtenerTablaVentas();
@@ -52,6 +52,7 @@ namespace FormPrincipal
             {
                 DataRow fila = this.tabla.NewRow();
 
+                fila["id"] = formNuevo.Elemento.Id;
                 fila["producto"] = formNuevo.Elemento.Nombre;
                 fila["caracteristica"] = formNuevo.Elemento.Caracteristica;
                 fila["precio"] = formNuevo.Elemento.Precio;
@@ -64,40 +65,15 @@ namespace FormPrincipal
             }
         }
 
-            //public bool ConfigurarDA()
-            //{
-            //    bool todoOk = true;
-
-            //    this.data = new SqlDataAdapter();
-            //    try
-            //    {
-            //        this.conexion = new SqlConnection(Properties.Settings.Default.conexionBD);
-
-            //        this.data.SelectCommand = new SqlCommand("SELECT * FROM [gimnasio].[dbo].[tablaproductos] ", this.conexion);
-
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        MessageBox.Show(e.Message);
-            //        todoOk = false;
-            //    }
-
-            //    return todoOk;
-            //}
-
+         
             public void ConfigurarDT()
             {
                 this.tabla = new DataTable("gimnasio");
 
                 this.tabla.Columns.Add("id", typeof(int));
 
-                this.tabla.PrimaryKey = new DataColumn[] { this.tabla.Columns[0] };
 
-                this.tabla.Columns[0].AutoIncrement = true;
-                this.tabla.Columns[0].AutoIncrementSeed = 1;
-                this.tabla.Columns[0].AutoIncrementStep = 1;
-
-                this.tabla.Columns.Add("producto", typeof(string));
+                 this.tabla.Columns.Add("producto", typeof(string));
                 this.tabla.Columns.Add("caracteristica", typeof(int));
                 this.tabla.Columns.Add("precio", typeof(int));
 
@@ -112,7 +88,7 @@ namespace FormPrincipal
                 {
                     int indice = this.dgvGrilla.CurrentRow.Index;
 
-                    ElementosGimnasio el = new ElementosGimnasio(this.tabla.Rows[indice]["producto"].ToString(),
+                    ElementosGimnasio el = new ElementosGimnasio(int.Parse(this.tabla.Rows[indice][0].ToString()),this.tabla.Rows[indice]["producto"].ToString(),
                         int.Parse(this.tabla.Rows[indice][2].ToString()),
                         int.Parse(this.tabla.Rows[indice][3].ToString()));
 
@@ -151,7 +127,7 @@ namespace FormPrincipal
                 {
                     int indice = this.dgvGrilla.CurrentRow.Index;
 
-                    ElementosGimnasio el = new ElementosGimnasio(this.tabla.Rows[indice]["producto"].ToString(),
+                    ElementosGimnasio el = new ElementosGimnasio(int.Parse(this.tabla.Rows[indice][0].ToString()),this.tabla.Rows[indice]["producto"].ToString(),
                         int.Parse(this.tabla.Rows[indice][2].ToString()),
                         int.Parse(this.tabla.Rows[indice][3].ToString()));
 
@@ -170,37 +146,30 @@ namespace FormPrincipal
                 
         }
 
-        private void buttonAceptarCambios_Click(object sender, EventArgs e)
-        {
-            this.tabla.AcceptChanges();
-          
-        }
 
         private void buttonGuardarVentaEntera_Click(object sender, EventArgs e)
         {
             try
             {
+                List<ElementosGimnasio> listaE = new List<ElementosGimnasio>();
+
                 if (!(dgvGrilla.Rows.Count == 0))
                 {
                     this.dgvGrilla.SelectAll();
 
                         for(int i = 0; i < this.dgvGrilla.RowCount; i++)
                         {
-                            ElementosGimnasio el = new ElementosGimnasio(this.tabla.Rows[i]["producto"].ToString(),
+                           ElementosGimnasio el = new ElementosGimnasio(int.Parse(this.tabla.Rows[i][0].ToString()),this.tabla.Rows[i]["producto"].ToString(),
                             int.Parse(this.tabla.Rows[i][2].ToString()),
                             int.Parse(this.tabla.Rows[i][3].ToString()));
-                            venta += el;
-                            if(i == this.dgvGrilla.RowCount -1)
-                            {
-                                Venta.Guardar(venta);
-                                venta -= el;
-                            }
+                            listaE.Add(el);
+                                                    
                         }
-                    
-                    
 
-                    
-                    
+                    venta += listaE;
+
+                    Venta.Guardar(venta);
+                    venta -= listaE;
                 }
                 else
                 {
@@ -213,7 +182,11 @@ namespace FormPrincipal
             }
         }
 
- 
+        private void buttonRealizarVenta_Click(object sender, EventArgs e)
+        {
+            this.tabla.Rows.Clear();
+            MessageBox.Show("Venta realizada. Los productos le llegaran al cliente en 1 semana.", "ATENCION");
+        }
 
         private void Principal_FormClosing_1(object sender, FormClosingEventArgs e)
         {
@@ -221,6 +194,42 @@ namespace FormPrincipal
                MessageBoxDefaultButton.Button2) == DialogResult.No)
             {
                 e.Cancel = true;
+            }
+        }
+
+        private void buttonGuardarXML_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<ElementosGimnasio> listaE = new List<ElementosGimnasio>();
+
+                if (!(dgvGrilla.Rows.Count == 0))
+                {
+                    this.dgvGrilla.SelectAll();
+
+                    for (int i = 0; i < this.dgvGrilla.RowCount; i++)
+                    {
+                        ElementosGimnasio el = new ElementosGimnasio(int.Parse(this.tabla.Rows[i][0].ToString()),
+                            this.tabla.Rows[i]["producto"].ToString(),
+                         int.Parse(this.tabla.Rows[i][2].ToString()),
+                         int.Parse(this.tabla.Rows[i][3].ToString()));
+                        listaE.Add(el);
+
+                    }
+
+                    venta += listaE;
+
+                    Venta.GuardarSer(venta);
+                    venta -= listaE;
+                }
+                else
+                {
+                    throw new NoSePudoGuardarException();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
