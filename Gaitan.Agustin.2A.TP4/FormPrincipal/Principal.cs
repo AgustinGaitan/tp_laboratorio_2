@@ -332,7 +332,7 @@ namespace FormPrincipal
         {
             try
             {
-                if (!(dgvGrilla.Rows.Count == 0))
+                if (!(dgvGrilla.Rows.Count == 0) || !(datGridAerobico.Rows.Count == 0))
                 {
                     this.tabla.Rows.Clear(); //limpia la tabla.
                     this.tablaAerobico.Rows.Clear();
