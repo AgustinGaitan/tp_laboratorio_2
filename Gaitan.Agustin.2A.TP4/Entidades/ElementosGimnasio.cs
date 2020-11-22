@@ -9,14 +9,15 @@ namespace Entidades
 {
     public class ElementosGimnasio
     {
-       protected int id;
+        #region Atributos
+        protected int id;
         protected string nombre;
         protected int precio;
         protected int caracteristica;
         private string color;
+        #endregion
 
-
-
+        #region Propiedades
         /// <summary>
         /// propiedad de solo lectura que retorna la id
         /// </summary>
@@ -92,7 +93,9 @@ namespace Entidades
             }
         }
 
+        #endregion
 
+        #region Constructores
         /// <summary>
         /// Constructor por default
         /// </summary>
@@ -163,6 +166,11 @@ namespace Entidades
             this.Color = color;
 
         }
+
+
+        #endregion
+
+        #region Metodos
         public static bool Guardar(ElementosGimnasio elementos)
         {
             Texto t = new Texto();
@@ -202,5 +210,6 @@ namespace Entidades
 
         }
 
+        #endregion
     }
 }

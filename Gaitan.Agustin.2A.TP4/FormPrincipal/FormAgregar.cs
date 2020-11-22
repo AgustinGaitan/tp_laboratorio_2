@@ -15,7 +15,8 @@ namespace FormPrincipal
     public partial class FormAgregar : Form
     {
         private ElementosGimnasio elemento;
-      
+
+        #region Propiedad
         /// <summary>
         /// Propiedad de solo lectura que retorna el elemento de éste form
         /// </summary>
@@ -30,7 +31,9 @@ namespace FormPrincipal
                 this.elemento = value;
             }
         }
+        #endregion
 
+        #region Constructor
         /// <summary>
         /// Constructor por default. Inicializa el atributo.
         /// </summary>
@@ -40,7 +43,9 @@ namespace FormPrincipal
             this.elemento = new ElementosGimnasio();
 
         }
+        #endregion
 
+        #region Load
         /// <summary>
         /// Load. Cambia el nombre de la ventana y carga el formulario.
         /// </summary>
@@ -51,7 +56,9 @@ namespace FormPrincipal
 
             this.Text = "Agregar producto";
         }
+        #endregion
 
+        #region Botones y Combobox
         /// <summary>
         /// Agrega el producto a la grilla
         /// </summary>
@@ -266,6 +273,6 @@ namespace FormPrincipal
             }
         }
 
-     
+        #endregion
     }
 }

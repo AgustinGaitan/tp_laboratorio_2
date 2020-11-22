@@ -1,6 +1,0 @@
-VENTA 
-LISTADO DE PRODUCTOS: 
-Nombre: barra
-Precio: 4000
-------------------------------------------
-

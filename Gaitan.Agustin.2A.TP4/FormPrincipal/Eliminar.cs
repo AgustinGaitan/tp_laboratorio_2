@@ -13,6 +13,7 @@ namespace FormPrincipal
 {
     public partial class Eliminar : Form
     {
+        #region Constructores
         /// <summary>
         /// Constructor por default que inicializa el componente y cambia
         /// el nombre de la ventana
@@ -48,7 +49,9 @@ namespace FormPrincipal
       
             this.labelDondeVaPrecio.Text = eg.Precio.ToString();
         }
+        #endregion
 
+        #region Botones
         /// <summary>
         /// Boton para aceptar los cambios
         /// </summary>
@@ -63,5 +66,7 @@ namespace FormPrincipal
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+        #endregion
     }
 }

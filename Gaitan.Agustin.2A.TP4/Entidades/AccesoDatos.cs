@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace Entidades
 {
-    public class AccesoDatos//where T: ElementosGimnasio
+    public class AccesoDatos
     {
         private SqlConnection conexion;
         private SqlCommand comando;
@@ -21,6 +21,11 @@ namespace Entidades
             this.conexion = new SqlConnection(Properties.Settings.Default.conexionBD);
         }
 
+        /// <summary>
+        /// Obtiene un elemento de la base de datos mediante el ID
+        /// </summary>
+        /// <param name="id">id a buscar</param>
+        /// <returns></returns>
         public ElementosGimnasio ObtenerElemento(int id)
         {
 

@@ -17,6 +17,7 @@ namespace FormPrincipal
 {
     public partial class Principal : Form
     {
+        #region Atributos
         private Venta venta;
         private DataTable tabla;
         private DataTable tablaAerobico;
@@ -33,6 +34,9 @@ namespace FormPrincipal
         private Bitmap imagen;
         private Bitmap imagenAerobico;
 
+        #endregion
+
+        #region Constructor
         /// <summary>
         /// Constructor por default
         /// </summary>
@@ -53,6 +57,9 @@ namespace FormPrincipal
 
          
         }
+        #endregion
+
+        #region Load
 
         /// <summary>
         /// Carga el fomrulario principal
@@ -73,69 +80,9 @@ namespace FormPrincipal
 
         }
 
-        /// <summary>
-        /// Agrega un producto abriendo otro form
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonAgregarProducto_Click(object sender, EventArgs e)
-        {
-           
-            FormAgregar formNuevo = new FormAgregar();     //Genera la instancia del otro form
-            
-        
-            formNuevo.StartPosition = FormStartPosition.CenterScreen; // El form se abre en medio de la pantalla
+        #endregion
 
-            if (formNuevo.ShowDialog() == DialogResult.OK)                  //Si el dialogresult es OK...
-            {
-                DataRow fila = this.tabla.NewRow();    //Crea una nueva fila
-                DataRow filaAerobico = this.tablaAerobico.NewRow();
-           
-
-                int validado = 0;
-
-                if(int.TryParse(formNuevo.Elemento.Precio.ToString(), out validado)) //valida que el precio sea un número
-                {
-                    if (this.labelTotal.Text == "0")                //Si el label es 0, el acumulador de precio se resetea a 0.
-                    {
-
-                        acum = 0;    
-                    }
-                    acum += validado;       //Si no es 0, se acumula el precio listo para sumarse y mostrar el total.
-                    this.labelTotal.Text = acum.ToString(); //Se le asigna el total acumulado pasado a string
-                }
-
-                if (formNuevo.Elemento.Caracteristica == 0)
-                {
-                    filaAerobico["id"] = formNuevo.Elemento.Id;
-                    filaAerobico["producto"] = formNuevo.Elemento.Nombre;
-                    filaAerobico["color"] = formNuevo.Elemento.Color;
-                    filaAerobico["precio"] = formNuevo.Elemento.Precio;
-
-                    this.tablaAerobico.Rows.Add(filaAerobico);
-                    this.datGridAerobico.DataSource = this.tablaAerobico;
-
-                }
-                else
-                {
-                    //Añade el elemento de la propiedad del otro form
-                    fila["id"] = formNuevo.Elemento.Id;
-                    fila["producto"] = formNuevo.Elemento.Nombre;
-                    fila["caracteristica"] = formNuevo.Elemento.Caracteristica;
-                    fila["precio"] = formNuevo.Elemento.Precio;
-                    this.tabla.Rows.Add(fila); //Agrega la fila
-                    this.dgvGrilla.DataSource = this.tabla;
-                }
-           
-
-                datGridAerobico.ClearSelection();
-                dgvGrilla.ClearSelection();
-
-
-            }
-        }
-
-
+        #region Configurar DT
         /// <summary>
         /// Configura la data table
         /// </summary>
@@ -165,6 +112,70 @@ namespace FormPrincipal
             this.tablaAerobico.Columns[0].AutoIncrementStep = 7;
 
 
+        }
+        #endregion
+
+        #region Botones
+        /// <summary>
+        /// Agrega un producto abriendo otro form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonAgregarProducto_Click(object sender, EventArgs e)
+        {
+
+            FormAgregar formNuevo = new FormAgregar();     //Genera la instancia del otro form
+
+
+            formNuevo.StartPosition = FormStartPosition.CenterScreen; // El form se abre en medio de la pantalla
+
+            if (formNuevo.ShowDialog() == DialogResult.OK)                  //Si el dialogresult es OK...
+            {
+                DataRow fila = this.tabla.NewRow();    //Crea una nueva fila
+                DataRow filaAerobico = this.tablaAerobico.NewRow();
+
+
+                int validado = 0;
+
+                if (int.TryParse(formNuevo.Elemento.Precio.ToString(), out validado)) //valida que el precio sea un número
+                {
+                    if (this.labelTotal.Text == "0")                //Si el label es 0, el acumulador de precio se resetea a 0.
+                    {
+
+                        acum = 0;
+                    }
+                    acum += validado;       //Si no es 0, se acumula el precio listo para sumarse y mostrar el total.
+                    this.labelTotal.Text = acum.ToString(); //Se le asigna el total acumulado pasado a string
+                }
+
+                if (formNuevo.Elemento.Caracteristica == 0)
+                {
+                    filaAerobico["id"] = formNuevo.Elemento.Id;
+                    filaAerobico["producto"] = formNuevo.Elemento.Nombre;
+                    filaAerobico["color"] = formNuevo.Elemento.Color;
+                    filaAerobico["precio"] = formNuevo.Elemento.Precio;
+
+                    this.tablaAerobico.Rows.Add(filaAerobico);
+                    this.datGridAerobico.DataSource = this.tablaAerobico;
+
+                }
+                else
+                {
+                    //Añade el elemento de la propiedad del otro form
+                    fila["id"] = formNuevo.Elemento.Id;
+                    fila["producto"] = formNuevo.Elemento.Nombre;
+                    fila["caracteristica"] = formNuevo.Elemento.Caracteristica;
+                    fila["precio"] = formNuevo.Elemento.Precio;
+                    this.tabla.Rows.Add(fila); //Agrega la fila
+                    this.dgvGrilla.DataSource = this.tabla;
+                }
+
+
+                datGridAerobico.ClearSelection();
+                dgvGrilla.ClearSelection();
+
+
+            }
         }
 
         /// <summary>
@@ -351,6 +362,28 @@ namespace FormPrincipal
             }               
         }
 
+        /// <summary>
+        /// Boton para leer la venta de un .txt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonLeerVenta_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FormListadoVentas ventaALeer = new FormListadoVentas();
+
+                ventaALeer.ShowDialog();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
 
         /// <summary>
         /// Boton para guardar la venta en XML
@@ -402,8 +435,9 @@ namespace FormPrincipal
         }
 
 
+        #endregion
 
-
+        #region Metodos
         public void EjecutarAccion()
         {
             try
@@ -479,23 +513,10 @@ namespace FormPrincipal
             pictureBoxAerobico.Image = (Image)this.imagenAerobico;   //le pasa la imagen casteada a Image
         }
 
-        private void buttonLeerVenta_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                FormListadoVentas ventaALeer = new FormListadoVentas();
 
-                ventaALeer.ShowDialog();
+        #endregion
 
-             
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
+        #region Closing
 
         /// <summary>
         /// Form closing que se lanza cuando se cierra el form
@@ -529,6 +550,7 @@ namespace FormPrincipal
                 }
             }
         }
+        #endregion
     }
 }
 

@@ -9,6 +9,8 @@ namespace Entidades
    /// </summary>
     public class Barra : ElementosGimnasio
     {
+
+        #region Constructores
         /// <summary>
         /// Constructor por default
         /// </summary>
@@ -36,7 +38,9 @@ namespace Entidades
   
         }
 
+        #endregion
 
+        #region Metodos
         /// <summary>
         /// Muestra los datos 
         /// </summary>
@@ -62,5 +66,6 @@ namespace Entidades
 
         }
 
+        #endregion
     }
 }
