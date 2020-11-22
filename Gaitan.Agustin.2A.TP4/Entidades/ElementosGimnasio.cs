@@ -114,6 +114,14 @@ namespace Entidades
 
         }
 
+
+        public ElementosGimnasio(int id, string nombre, int precio)
+        {
+            this.id = id;
+            this.Nombre = nombre;
+            this.Precio = precio;
+
+        }
         /// <summary>
         /// Constructor con parametro
         /// </summary>
@@ -121,11 +129,9 @@ namespace Entidades
         /// <param name="nombre">nombre del producto</param>
         /// <param name="color">color del producto</param>
         /// <param name="precio">precio del producto</param>
-        public ElementosGimnasio(int id, string nombre, string color, int precio)
+        public ElementosGimnasio(int id, string nombre, string color, int precio):this(id,nombre,precio)
         {
-            this.id = id;
-            this.Nombre = nombre;
-            this.Precio = precio;
+         
             this.Color = color;
 
         }
@@ -137,12 +143,11 @@ namespace Entidades
         /// <param name="nombre">nombre del producto</param>
         /// <param name="caracteristica">caracteristica del producto</param>
         /// <param name="precio">precio del producto</param>
-        public ElementosGimnasio(int id, string nombre, int caracteristica, int precio)
+        public ElementosGimnasio(int id, string nombre, int caracteristica, int precio):this(id,nombre,precio)
         {
-            this.id = id;
+           
             this.Caracteristica = caracteristica;
-            this.Nombre = nombre;
-            this.Precio = precio;
+           
 
         }
 

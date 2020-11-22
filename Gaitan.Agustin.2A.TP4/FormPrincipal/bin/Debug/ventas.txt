@@ -1,12 +1,6 @@
 VENTA 
 LISTADO DE PRODUCTOS: 
 Nombre: barra
-Precio: 2000
-------------------------------------------
-
-VENTA 
-LISTADO DE PRODUCTOS: 
-Nombre: bici
-Precio: 5000
+Precio: 4000
 ------------------------------------------
 

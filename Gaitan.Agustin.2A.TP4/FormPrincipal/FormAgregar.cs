@@ -25,6 +25,10 @@ namespace FormPrincipal
             {
                 return this.elemento;
             }
+            set
+            {
+                this.elemento = value;
+            }
         }
 
         /// <summary>
@@ -68,13 +72,13 @@ namespace FormPrincipal
                                 switch (this.comboBoxCaracteristicas.SelectedIndex)  //Depende de la caracteristica seleccionada...
                                 {
                                     case 0: 
-                                        this.elemento = ac.ObtenerBarra(2);          //Obtiene una barra    
+                                        this.Elemento = ac.ObtenerElemento(1);          //Obtiene una barra    
                                         break;
                                     case 1:
-                                        this.elemento = ac.ObtenerBarra(3);
+                                        this.Elemento = ac.ObtenerElemento(2);
                                         break;
                                     case 2:
-                                        this.elemento = ac.ObtenerBarra(5);
+                                        this.Elemento = ac.ObtenerElemento(3);
                                         break;
 
                                 }
@@ -83,13 +87,13 @@ namespace FormPrincipal
                                 switch (this.comboBoxCaracteristicas.SelectedIndex)
                                 {
                                     case 0:
-                                        this.elemento = ac.ObtenerMancuerna(2);        //Obtiene una mancuerna 
+                                        this.Elemento = ac.ObtenerElemento(4);        //Obtiene una mancuerna 
                                         break;
                                     case 1:
-                                        this.elemento = ac.ObtenerMancuerna(5);
+                                        this.Elemento = ac.ObtenerElemento(5);
                                         break;
                                     case 2:
-                                        this.elemento = ac.ObtenerMancuerna(10);
+                                        this.Elemento = ac.ObtenerElemento(6);
                                         break;
 
                                 }
@@ -98,13 +102,13 @@ namespace FormPrincipal
                                 switch (this.comboBoxCaracteristicas.SelectedIndex)
                                 {
                                     case 0:
-                                        this.elemento = ac.ObtenerColchoneta("azul");            //Obtiene una colchoneta
+                                        this.Elemento = ac.ObtenerElemento(7);            //Obtiene una colchoneta
                                         break;
                                     case 1:
-                                        this.elemento = ac.ObtenerColchoneta("roja");
+                                        this.Elemento = ac.ObtenerElemento(8);
                                         break;
                                     case 2:
-                                        this.elemento = ac.ObtenerColchoneta("verde");
+                                        this.Elemento = ac.ObtenerElemento(9);
                                         break;
 
                                 }
@@ -113,13 +117,13 @@ namespace FormPrincipal
                                 switch (this.comboBoxCaracteristicas.SelectedIndex)
                                 {
                                     case 0:
-                                        this.elemento = ac.ObtenerBici("purpura");            //Obtiene una bici
+                                        this.Elemento = ac.ObtenerElemento(10);            //Obtiene una bici
                                         break;
                                     case 1:
-                                        this.elemento = ac.ObtenerBici("naranja");
+                                        this.Elemento = ac.ObtenerElemento(11);
                                         break;
                                     case 2:
-                                        this.elemento = ac.ObtenerBici("celeste");
+                                        this.Elemento = ac.ObtenerElemento(12);
                                         break;
 
                                 }

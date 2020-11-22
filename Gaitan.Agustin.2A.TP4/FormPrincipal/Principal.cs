@@ -105,7 +105,7 @@ namespace FormPrincipal
                     this.labelTotal.Text = acum.ToString(); //Se le asigna el total acumulado pasado a string
                 }
 
-                if (formNuevo.Elemento is Colchoneta || formNuevo.Elemento is Bici)
+                if (formNuevo.Elemento.Caracteristica == 0)
                 {
                     filaAerobico["id"] = formNuevo.Elemento.Id;
                     filaAerobico["producto"] = formNuevo.Elemento.Nombre;
