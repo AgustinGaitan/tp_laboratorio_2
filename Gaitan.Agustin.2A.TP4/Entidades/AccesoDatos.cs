@@ -126,7 +126,7 @@ namespace Entidades
         /// </summary>
         /// <param name="longitud">longitud de la colchoneta</param>
         /// <returns>Colchoneta obtenida de la base de datos</returns>
-        public Colchoneta ObtenerColchoneta(int longitud)
+        public Colchoneta ObtenerColchoneta(string color)
         {
 
 
@@ -140,10 +140,10 @@ namespace Entidades
 
                 this.comando.Connection = this.conexion;
 
-                this.comando.Parameters.AddWithValue("@longitud", longitud);
+                this.comando.Parameters.AddWithValue("@color", color);
                 this.comando.Parameters.AddWithValue("@colchoneta", "colchoneta");
 
-                comando.CommandText = "SELECT * FROM [gimnasio].[dbo].[tablaproductos] WHERE producto = @colchoneta AND caracteristica = @longitud";
+                comando.CommandText = "SELECT * FROM [gimnasio].[dbo].[tablaaerobico] WHERE producto = @colchoneta AND color = @color";
 
                 this.conexion.Open();
 
@@ -151,7 +151,7 @@ namespace Entidades
 
                 if (oDr.Read())
                 {
-                    colchoneta = new Colchoneta(oDr.GetInt32(0), oDr.GetInt32(2));
+                    colchoneta = new Colchoneta(oDr.GetInt32(0), oDr.GetString(1), oDr.GetString(2), oDr.GetInt32(3));
                     
                 }
 
@@ -173,8 +173,53 @@ namespace Entidades
             return colchoneta;
         }
 
+        public Bici ObtenerBici(string color)
+        {
 
 
-        
+            Bici bici = default;
+
+            try
+            {
+                this.comando = new SqlCommand();
+
+                this.comando.CommandType = CommandType.Text;
+
+                this.comando.Connection = this.conexion;
+
+                this.comando.Parameters.AddWithValue("@color", color);
+                this.comando.Parameters.AddWithValue("@bici", "bici");
+
+                comando.CommandText = "SELECT * FROM [gimnasio].[dbo].[tablaaerobico] WHERE producto = @bici AND color = @color";
+
+                this.conexion.Open();
+
+                SqlDataReader oDr = comando.ExecuteReader();
+
+                if (oDr.Read())
+                {
+                    bici = new Bici(oDr.GetInt32(0), oDr.GetString(1), oDr.GetString(2), oDr.GetInt32(3));
+
+                }
+
+                oDr.Close();
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                if (this.conexion.State == ConnectionState.Open)
+                {
+                    this.conexion.Close();
+                }
+            }
+
+            return bici;
+        }
+
+
     }
 }

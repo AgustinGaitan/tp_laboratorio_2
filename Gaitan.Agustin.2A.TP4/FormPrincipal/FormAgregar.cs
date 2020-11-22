@@ -98,17 +98,33 @@ namespace FormPrincipal
                                 switch (this.comboBoxCaracteristicas.SelectedIndex)
                                 {
                                     case 0:
-                                        this.elemento = ac.ObtenerColchoneta(2);            //Obtiene una colchoneta
+                                        this.elemento = ac.ObtenerColchoneta("azul");            //Obtiene una colchoneta
                                         break;
                                     case 1:
-                                        this.elemento = ac.ObtenerColchoneta(3);
+                                        this.elemento = ac.ObtenerColchoneta("roja");
                                         break;
                                     case 2:
-                                        this.elemento = ac.ObtenerColchoneta(5);
+                                        this.elemento = ac.ObtenerColchoneta("verde");
                                         break;
 
                                 }
                                 break;
+                            case 3:
+                                switch (this.comboBoxCaracteristicas.SelectedIndex)
+                                {
+                                    case 0:
+                                        this.elemento = ac.ObtenerBici("purpura");            //Obtiene una bici
+                                        break;
+                                    case 1:
+                                        this.elemento = ac.ObtenerBici("naranja");
+                                        break;
+                                    case 2:
+                                        this.elemento = ac.ObtenerBici("celeste");
+                                        break;
+
+                                }
+                                break;
+
                         }
                     }
                     else 
@@ -164,12 +180,18 @@ namespace FormPrincipal
                 this.labelPrecio.Text = "0";
                 this.comboBoxCaracteristicas.Items.AddRange(new object[] { "2 kg", "5 kg", "10 kg" });//Se le agregan estos parametros al combobox de caracteristica
             }
-            else                                                       //Si el producto es colchoneta...
+            else if(comboBoxAgregarProductos.SelectedIndex == 2)                                                 //Si el producto es colchoneta...
             {
                 this.comboBoxCaracteristicas.Items.Clear();
                 this.labelPrecio.Text = "0";
-                this.comboBoxCaracteristicas.Items.AddRange(new object[] { "2 mts", "3 mts", "5 mts" });//Se le agregan estos parametros al combobox de caracteristica
+                this.comboBoxCaracteristicas.Items.AddRange(new object[] { "azul", "rojo", "verde" });//Se le agregan estos parametros al combobox de caracteristica
 
+            }
+            else
+            {
+                this.comboBoxCaracteristicas.Items.Clear();
+                this.labelPrecio.Text = "0";
+                this.comboBoxCaracteristicas.Items.AddRange(new object[] { "purpura", "naranja", "celeste" });//Se le agregan estos parametros al combobox de caracteristica
             }
         }       
            
@@ -213,7 +235,7 @@ namespace FormPrincipal
                 }
 
             }
-            else
+            else if(this.comboBoxAgregarProductos.SelectedIndex == 2)
             {
                 if (this.comboBoxCaracteristicas.SelectedIndex == 0)
                 {
@@ -228,6 +250,15 @@ namespace FormPrincipal
                     this.labelPrecio.Text = "5000";
                 }
 
+            }
+            else
+            {
+                switch(this.comboBoxCaracteristicas.SelectedIndex)
+                {
+                    default:
+                        this.labelPrecio.Text = "5000";
+                        break;
+                }
             }
         }
 

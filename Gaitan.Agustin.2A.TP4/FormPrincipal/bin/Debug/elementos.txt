@@ -1,0 +1,6 @@
+Nombre: colchoneta
+Precio: 5000
+
+Nombre: barra
+Precio: 4000
+

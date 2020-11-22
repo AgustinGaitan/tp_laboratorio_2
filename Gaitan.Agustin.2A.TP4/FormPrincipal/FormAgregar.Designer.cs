@@ -54,7 +54,8 @@
             this.comboBoxAgregarProductos.Items.AddRange(new object[] {
             "Barra",
             "Mancuerna",
-            "Colchoneta"});
+            "Colchoneta",
+            "Bici"});
             this.comboBoxAgregarProductos.Location = new System.Drawing.Point(13, 29);
             this.comboBoxAgregarProductos.MaxDropDownItems = 3;
             this.comboBoxAgregarProductos.MaximumSize = new System.Drawing.Size(200, 0);

@@ -44,7 +44,7 @@ namespace Entidades
         /// Muestra los datos 
         /// </summary>
         /// <returns>String con los datos</returns>
-        private string MostrarDatos()
+        protected override string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
 

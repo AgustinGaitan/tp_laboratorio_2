@@ -19,15 +19,19 @@ namespace FormPrincipal
     {
         private Venta venta;
         private DataTable tabla;
+        private DataTable tablaAerobico;
         private AccesoDatos objAcceso;
         protected Thread hilo;
+        protected Thread otroHilo;
         protected string labelAtributo;
         private int acum;
         public delegate void Delegado(Label l);           //delegado para el label
         public delegate void DelegadoImagen(string path); //delegado para la imagen
         public event Delegado evento;                     //evento para el label
         public event DelegadoImagen eventoImagen;           //evento para la imagen
+        public event DelegadoImagen eventoImagenAerobico;
         private Bitmap imagen;
+        private Bitmap imagenAerobico;
 
         /// <summary>
         /// Constructor por default
@@ -38,6 +42,7 @@ namespace FormPrincipal
             this.StartPosition = FormStartPosition.CenterScreen; //El form se abre en el centro de la imagen
             this.evento += this.ReiniciarLabel;                 //Se le agrega al evento el manejador
             this.eventoImagen += this.CambiarImagen;            //Se le agrega al evento el manejador
+            this.eventoImagenAerobico += this.CambiarImagenAerobico;
 
 
             this.objAcceso = new AccesoDatos();             
@@ -61,6 +66,11 @@ namespace FormPrincipal
             if (!this.hilo.IsAlive) //Si el hilo está muerto, lo comienza.
                 this.hilo.Start();
 
+            this.otroHilo = new Thread(this.EjecutarAccionDos);      //al hilo se le asocia la direccion de memoria del método EjecutarAccion
+            if (!this.otroHilo.IsAlive) //Si el hilo está muerto, lo comienza.
+                this.otroHilo.Start();
+
+
         }
 
         /// <summary>
@@ -70,21 +80,17 @@ namespace FormPrincipal
         /// <param name="e"></param>
         private void buttonAgregarProducto_Click(object sender, EventArgs e)
         {
+           
             FormAgregar formNuevo = new FormAgregar();     //Genera la instancia del otro form
             
-
+        
             formNuevo.StartPosition = FormStartPosition.CenterScreen; // El form se abre en medio de la pantalla
 
             if (formNuevo.ShowDialog() == DialogResult.OK)                  //Si el dialogresult es OK...
             {
-                DataRow fila = this.tabla.NewRow();                             //Crea una nueva fila
-                
-
-                //Añade el elemento de la propiedad del otro form
-                fila["id"] = formNuevo.Elemento.Id;
-                fila["producto"] = formNuevo.Elemento.Nombre;
-                fila["caracteristica"] = formNuevo.Elemento.Caracteristica;
-                fila["precio"] = formNuevo.Elemento.Precio;
+                DataRow fila = this.tabla.NewRow();    //Crea una nueva fila
+                DataRow filaAerobico = this.tablaAerobico.NewRow();
+           
 
                 int validado = 0;
 
@@ -98,29 +104,68 @@ namespace FormPrincipal
                     acum += validado;       //Si no es 0, se acumula el precio listo para sumarse y mostrar el total.
                     this.labelTotal.Text = acum.ToString(); //Se le asigna el total acumulado pasado a string
                 }
-               
 
-                 
-                this.tabla.Rows.Add(fila); //Agrega la fila
-                this.dgvGrilla.DataSource = this.tabla; 
+                if (formNuevo.Elemento is Colchoneta || formNuevo.Elemento is Bici)
+                {
+                    filaAerobico["id"] = formNuevo.Elemento.Id;
+                    filaAerobico["producto"] = formNuevo.Elemento.Nombre;
+                    filaAerobico["color"] = formNuevo.Elemento.Color;
+                    filaAerobico["precio"] = formNuevo.Elemento.Precio;
+
+                    this.tablaAerobico.Rows.Add(filaAerobico);
+                    this.datGridAerobico.DataSource = this.tablaAerobico;
+
+                }
+                else
+                {
+                    //Añade el elemento de la propiedad del otro form
+                    fila["id"] = formNuevo.Elemento.Id;
+                    fila["producto"] = formNuevo.Elemento.Nombre;
+                    fila["caracteristica"] = formNuevo.Elemento.Caracteristica;
+                    fila["precio"] = formNuevo.Elemento.Precio;
+                    this.tabla.Rows.Add(fila); //Agrega la fila
+                    this.dgvGrilla.DataSource = this.tabla;
+                }
+           
+
+                datGridAerobico.ClearSelection();
+                dgvGrilla.ClearSelection();
+
+
             }
         }
 
-         
+
         /// <summary>
         /// Configura la data table
         /// </summary>
-            public void ConfigurarDT()
-            {
-                this.tabla = new DataTable("gimnasio");
+        public void ConfigurarDT()
+        {
+            this.tabla = new DataTable("Fuerza");
+            this.tablaAerobico = new DataTable("Aerobico");
 
-                this.tabla.Columns.Add("id", typeof(int)); //Añade la columna id
-                 this.tabla.Columns.Add("producto", typeof(string));//Añade la columna producto
-                this.tabla.Columns.Add("caracteristica", typeof(int));//Añade la columna caracteristica
-                this.tabla.Columns.Add("precio", typeof(int));//Añade la columna precio
+            
+            this.tabla.Columns.Add("id", typeof(int)); //Añade la columna id
+            //this.tabla.PrimaryKey = new DataColumn[] { this.tabla.Columns[0] };
+            this.tabla.Columns.Add("producto", typeof(string));//Añade la columna producto
+            this.tabla.Columns.Add("caracteristica", typeof(int));//Añade la columna caracteristica
+            this.tabla.Columns.Add("precio", typeof(int));//Añade la columna precio
+            this.tabla.Columns[0].AutoIncrement = true; //HAGO LA COLUMNA AUTOINCREMENTAL
+            //this.tabla.Columns[0].AutoIncrementSeed = 1;
+            //this.tabla.Columns[0].AutoIncrementStep = 1;
+
+            
+            this.tablaAerobico.Columns.Add("id", typeof(int)); //Añade la columna id
+           // this.tablaAerobico.PrimaryKey = new DataColumn[] { this.tablaAerobico.Columns[0] };
+            this.tablaAerobico.Columns.Add("producto", typeof(string));//Añade la columna producto
+            this.tablaAerobico.Columns.Add("color", typeof(string));//Añade la columna color
+            this.tablaAerobico.Columns.Add("precio", typeof(int));//Añade la columna precio
+            this.tablaAerobico.Columns[0].AutoIncrement = true; //HAGO LA COLUMNA AUTOINCREMENTAL
+            this.tablaAerobico.Columns[0].AutoIncrementSeed = 1;
+            this.tablaAerobico.Columns[0].AutoIncrementStep = 7;
 
 
-            }
+        }
 
         /// <summary>
         /// Boton para eliminar un producto
@@ -134,14 +179,15 @@ namespace FormPrincipal
                 if(!(dgvGrilla.Rows.Count == 0))            //Si la grilla tiene filas...
                 {
                     int indice = this.dgvGrilla.CurrentRow.Index;    //Obtiene el indice de la grilla seleccionad
+                   
 
                     ElementosGimnasio el = new ElementosGimnasio(int.Parse(this.tabla.Rows[indice][0].ToString()),this.tabla.Rows[indice]["producto"].ToString(),
                         int.Parse(this.tabla.Rows[indice][2].ToString()),
                         int.Parse(this.tabla.Rows[indice][3].ToString()));    //Crea un nuevo elemento de gimnasio con la informacion del indice
 
+                    
 
-
-                    Mostrar frmMostrar = new Mostrar(el);    //Muestra un nuevo form
+                    Eliminar frmMostrar = new Eliminar(el);    //Muestra un nuevo form
 
                     frmMostrar.StartPosition = FormStartPosition.CenterScreen; 
 
@@ -151,6 +197,7 @@ namespace FormPrincipal
                         int total;
 
                         this.tabla.Rows[indice].Delete(); //Borra la fila
+                        
 
                         //RESTA EL LABEL PARA ACTUALIZARLO//
                         restar = int.Parse(this.labelTotal.Text);
@@ -176,38 +223,55 @@ namespace FormPrincipal
             
         }
 
-        /// <summary>
-        /// Botón para guardar el producto en un .txt
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonGuardarVentaTXT_Click(object sender, EventArgs e)
+        private void buttonEliminarProductoAerobico_Click(object sender, EventArgs e)
         {
             try
             {
-                if (!(dgvGrilla.Rows.Count == 0)) //Si la grilla tiene filas...
+                if (!(datGridAerobico.Rows.Count == 0))            //Si la grilla tiene filas...
                 {
-                    int indice = this.dgvGrilla.CurrentRow.Index; //obtengo el indice de la fila seleccionada
+                    int indice = this.datGridAerobico.CurrentRow.Index;    //Obtiene el indice de la grilla seleccionad
 
-                    ElementosGimnasio el = new ElementosGimnasio(int.Parse(this.tabla.Rows[indice][0].ToString()),this.tabla.Rows[indice]["producto"].ToString(),
-                        int.Parse(this.tabla.Rows[indice][2].ToString()),
-                        int.Parse(this.tabla.Rows[indice][3].ToString())); //Se crea un nuevo elemento gimnasio
+                    ElementosGimnasio el = new ElementosGimnasio(int.Parse(this.tablaAerobico.Rows[indice][0].ToString()), this.tablaAerobico.Rows[indice]["producto"].ToString(),
+                        this.tablaAerobico.Rows[indice]["color"].ToString(),
+                        int.Parse(this.tablaAerobico.Rows[indice][3].ToString()));
 
 
-                    ElementosGimnasio.Guardar(el); //Llamo al método estático que guarda al producto en un .txt
-                    MessageBox.Show("Elemento guardado!");
+                    Eliminar frmMostrar = new Eliminar(el);    //Muestra un nuevo form
+
+                    frmMostrar.StartPosition = FormStartPosition.CenterScreen;
+
+                    if (frmMostrar.ShowDialog() == DialogResult.OK) //Si el showdialog es OK
+                    {
+                        int restar = 0;
+                        int total;
+
+                        this.tablaAerobico.Rows[indice].Delete(); //Borra la fila
+
+
+                        //RESTA EL LABEL PARA ACTUALIZARLO//
+                        restar = int.Parse(this.labelTotal.Text);
+                        int precioARestar = el.Precio;
+                        total = restar - precioARestar;
+                        labelTotal.Text = total.ToString();
+
+                    }
+
                 }
-                else //Si no, tiro excepcion
+                else
                 {
-                    throw new NoSePudoGuardarException();
+                    throw new FilaVaciaException();
                 }
+
             }
-            catch(Exception ex)
+            catch (FilaVaciaException ex)
             {
-                MessageBox.Show(ex.Message, "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Informar(), "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Error); //Se utiliza el método de extension
+
             }
-                
+
         }
+
+      
 
 
         /// <summary>
@@ -221,9 +285,9 @@ namespace FormPrincipal
             {
                 List<ElementosGimnasio> listaE = new List<ElementosGimnasio>();
 
-                if (!(dgvGrilla.Rows.Count == 0)) //Si la grilla tiene filas...
+                if (!(dgvGrilla.Rows.Count == 0) || !(datGridAerobico.Rows.Count == 0)) //Si la grilla tiene filas...
                 {
-                    this.dgvGrilla.SelectAll(); 
+                    //this.dgvGrilla.SelectAll(); 
 
                         for(int i = 0; i < this.dgvGrilla.RowCount; i++)    //Recorro las filas para obtener la informacion de cada una
                         {
@@ -232,6 +296,14 @@ namespace FormPrincipal
                             int.Parse(this.tabla.Rows[i][3].ToString()));
                             listaE.Add(el); //añado el elemento a la lista de elementos
                                                     
+                        }
+                        for (int i = 0; i < this.datGridAerobico.RowCount; i++)    //Recorro las filas para obtener la informacion de cada una
+                        {
+                           ElementosGimnasio el2 = new ElementosGimnasio(int.Parse(this.tablaAerobico.Rows[i][0].ToString()), this.tablaAerobico.Rows[i]["producto"].ToString(),
+                          this.tablaAerobico.Rows[i]["color"].ToString(),
+                          int.Parse(this.tablaAerobico.Rows[i][3].ToString()));
+                                listaE.Add(el2); //añado el elemento a la lista de elementos
+
                         }
 
                     venta += listaE; //añado la lista a la venta
@@ -263,6 +335,7 @@ namespace FormPrincipal
                 if (!(dgvGrilla.Rows.Count == 0))
                 {
                     this.tabla.Rows.Clear(); //limpia la tabla.
+                    this.tablaAerobico.Rows.Clear();
                     acum = 0; // El acumulador que difiere sobre el label del total, se reinicia a 0
                     this.evento.Invoke(this.labelTotal); //invoco el evento del label para reiniciarlo.
                     MessageBox.Show("Venta realizada. Los productos le llegaran al cliente en 1 semana.", "ATENCION");
@@ -275,39 +348,9 @@ namespace FormPrincipal
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
-                
+            }               
         }
 
-        /// <summary>
-        /// Form closing que se lanza cuando se cierra el form
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Principal_FormClosing_1(object sender, FormClosingEventArgs e)
-        {
-            if (MessageBox.Show("¿Está seguro que desea salir?", "ATENCION", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
-               MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
-            else
-            {
-                try
-                {
-                    if (this.hilo.IsAlive)       //Si el hilo esta vivo
-                    {
-                        this.hilo.Abort();      //Lo aborta
-                    }
-                }
-                catch (ThreadAbortException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-
-            }
-        }
 
         /// <summary>
         /// Boton para guardar la venta en XML
@@ -320,36 +363,46 @@ namespace FormPrincipal
             {
                 List<ElementosGimnasio> listaE = new List<ElementosGimnasio>();
 
-                if (!(dgvGrilla.Rows.Count == 0)) //Si la grilla tiene filas....
+                if (!(dgvGrilla.Rows.Count == 0) || !(datGridAerobico.Rows.Count == 0)) //Si la grilla tiene filas...
                 {
-                    this.dgvGrilla.SelectAll();
+                    //this.dgvGrilla.SelectAll(); 
 
-                    for (int i = 0; i < this.dgvGrilla.RowCount; i++)
+                    for (int i = 0; i < this.dgvGrilla.RowCount; i++)    //Recorro las filas para obtener la informacion de cada una
                     {
-                        ElementosGimnasio el = new ElementosGimnasio(int.Parse(this.tabla.Rows[i][0].ToString()),
-                            this.tabla.Rows[i]["producto"].ToString(),
+                        ElementosGimnasio el = new ElementosGimnasio(int.Parse(this.tabla.Rows[i][0].ToString()), this.tabla.Rows[i]["producto"].ToString(),
                          int.Parse(this.tabla.Rows[i][2].ToString()),
                          int.Parse(this.tabla.Rows[i][3].ToString()));
-                        listaE.Add(el);         //Guarda el elemento obtenido a la lista de elementos
+                        listaE.Add(el); //añado el elemento a la lista de elementos
 
-                    }                               
+                    }
+                    for (int i = 0; i < this.datGridAerobico.RowCount; i++)    //Recorro las filas para obtener la informacion de cada una
+                    {
+                        ElementosGimnasio el2 = new ElementosGimnasio(int.Parse(this.tablaAerobico.Rows[i][0].ToString()), this.tablaAerobico.Rows[i]["producto"].ToString(),
+                       this.tablaAerobico.Rows[i]["color"].ToString(),
+                       int.Parse(this.tablaAerobico.Rows[i][3].ToString()));
+                        listaE.Add(el2); //añado el elemento a la lista de elementos
 
-                    venta += listaE; //Agrega la lista a la venta
-
-                    Venta.GuardarSer(venta); //Serializa la venta
-                    MessageBox.Show("Venta serializada!");
-                    venta -= listaE; //Le resta la venta para que no hayan duplicado
+                    }
                 }
                 else
                 {
                     throw new NoSePudoGuardarException();
                 }
+
+                venta += listaE; //Agrega la lista a la venta
+
+                Venta.GuardarSer(venta); //Serializa la venta
+                MessageBox.Show("Venta serializada!");
+                venta -= listaE; //Le resta la venta para que no hayan duplicado
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
 
         public void EjecutarAccion()
         {
@@ -363,7 +416,9 @@ namespace FormPrincipal
                     Thread.Sleep(2000);
                     this.eventoImagen.Invoke(@"abajo.jpg");                 
                     Thread.Sleep(2000);
-                    this.eventoImagen.Invoke(@"colchoneta.jpg");
+                    this.eventoImagenAerobico.Invoke(@"colchoneta.jpg");
+                    Thread.Sleep(2000);
+                    this.eventoImagenAerobico.Invoke(@"bici.jpg");
                     Thread.Sleep(2000);
 
                 } while (true);
@@ -374,6 +429,27 @@ namespace FormPrincipal
                 MessageBox.Show(ex.Message);
             }
             
+        }
+
+        public void EjecutarAccionDos()
+        {
+            try
+            {
+
+                do
+                {           
+                    this.eventoImagenAerobico.Invoke(@"colchoneta.jpg");
+                    Thread.Sleep(2000);
+                    this.eventoImagenAerobico.Invoke(@"bici.jpg");
+                    Thread.Sleep(2000);
+
+                } while (true);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         /// <summary>
@@ -394,6 +470,64 @@ namespace FormPrincipal
             this.imagen = new Bitmap(path); //Genera un bitmap con el path de la imagen
 
             imagenPictureBox.Image = (Image)this.imagen;   //le pasa la imagen casteada a Image
+        }
+
+        public void CambiarImagenAerobico(string path)
+        {
+            this.imagenAerobico = new Bitmap(path); //Genera un bitmap con el path de la imagen
+
+            pictureBoxAerobico.Image = (Image)this.imagenAerobico;   //le pasa la imagen casteada a Image
+        }
+
+        private void buttonLeerVenta_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FormListadoVentas ventaALeer = new FormListadoVentas();
+
+                ventaALeer.ShowDialog();
+
+             
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+
+        /// <summary>
+        /// Form closing que se lanza cuando se cierra el form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Principal_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("¿Está seguro que desea salir?", "ATENCION", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+               MessageBoxDefaultButton.Button2) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                try
+                {
+                    if (this.hilo.IsAlive && this.otroHilo.IsAlive)       //Si el hilo esta vivo
+                    {
+
+                        this.hilo.Abort();      //Lo aborta
+                        this.otroHilo.Abort();
+
+                    }
+
+
+                }
+                catch (ThreadAbortException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }

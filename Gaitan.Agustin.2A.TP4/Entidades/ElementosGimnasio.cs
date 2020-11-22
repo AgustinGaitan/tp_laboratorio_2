@@ -13,7 +13,24 @@ namespace Entidades
         protected string nombre;
         protected int precio;
         protected int caracteristica;
+        private string color;
 
+
+
+        /// <summary>
+        /// propiedad de solo lectura que retorna la id
+        /// </summary>
+        public string Color
+        {
+            get
+            {
+                return this.color;
+            }
+            set
+            {
+                this.color = value;
+            }
+        }
         /// <summary>
         /// propiedad de solo lectura que retorna la id
         /// </summary>
@@ -102,6 +119,22 @@ namespace Entidades
         /// </summary>
         /// <param name="id">id del producto</param>
         /// <param name="nombre">nombre del producto</param>
+        /// <param name="color">color del producto</param>
+        /// <param name="precio">precio del producto</param>
+        public ElementosGimnasio(int id, string nombre, string color, int precio)
+        {
+            this.id = id;
+            this.Nombre = nombre;
+            this.Precio = precio;
+            this.Color = color;
+
+        }
+
+        /// <summary>
+        /// Constructor con parametro
+        /// </summary>
+        /// <param name="id">id del producto</param>
+        /// <param name="nombre">nombre del producto</param>
         /// <param name="caracteristica">caracteristica del producto</param>
         /// <param name="precio">precio del producto</param>
         public ElementosGimnasio(int id, string nombre, int caracteristica, int precio)
@@ -119,6 +152,12 @@ namespace Entidades
         /// </summary>
         /// <param name="elementos">elemento a guardar</param>
         /// <returns></returns>
+        /// 
+        public ElementosGimnasio(string color)
+        {
+            this.Color = color;
+
+        }
         public static bool Guardar(ElementosGimnasio elementos)
         {
             Texto t = new Texto();
@@ -143,14 +182,20 @@ namespace Entidades
         /// <returns>la informacion del producto</returns>
         public override string ToString()  
         {
+            return this.MostrarDatos();
+        }
+
+        protected virtual string MostrarDatos()
+        {
+
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat($"Nombre: {this.Nombre}\n");
-            sb.AppendFormat($"Caracteristica: {this.Caracteristica}\n");
-            sb.AppendFormat($"Precio: {this.Precio}\n\n");
- 
-            sb.AppendLine("------------------------------------------");
+            sb.AppendFormat($"Precio: {this.Precio}\n");
+            
 
             return sb.ToString();
+
         }
+
     }
 }

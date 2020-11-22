@@ -61,11 +61,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mostrar.cs">
+    <Compile Include="Eliminar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Mostrar.Designer.cs">
-      <DependentUpon>Mostrar.cs</DependentUpon>
+    <Compile Include="Eliminar.Designer.cs">
+      <DependentUpon>Eliminar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormListadoVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormListadoVentas.Designer.cs">
+      <DependentUpon>FormListadoVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
@@ -81,8 +87,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Mostrar.resx">
-      <DependentUpon>Mostrar.cs</DependentUpon>
+    <EmbeddedResource Include="Eliminar.resx">
+      <DependentUpon>Eliminar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormListadoVentas.resx">
+      <DependentUpon>FormListadoVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAgregar.resx">
       <DependentUpon>FormAgregar.cs</DependentUpon>
