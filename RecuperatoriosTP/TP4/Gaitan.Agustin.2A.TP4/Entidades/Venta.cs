@@ -57,28 +57,6 @@ namespace Entidades
 
         }
 
-        /// <summary>
-        /// metodo estatico para guadar en un .txt
-        /// </summary>
-        /// <param name="venta">venta a guardar</param>
-        /// <returns></returns>
-        public static bool Guardar(Venta venta)
-        {
-            Texto t = new Texto();
-            return t.Guardar("ventas.txt", venta.ToString());
-        }
-
-        /// <summary>
-        /// metodo estatico para leer un txt
-        /// </summary>
-        /// <returns>los datos leidos</returns>
-        public static string Leer()
-        {
-            Texto nuevoTexto = new Texto();
-            nuevoTexto.Leer("ventas.txt", out string datos);
-
-            return datos;
-        }
 
         /// <summary>
         /// Muestra los datos

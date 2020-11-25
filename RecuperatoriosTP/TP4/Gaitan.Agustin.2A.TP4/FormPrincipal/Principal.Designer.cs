@@ -31,13 +31,13 @@ namespace FormPrincipal
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonAgregarProducto = new System.Windows.Forms.Button();
             this.buttonEliminarProducto = new System.Windows.Forms.Button();
             this.buttonRealizarVenta = new System.Windows.Forms.Button();
@@ -53,6 +53,7 @@ namespace FormPrincipal
             this.buttonEliminarProductoAerobico = new System.Windows.Forms.Button();
             this.pictureBoxAerobico = new System.Windows.Forms.PictureBox();
             this.buttonLeerVenta = new System.Windows.Forms.Button();
+            this.buttonSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGrilla)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagenPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datGridAerobico)).BeginInit();
@@ -99,27 +100,27 @@ namespace FormPrincipal
             this.dgvGrilla.AllowUserToDeleteRows = false;
             this.dgvGrilla.AllowUserToResizeColumns = false;
             this.dgvGrilla.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.BurlyWood;
-            this.dgvGrilla.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.BurlyWood;
+            this.dgvGrilla.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvGrilla.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvGrilla.BackgroundColor = System.Drawing.Color.Honeydew;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvGrilla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvGrilla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvGrilla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGrilla.GridColor = System.Drawing.SystemColors.ButtonShadow;
             this.dgvGrilla.Location = new System.Drawing.Point(140, 12);
             this.dgvGrilla.MultiSelect = false;
             this.dgvGrilla.Name = "dgvGrilla";
             this.dgvGrilla.ReadOnly = true;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkOliveGreen;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvGrilla.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DarkOliveGreen;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvGrilla.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvGrilla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGrilla.Size = new System.Drawing.Size(412, 179);
             this.dgvGrilla.TabIndex = 5;
@@ -151,7 +152,7 @@ namespace FormPrincipal
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(425, 451);
+            this.label1.Location = new System.Drawing.Point(425, 494);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(127, 37);
             this.label1.TabIndex = 10;
@@ -161,7 +162,7 @@ namespace FormPrincipal
             // 
             this.labelTotal.AutoSize = true;
             this.labelTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTotal.Location = new System.Drawing.Point(475, 510);
+            this.labelTotal.Location = new System.Drawing.Point(474, 539);
             this.labelTotal.Name = "labelTotal";
             this.labelTotal.Size = new System.Drawing.Size(19, 20);
             this.labelTotal.TabIndex = 11;
@@ -183,27 +184,27 @@ namespace FormPrincipal
             this.datGridAerobico.AllowUserToAddRows = false;
             this.datGridAerobico.AllowUserToResizeColumns = false;
             this.datGridAerobico.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.BurlyWood;
-            this.datGridAerobico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.BurlyWood;
+            this.datGridAerobico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.datGridAerobico.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datGridAerobico.BackgroundColor = System.Drawing.Color.Honeydew;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datGridAerobico.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datGridAerobico.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.datGridAerobico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datGridAerobico.GridColor = System.Drawing.SystemColors.ButtonShadow;
             this.datGridAerobico.Location = new System.Drawing.Point(140, 197);
             this.datGridAerobico.MultiSelect = false;
             this.datGridAerobico.Name = "datGridAerobico";
             this.datGridAerobico.ReadOnly = true;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DarkOliveGreen;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.datGridAerobico.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.DarkOliveGreen;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.datGridAerobico.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.datGridAerobico.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datGridAerobico.Size = new System.Drawing.Size(412, 179);
             this.datGridAerobico.TabIndex = 13;
@@ -263,6 +264,17 @@ namespace FormPrincipal
             this.buttonLeerVenta.UseVisualStyleBackColor = false;
             this.buttonLeerVenta.Click += new System.EventHandler(this.buttonLeerVenta_Click);
             // 
+            // buttonSalir
+            // 
+            this.buttonSalir.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSalir.Location = new System.Drawing.Point(422, 442);
+            this.buttonSalir.Name = "buttonSalir";
+            this.buttonSalir.Size = new System.Drawing.Size(120, 38);
+            this.buttonSalir.TabIndex = 20;
+            this.buttonSalir.Text = "Salir";
+            this.buttonSalir.UseVisualStyleBackColor = false;
+            this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -270,6 +282,8 @@ namespace FormPrincipal
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(591, 568);
+            this.ControlBox = false;
+            this.Controls.Add(this.buttonSalir);
             this.Controls.Add(this.buttonLeerVenta);
             this.Controls.Add(this.pictureBoxAerobico);
             this.Controls.Add(this.buttonEliminarProductoAerobico);
@@ -319,5 +333,6 @@ namespace FormPrincipal
         private Button buttonEliminarProductoAerobico;
         private PictureBox pictureBoxAerobico;
         private Button buttonLeerVenta;
+        private Button buttonSalir;
     }
 }

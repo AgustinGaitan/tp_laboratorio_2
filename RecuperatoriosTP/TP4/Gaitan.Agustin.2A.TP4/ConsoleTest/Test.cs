@@ -53,7 +53,7 @@ namespace ConsoleTest
                 Console.WriteLine(ventaTres.ToString());
 
             //Pruebo guardar los datos
-                if (Venta.Guardar(ventaUno) && Venta.Guardar(ventaDos) && Venta.Guardar(ventaTres))
+                if (ventaUno.Guardar() && ventaDos.Guardar() && ventaTres.Guardar())
                 {
 
                     Console.WriteLine("Ventas guardadas.\n\n");
@@ -62,7 +62,7 @@ namespace ConsoleTest
 
                 Console.WriteLine("************************************************");
                 Console.WriteLine("Lectura de archivo:");
-                Console.WriteLine(Venta.Leer()); //Pruebo leerlos
+                Console.WriteLine(ventaUno.Leer()); //Pruebo leerlos
 
 
             Console.ReadLine();

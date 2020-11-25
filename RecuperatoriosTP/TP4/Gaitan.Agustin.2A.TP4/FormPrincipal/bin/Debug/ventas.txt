@@ -1,0 +1,14 @@
+VENTA 
+LISTADO DE PRODUCTOS: 
+Nombre: barra
+Precio: 4000
+------------------------------------------
+
+VENTA 
+LISTADO DE PRODUCTOS: 
+Nombre: barra
+Precio: 2000
+Nombre: colchoneta
+Precio: 3000
+------------------------------------------
+

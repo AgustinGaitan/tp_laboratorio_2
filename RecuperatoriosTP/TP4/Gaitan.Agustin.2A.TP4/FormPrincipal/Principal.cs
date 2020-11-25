@@ -227,7 +227,7 @@ namespace FormPrincipal
             }
             catch(FilaVaciaException ex)
             {
-                MessageBox.Show(ex.Informar(), "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Error); //Se utiliza el método de extension
+                MessageBox.Show(ex.Message, "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Error); //Se utiliza el método de extension
                 
             }
             
@@ -276,13 +276,13 @@ namespace FormPrincipal
             }
             catch (FilaVaciaException ex)
             {
-                MessageBox.Show(ex.Informar(), "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Error); //Se utiliza el método de extension
+                MessageBox.Show(ex.Message, "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Error); //Se utiliza el método de extension
 
             }
 
         }
 
-      
+       
 
 
         /// <summary>
@@ -319,7 +319,7 @@ namespace FormPrincipal
 
                     venta += listaE; //añado la lista a la venta
 
-                    Venta.Guardar(venta); //guardo la lista en un .txt
+                    venta.Guardar(); //guardo la lista en un .txt
                     MessageBox.Show("Venta guardada!");
                     venta -= listaE; //le saco la lista para no tener duplicados en un futuro.
                 }
@@ -371,7 +371,7 @@ namespace FormPrincipal
         {
             try
             {
-                FormListadoVentas ventaALeer = new FormListadoVentas();
+                FormListadoVentas ventaALeer = new FormListadoVentas(this.venta);
 
                 ventaALeer.ShowDialog();
 
@@ -433,7 +433,16 @@ namespace FormPrincipal
                 MessageBox.Show(ex.Message, "ATENCION", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        /// <summary>
+        /// Boton para salir del programa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonSalir_Click(object sender, EventArgs e)
+        {
 
+            this.Close();
+        }
 
         #endregion
 
@@ -544,13 +553,15 @@ namespace FormPrincipal
 
 
                 }
-                catch (ThreadAbortException ex)
+                catch (ThreadAbortException)
                 {
-                    MessageBox.Show(ex.Message);
+
                 }
             }
         }
         #endregion
+
+       
     }
 }
 

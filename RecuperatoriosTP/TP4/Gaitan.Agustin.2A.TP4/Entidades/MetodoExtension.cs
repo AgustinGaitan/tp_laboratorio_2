@@ -4,19 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Excepciones;
+using Archivos;
 
 namespace Entidades
 {
     public static class MetodoExtension
     {
+
         /// <summary>
-        /// Método de extension
+        /// metodo estatico para guadar en un .txt
         /// </summary>
-        /// <param name="e"></param>
-        /// <returns></returns>
-        public static string Informar(this FilaVaciaException e)
+        public static bool Guardar(this Venta venta)
         {
-            return "Error. No hay elementos en la grilla...\n";
+            Texto t = new Texto();
+            return t.Guardar("ventas.txt", venta.ToString());
+        }
+
+        /// <summary>
+        /// metodo estatico para leer un txt
+        /// </summary>
+        /// <returns>los datos leidos</returns>
+        public static string Leer(this Venta venta)
+        {
+            Texto nuevoTexto = new Texto();
+            nuevoTexto.Leer("ventas.txt", out string datos);
+
+            return datos;
         }
     }
 }

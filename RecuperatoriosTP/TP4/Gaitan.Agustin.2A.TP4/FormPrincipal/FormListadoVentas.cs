@@ -14,10 +14,12 @@ namespace FormPrincipal
 {
     public partial class FormListadoVentas : Form
     {
-        public FormListadoVentas()
+
+        public FormListadoVentas(Venta v)
         {
             InitializeComponent();
-            richTextBox.Text = Venta.Leer();
+            
+            richTextBox.Text = v.Leer();
         }
 
      
