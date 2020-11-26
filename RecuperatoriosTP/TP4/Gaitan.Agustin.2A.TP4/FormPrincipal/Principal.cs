@@ -440,7 +440,7 @@ namespace FormPrincipal
         /// <param name="e"></param>
         private void buttonSalir_Click(object sender, EventArgs e)
         {
-
+            
             this.Close();
         }
 
@@ -449,8 +449,8 @@ namespace FormPrincipal
         #region Metodos
         public void EjecutarAccion()
         {
-            try
-            {
+            //try
+            //{
                                
                 do
                 {
@@ -466,18 +466,18 @@ namespace FormPrincipal
 
                 } while (true);
 
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //}
+            //catch(Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
             
         }
 
         public void EjecutarAccionDos()
         {
-            try
-            {
+            //try
+            //{
 
                 do
                 {           
@@ -488,11 +488,11 @@ namespace FormPrincipal
 
                 } while (true);
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
         /// <summary>
@@ -540,7 +540,7 @@ namespace FormPrincipal
                 e.Cancel = true;
             }
             else
-            {
+            { 
                 try
                 {
                     if (this.hilo.IsAlive && this.otroHilo.IsAlive)       //Si el hilo esta vivo
@@ -553,15 +553,16 @@ namespace FormPrincipal
 
 
                 }
-                catch (ThreadAbortException)
+                catch (Exception)
                 {
-
+                   
                 }
             }
         }
+
         #endregion
 
-       
+   
     }
 }
 
